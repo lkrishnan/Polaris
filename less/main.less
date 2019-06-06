@@ -1,0 +1,834 @@
+// imports
+@import "frame.less";
+
+/*@base: #504A52;*/
+@base: #000000;
+@bckgrnd: #ffffff; 
+@unit: 4px;
+@link: #3D6DCE;
+@greenlink: #053304;
+@redlink: #F3270C;
+
+//header tags
+h4 {
+	font-size: 1.1em;
+	font-weight: normal;
+	color: @bckgrnd;
+	background: @base;
+	padding: @unit @unit*2 @unit @unit*2;
+}
+
+//table styles 
+table th.fixed{ 
+	width: 80px;
+}
+
+table.proptbl{
+	table-layout: fixed;
+}
+
+table.proptbl th, table.proptbl td{ 
+	padding: 0.4em;
+}
+
+table.proptbl th{ 
+	text-align: left; 
+	font-weight: normal;
+	border-bottom: 1px lighten(@base, 70%) solid;
+	word-wrap: break-word;
+}
+
+table.proptbl th.invert{ 
+	border-bottom: 0;
+	border-right: 1px lighten(@base, 70%) solid;
+}
+
+table.proptbl td{ 
+	word-wrap: break-word;
+}
+
+table.boxy td, table.boxy th{
+	border: 2px @base solid;
+	padding: @unit;
+}
+
+table.boxy td:hover, table.boxy th:hover{
+	background: lighten(@base, 60%); 
+}
+
+//span styles
+span.last {
+	margin-left: @unit;
+}
+
+span.pad {
+	margin-left: @unit;
+	margin-right: @unit;
+}
+
+div.searcherror {
+	margin: 0 @unit 0 @unit; 
+	color: @warn;
+}
+
+//anchor styles
+a:link, a:visited {
+	text-decoration : none;
+	color: @link;
+}
+
+a.greenlink:link, a.greenlink:visited {
+	text-decoration : none;
+	color: @greenlink;
+}
+
+a.redlink:link, a.redlink:visited {
+	text-decoration : none;
+	color: @redlink;
+}
+
+a.btnlink:link, a.btnlink:visited {
+	color: @bckgrnd;
+	background: @link;
+	border-radius: @unit;
+	padding: @unit;
+	font-size: 1.1em;
+}
+
+a.btnlinkbright:link, a.btnlinkbright:visited {
+	background: #F7DD11;
+	border: 2px solid #B37F10;
+	border-radius: @unit;
+	color: #000;
+	padding: @unit;
+}
+
+a:hover, a:visited:hover, a.greenlink:hover, a.greenlink:visited:hover, a.redlink:hover, a.redlink:visited:hover { 
+	text-decoration : underline;
+	color: @base;
+}
+
+a.btnlink:hover, a.btnlink:visited:hover { 
+	background: @base;
+	text-decoration : none;
+}
+
+a.btnlinkbright:hover, a.btnlinkbright:visited:hover { 
+	background: #B37F10;
+	color: #fff;
+	text-decoration : none;
+}
+
+input, select, input[type=checkbox] {
+	border: 1px solid @base;
+}
+
+//container styles
+.cont { 
+	padding: @unit; 
+}
+
+.contbtm {
+	padding: 0 0 @unit 0;
+} 
+
+.ircont {
+	/*margin: 0 @unit*2 @unit*2 @unit*2;*/
+	margin: 0;
+}
+
+.navcont {
+	padding: 6px @unit @unit @unit; 
+}
+
+.linkcont {
+	margin: 0 @unit;
+}
+
+.toplinkcont {
+	margin: @unit;
+	font-size: 1.2em;
+	font-weight: normal;
+}
+
+.advisory {
+	font-weight: bold;
+	color: @advice;
+}
+
+.shadow  {
+	outline: none;
+	box-shadow: 0 0 @unit*2 @base;
+}
+
+.round {
+	border-radius: @unit*2; 
+}
+
+.fancycont {
+	margin: @unit*3 0 @unit*2 0;
+	font-size: 1.2em;
+}
+
+.fancycont.first {
+	margin-top: @unit/2;
+}
+
+.fancycont.last {
+	margin-bottom: @unit/2;
+}
+
+.fancycont.closeable {
+	margin: @unit/2;	
+}
+
+.iphonebadge {
+	width: 50px;
+	height: 50px;
+	line-height: 40px; 
+	border-radius:99px;
+	-moz-border-radius:99px;
+	-webkit-border-radius:99px;
+	background:red;
+	color:#fff;
+	border:3px #fff solid;
+	background-color: #e7676d;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#e7676d), to(#b7070a)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient(to bottom, #e7676d, #b7070a); /* Chrome 10+, Saf5.1+, iOS 5+ */
+	background-image: -moz-linear-gradient(to bottom, #e7676d, #b7070a); /* FF3.6 */
+	background-image: -ms-linear-gradient(to bottom, #e7676d, #b7070a); /* IE10 */
+	background-image: -o-linear-gradient(to bottom, #e7676d, #b7070a); /* Opera 11.10+ */
+	background-image: linear-gradient(to bottom, #e7676d, #b7070a);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#e7676d', EndColorStr='#b7070a'); 
+	-webkit-box-shadow: 0px 2px 4px #000000; /* Saf3-4 */
+	-moz-box-shadow: 0px 2px 4px #000000; /* FF3.5 - 3.6 */
+	box-shadow: 0px 2px 4px #000000; /* Opera 10.5, IE9, FF4+, Chrome 10+ */
+	display:inline-block;
+	padding:2px 2px 2px 2px ;
+	margin:3px;
+	font-family:arial;
+	font-weight:bold;
+	text-align: center;
+	cursor: pointer;
+}
+
+.iphonebadge:hover { //search button focus and hover
+	background-image: linear-gradient(to bottom, #e7676d, @bckgrnd);
+}
+
+.smallscreen {
+	display: none;
+}
+
+//-------------------//
+// Parent Containers // 
+//-------------------//
+#header {
+	height: 58px;
+	background: @bckgrnd url('../image/banner.png') left center no-repeat;
+}
+
+#aside {
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 400px;
+	z-index: 40;
+	overflow: auto;
+	box-sizing: content-box; /* hack for ie9 box-sizing doubling the scrollbar width */
+}
+
+#map {
+	height: 100%;
+	margin: 0 0 0 400px;
+	background-color: @bckgrnd;
+}
+
+//-----------------//
+// Data Containers // 
+//-----------------//
+
+#mobilemap {
+	display: none;
+}
+
+#error  {
+	font-size: 1.8em;
+}
+
+#tip  {
+	font-size: 1.2em;
+}
+
+#basemaplegend {
+	background: @bckgrnd;
+}
+
+#layerstree { 
+	font-size: 0.8em;
+	overflow: none;
+}
+
+//----------------//
+// Map Containers // 
+//----------------//
+
+//controls over the map
+#oldbrowserwarn  { //old browser warning container 
+	position: absolute; 
+	top: 0px; 
+	left: 0px; 
+	background-color: @caution; 
+	font-size: 0.8em;
+	z-index: 41;
+}
+
+#map_zoom_slider { //esri javascript api zoom slider control
+	top: 296px; 
+	left: 1px; 
+	margin: @unit;
+	outline: none;
+	box-shadow: 0 0 8px @base;
+}
+
+#basemapswitch{ //basemap toggle switch
+	position: absolute; 
+	right: 0;
+	top: 0;
+	z-index: 20;
+	margin: @unit;
+	
+}
+
+#toolbox{
+	position: absolute; 
+	left: 1px;
+	top: 74px;
+	margin: @unit @unit @unit 402px ;
+	z-index: 40;
+}
+
+#searching{
+	 width:100px;
+	 height:100px;
+	 position: fixed;
+	 top: 50%;
+	 left: 50%;
+	 margin-top: -50px;
+	 margin-left: 200px;
+	 z-index: 41;
+}
+
+#scrolltodataleft{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	z-index: 40;
+	display: none;
+}
+
+#scrolltodataright{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	z-index: 40;
+	display: none;
+}
+
+//search styles 
+#searchcont{
+	position: absolute; 
+	left: 401px; 
+	top: 0; 
+	width: 435px;	
+	margin: @unit;
+	border: 1px solid @base;
+	background: @bckgrnd;
+	z-index: 41;
+}
+
+#searchoptions{
+	font-size: 1.2em;
+	border-top: 1px solid @base;
+	background: lighten(@base, 95%);
+}
+
+#mainsearchcont{
+	margin: @unit 57px @unit @unit;
+	height: 25px;
+	font-size: 1.3em;
+}
+
+#searchclear, #searchprogress { //search box clear and progress
+	position: absolute; 
+	top:0;
+	right: 29px;
+	width: 28px;
+	height: 33px;
+}
+
+#searchclear { //search box clear
+	background: @bckgrnd url('../image/grey-close.png') center no-repeat;
+	cursor: pointer;
+}
+
+#searchprogress { //search box progress
+	background: @bckgrnd url('../image/spin.gif') center no-repeat;
+	pointer-events: none;
+}
+
+#searchbtn {
+	position: absolute; 
+	top:0;
+	right:0;
+	width : 29px;
+	height: 33px;
+	background: @base url('../image/search.png') center no-repeat;
+	cursor: pointer;
+	transition: all 0.25s ease-in-out;
+}
+
+#searchclear:hover, #searchbtn:hover { //search button focus and hover
+	box-shadow: 0 0 @unit*2 @base;
+}
+
+#searchhelp {
+	padding: 0 @unit @unit @unit;
+}
+
+//------//
+// Mojo // 
+//------//
+.mojoSearchResult {
+	font-size: 1.2em;
+	/*margin: 2px 0 2px 0;*/
+	margin: 0;
+	padding: 4px;  
+	border-bottom: solid 1px lighten(@base, 70%);
+	/*border-radius: 4px; */
+	/*box-shadow: 0 0 0 0;*/
+}
+
+.mojoSearchResult:hover {
+	background: lighten(@base, 90%);
+	cursor: pointer;
+}
+
+table.mojoSRTable { 
+	width: 100%; 
+}
+
+table.mojoSRTable td, table.mojoSRTable th { 
+	padding: 2px; 
+	vertical-align: top;
+}
+
+table.mojoSRTable th {
+	text-align: left;		
+	font-weight: normal;
+	width: 50px;
+}
+
+table.mojoSRTable th.idx {
+	text-align: left;		
+	font-weight: normal;
+	font-size: 1em;
+	width: 10px;
+}
+
+/* Basemap Toggle */
+
+.mojoBasemapSwitch {
+	padding: 0;	
+}
+
+.mojoBasemapSwitch .toggleButton {
+    padding: 1px;
+    background: #fff;
+    border: 1px solid #57585A;
+    user-select: none;
+    cursor: pointer;
+    border-radius: 5px;
+	outline: none;
+	box-shadow: 0 0 @unit*2 @base;
+}
+
+.mojoBasemapSwitch .basemapImage {
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+}
+
+.mojoBasemapSwitch .basemapImage img {
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+    -webkit-border-radius: 5px 5px 0 0;
+    -moz-border-radius: 5px 5px 0 0;
+    -o-border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 0 0;
+}
+
+.mojoBasemapSwitch .basemapTitle {
+    color: #4C4C4C;
+    margin: 1px 0 0;
+    font-size: 11px;
+	font-weight: bold;
+    line-height: 16px;
+    height: 16px;
+    display: block;
+    padding: 0;
+    text-align: center;
+    width: 60px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+/* Photo Gallery */
+.mojoPhotoGallery {
+	margin: 0;
+}
+
+.mojoPhotoGallery img.picture {
+	height: auto;
+	width: 100%;
+	max-width: 300px;
+	user-select: none;
+	outline: none;
+}
+
+.mojoPhotoGallery img.btn {
+	margin: @unit;
+	cursor: pointer;
+}
+
+div.mojoButtons {
+	padding : @unit/2;
+	border: 1px solid @base;
+    border-radius: 5px;
+	background-color: @bckgrnd;
+	box-shadow: 0 0 @unit*2 @base;
+}
+
+div.mojoButton {
+	margin: @unit/2;
+	padding : @unit;
+	font-weight: bold;
+	color: @link;
+	border: 1px solid #57585A;
+    border-radius: 5px;
+	cursor: pointer;
+	user-select: none;
+	background-color: @bckgrnd;
+	background-repeat: no-repeat;
+    background-position: center;
+}
+
+div.mojoButton.identify {
+	width: 28px;
+	height: 28px;
+	padding: 0;
+	background-image: url('../image/identify.png');
+}
+
+div.mojoButton.geolocation {
+	width: 28px;
+	height: 28px;
+	padding: 0;
+	background-image: url('../image/geolocation.png');
+}
+
+div.mojoButton.distmeasure {
+	width: 28px;
+	height: 28px;
+	padding: 0;
+	background-image: url('../image/distance_measure.png');
+}
+
+div.mojoButton.areameasure {
+	width: 28px;
+	height: 28px;
+	padding: 0;
+	background-image: url('../image/area_measure.png');
+}
+
+div.mojoButton.print {
+	width: 28px;
+	height: 28px;
+	padding: 0;
+	background-image: url('../image/printer.png');
+}
+
+div.mojoButton.markup {
+	width: 28px;
+	height: 28px;
+	padding: 0;
+	background-image: url('../image/markup.png');
+}
+div.mojoButton.markuppoint {
+	width: 28px;
+	height: 28px;
+	padding: 0;
+	background-image: url('../image/markuppoint.png');
+}
+
+div.mojoButton.markupline {
+	width: 28px;
+	height: 28px;
+	padding: 0;
+	background-image: url('../image/markupline.png');
+}
+
+div.mojoButton.markuppoly {
+	width: 28px;
+	height: 28px;
+	padding: 0;
+	background-image: url('../image/markuppoly.png');
+}
+
+div.mojoButton.erase {
+	width: 28px;
+	height: 28px;
+	padding: 0;
+	background-image: url('../image/erase.png');
+}
+
+div.mojoButton.selected {
+	background-color: @link;
+	color: #ffffff;
+}
+
+div.mojoButton:hover { 
+	color: @base;
+}
+
+div.mojoButton:hover.selected { 
+	color: #ffffff;
+}
+
+div.mojoButtonPopout {
+	position: absolute;
+	left: -8px;
+	top: 30px;
+	min-height: 36px;
+	z-index: -1;
+	padding : @unit*2 0 0 0;
+	border: 1px solid @base;
+    border-radius: 5px;
+	cursor: pointer;
+	user-select: none;
+	background-color: @bckgrnd;
+	box-shadow: 0 0 @unit*2 @base;
+}
+
+div.mojoButtonHorizontalPopout {
+	position: absolute;
+	left: 30px;
+	top: 0px;
+	min-width: 140px;
+	min-height: 60px;
+	z-index: -1;
+	padding : @unit @unit @unit @unit*3;
+	border: 1px solid @base;
+    border-radius: 5px;
+	cursor: pointer;
+	user-select: none;
+	background-color: @bckgrnd;
+	box-shadow: 0 0 @unit*2 @base;
+	font-size: 1.1em;
+}
+
+div.toolTitle {
+	font-weight: bold;
+}
+
+div.toolClose {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 16px;
+	height: 16px;
+	background: @bckgrnd url('../image/red-close.png') center no-repeat
+}
+
+.mojoButtonPopout .slider {
+	margin: @unit @unit*4 0 @unit*4;
+}
+
+.mojoButtonPopout .rulelabel {
+	margin: @unit @unit*9 @unit*6 @unit*9;
+}
+
+//----------------//
+// Dojo Overrides // 
+//----------------//
+
+.tundra .dijitComboBox .dijitButtonNode {
+	padding: 0.2em 0.1em;
+}
+	
+.tundra .dijitInputContainer {
+	padding: 2px;
+	font-size: 1.1em;
+}
+
+.dijitPlaceHolder {
+	margin: 2px;
+	font-size: 1.0em;
+	font-style: normal; 
+	font-weight: normal; 
+}
+
+@-webkit-keyframes
+pulse {
+	0% { opacity: 1.0; }
+	45% { opacity: .20; }
+	100% { opacity: 1.0; }
+}
+
+@-moz-keyframes
+pulse {
+	0% { opacity: 1.0; }
+	45% { opacity: .20; }
+	100% { opacity: 1.0; }
+}
+
+#graphicsLayer2_layer {
+	-webkit-animation-duration: 3s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-name: pulse;
+	-moz-animation-duration: 3s;
+	-moz-animation-iteration-count: infinite;
+	-moz-animation-name: pulse;
+}
+
+//media queries
+@media screen and (max-width: 1060px) {   
+
+	input, select {
+		font-size: 1.2em;
+		padding: 4px;
+	}
+	
+	a:link, a:visited {
+		font-size: 1.2em;		
+	}
+	
+	a.btnlink:link, a.btnlink:visited {
+		font-size: 1.0em;
+	}
+			
+	.tundra .dijitComboBox .dijitButtonNode {
+		padding: 0.4em 0.1em;
+	}
+		
+	.tundra .dijitInputContainer {
+		padding: 4px;
+		font-size: 1.2em;
+	}
+	
+	#mainsearchcont {
+		font-size: 1.2em;
+	}
+
+	.dijitPlaceHolder {
+		margin: 4px;
+	}
+			
+	#searchcont {
+		right: 0;
+		width: auto;
+		margin: @unit/2;
+	}
+
+	#mainsearchcont {
+		margin: 0 57px 0 0;	
+	}
+	
+	#mainsearchcont, #searchclear, #searchprogress, #searchbtn {
+		height: 31px;
+	}
+	
+	#basemapswitch {
+		margin: @unit/2;
+	}
+	
+	#toolbox {
+		margin: @unit/2 @unit/2 @unit/2 402px ;
+	}
+	
+	#toolbox, #basemapswitch {
+		top: 70px;
+	} 
+	
+	#map_zoom_slider {
+		top: 292px;
+		margin: @unit/2;
+	}
+	
+	#searching {
+		margin-left: 150px;
+	}
+				
+}
+
+@media screen and (max-width: 920px) {
+
+	#map {
+		height: 100%;
+		margin: 0;
+	}
+	
+	#searchcont {
+		left: 0;
+	}
+	
+	
+	
+	#toolbox {
+		margin-left: 1px;
+	}
+	
+	#searching {
+		margin-top: -65px;
+		margin-left: -50px;
+	}
+				
+	#aside {
+		top: 0;
+		position: relative;
+		width: 100%;
+	}
+	
+	#header, #menu {
+		display: none;
+	}
+	
+	.smallscreen {
+		display: block;
+	}
+	
+	.bigscreen {
+		display: none;
+	}
+										
+}
+
+@media screen and (max-width: 450px) {
+	
+	.dijitPlaceHolder {
+		font-size: 0.9em;
+		margin: 6px 4px;
+	}
+	
+	#photo {
+		padding: @unit;
+	}
+	
+}

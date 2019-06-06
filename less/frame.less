@@ -1,0 +1,283 @@
+/* default font and line size settings */
+@import url(https://fonts.googleapis.com/css?family=PT+Sans:400,700);
+
+@caution: #F7F30A;
+@warn: #F72A0A;
+@advice: #389C3A;
+ 
+html {
+	font-family: 'PT Sans', sans-serif;
+    /*font-family: Helmet, Freesans, sans-serif; */
+	font-size: 1em;
+	font-variant: normal; 
+    line-height: 1.4;
+}
+
+/* default text color setting */
+
+html,
+button,
+input,
+select,
+textarea {
+    color: #222;
+}
+
+   
+/* box sizing settings */
+
+* { 
+	box-sizing: border-box;
+	-moz-box-sizing: border-box; 
+	-webkit-box-sizing: border-box; 
+}
+
+
+/* body settings */
+   
+body { 
+	margin: 0; 
+	background-color: #ffffff;
+	font-size: 12px;	
+}
+
+html, body {
+	height: 100%;
+}
+
+/* header tag settings */
+
+h4 { 
+	margin: 0; 
+}
+
+h5 { 
+	margin: 0; 
+	font-size: 1.2em;  
+}
+
+
+/* horizontal ruler setting */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+ul {
+	margin: 0;
+}
+
+/* table tags */
+
+td, th { 
+	padding: 2px; 
+}
+
+th { 
+	font-weight: bold;
+	text-align: left; 	
+}
+
+table {
+	width: 100%;
+	min-width: 100%;
+	border-collapse: collapse; 
+	border-spacing: 0;
+}
+
+table th { 
+	text-align: left; 
+	font-weight: normal;
+}
+
+table td.center { 
+	text-align: center; 
+}
+
+table th.right, td.right { 
+	text-align: right; 
+}
+
+table td.top { 
+	vertical-align: top;
+}
+
+table th.top { 
+	vertical-align: top;
+}
+
+/*select tags*/
+select.max {
+	width: 100%;
+}
+
+select.small {
+	width: 80px;
+}
+
+//input styles
+input, select {
+	font-size: 1.0em;
+}
+input.max {
+	width: 100%;
+}
+
+input.small {
+	width: 50px;
+}
+
+input.medium {
+	width: 90px;
+}
+
+input[type=text]::-ms-clear {
+    width : 0;
+	height: 0;
+}
+
+/* image tags */
+img.responsive-image {
+	height: auto;
+	width: 100%;
+	max-width: 240px;
+}
+
+textarea.max {
+	width: 100%;
+}
+
+/* Webkit */ 
+
+::-webkit-scrollbar { 
+	width: 12px; 
+}
+::-webkit-scrollbar-track { 
+	border-radius: 10px;
+	box-shadow: inset 0 0 6px rgba(0,0,0,0.2);  
+}
+::-webkit-scrollbar-thumb { 
+	border-radius: 10px; 
+	box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+} 
+
+/* remove text-shadow in selection highlight */
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+/* remove the gap between images, videos, audio and canvas and the bottom oftheir containers */
+
+audio,
+canvas,
+img,
+video {
+    vertical-align: middle;
+}
+
+
+/* allow only vertical resizing of textareas */
+
+textarea {
+    resize: vertical;
+}
+
+/* align helpers */ 
+
+.alignleft{
+	float: left;
+}
+
+.alignright{
+	float: right;
+}
+
+.fixalign{
+	clear: both;
+}
+
+.textleft {
+	text-align:left;
+}
+
+.textright { 
+	text-align: right; 
+}
+
+.textcenter  { 
+	text-align: center; 
+}
+
+/* container helpers */
+.note { 
+	font-weight: normal;
+	color: @warn;  
+}
+
+.hidden { /* hide from both screenreaders and browsers */
+    display: none !important;
+    visibility: hidden;
+}
+
+.tablet { 
+	display: none !important;
+	visibility: hidden;
+}
+
+.mobile { 
+	display: none !important;
+	visibility: hidden;
+}
+
+.unselectable {
+	user-select: none;
+}
+
+.lt-ie8 select.max, .lt-ie8 input.max, .lt-ie8 table {
+	width: auto;
+}
+
+
+
+//media queries
+@media screen and (max-width: 920px) {
+	
+	.tablet {
+		display: block !important;
+		visibility: visible;
+	}
+
+}
+
+@media screen and (max-width: 450px) {
+
+	.hidden-mobile { 
+		display: none !important;
+		visibility: hidden;
+	}
+	
+	.mobile {
+		display: block !important;
+		visibility: visible;
+	}
+
+}
+
+@media print {
+
+	.hidden-print { 
+		display: none; 
+	}
+
+}
