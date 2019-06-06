@@ -14,7 +14,7 @@ function searchInit( ){
 		// 1. Initialize Main Search control //
 		///////////////////////////////////////
 		
-		//Main search autocomplete combobox initializatio
+		//Main search autocomplete combobox initialization
 		mainSearch = new ComboBox( {
 			id: "mainSearch",
 			queryExpr: "${0}",		
