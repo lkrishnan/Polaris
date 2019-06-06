@@ -14,7 +14,7 @@ function searchInit( ){
 		// 1. Initialize Main Search control //
 		///////////////////////////////////////
 		
-		//Main search autocomplete combobox initialization
+		//Main search autocomplete combobox initializatio
 		mainSearch = new ComboBox( {
 			id: "mainSearch",
 			queryExpr: "${0}",		
@@ -464,7 +464,7 @@ function finder( data, container ){
 			} ).then( function( matdata ){
 				if( matdata.length > 0 ){
 					Utils.mixin( data, matdata[ 0 ] );
-					finder ( data, container );
+					finder( data, container );
 				}	
 			} );
 		}
@@ -602,7 +602,7 @@ function finder( data, container ){
 						data.lon = gisdata[ 0 ].lon; 
 						data.lat = gisdata[ 0 ].lat;
 						data.sqft = gisdata[ 0 ].sqft;
-						finder ( data, container );
+						finder( data, container );
 					}
 				}else{ //no parcel intersects mat point
 					request.get( config.web_service_local + "v1/ws_attributequery.php", {
@@ -619,13 +619,13 @@ function finder( data, container ){
 							var info = {
 								Desciption: "Address", 			
 								Address: matdata[ 0 ].address,							
-								XY: parseInt ( matdata[ 0 ].x ) + ", " + parseInt ( matdata[ 0 ].y )
+								XY: parseInt( matdata[ 0 ].x ) + ", " + parseInt( matdata[ 0 ].y )
 							};
 								
-							query( "#poicont" ).innerHTML( Format.objectAsTable( info , "proptbl", true ) ) ;
+							document.getElementById( "poicont" ).innerHTML = Format.objectAsTable( info , "proptbl", true );
 						
 							//show point of interest div
-							showDiv( 'poi' );
+							showDiv( "poi" );
 																
 							connect.publish( "/add/graphics", { 
 								x: matdata[ 0 ].x, 
@@ -659,7 +659,7 @@ function finder( data, container ){
 						badSearch( );	
 					}	
 				} else { //tax pid is not found in cama. can happen if a bad pid comes from the master address table
-					badSearch();
+					badSearch( );
 				}	
 			} );
 		}
@@ -694,38 +694,36 @@ function finder( data, container ){
 							document.getElementById( container ).innerHTML ="<h5><span class = 'note'>Are you looking for?</span></h5>";
 						
 							camadata.forEach( function ( item, i ){
-								var widget = new SearchResultBoxLite(
-									{
-										idx: i + 1,
-										displaytext : 
-											"<div>" + 
-												Format.address( Format.nullToEmpty( item.house_number ), 
-													Format.nullToEmpty( item.prefix ), 
-													Format.nullToEmpty( item.street_name ), 
-													Format.nullToEmpty( item.road_type ), 
-													Format.nullToEmpty( item.suffix ), 
-													Format.nullToEmpty( item.unit ), 
-													Format.jurisdisplay ( Format.nullToEmpty( item.municipality ) ), "", "" ) + 
-											"</div>" +
-											"<div>Parcel ID:&nbsp;" + item.pid + "</div>" + 
-											"<div>Ownership:</div>" + 
-											"<div>" + Format.ownerlist ( item.owner_names ) + "</div>",
-										params: { 
-											taxpid: item.pid.trim( ), 
-											groundpid: Format.nullToEmpty( item.common_pid ).trim( ),
-											removegraphics: [ "buffer", "road", "parcelpt" ],
-											zoom: ( data.hasOwnProperty ( "zoom" ) ? data.zoom : true ),
-											backtoresults: true		
-										},
-										onClick: function( boxdata ){
-											finder( boxdata, container );
-										}
+								var widget = new SearchResultBoxLite( {
+									idx: i + 1,
+									displaytext : 
+										"<div>" + 
+											Format.address( Format.nullToEmpty( item.house_number ), 
+												Format.nullToEmpty( item.prefix ), 
+												Format.nullToEmpty( item.street_name ), 
+												Format.nullToEmpty( item.road_type ), 
+												Format.nullToEmpty( item.suffix ), 
+												Format.nullToEmpty( item.unit ), 
+												Format.jurisdisplay ( Format.nullToEmpty( item.municipality ) ), "", "" ) + 
+										"</div>" +
+										"<div>Parcel ID:&nbsp;" + item.pid + "</div>" + 
+										"<div>Ownership:</div>" + 
+										"<div>" + Format.ownerlist ( item.owner_names ) + "</div>",
+									params: { 
+										taxpid: item.pid.trim( ), 
+										groundpid: Format.nullToEmpty( item.common_pid ).trim( ),
+										removegraphics: [ "buffer", "road", "parcelpt" ],
+										zoom: ( data.hasOwnProperty ( "zoom" ) ? data.zoom : true ),
+										backtoresults: true		
+									},
+									onClick: function( boxdata ){
+										finder( boxdata, container );
 									}
-								).placeAt( document.getElementById( container ) );	
+								} ).placeAt( document.getElementById( container ) );	
 							} );
 							
 							//show search results div
-							showDiv( 'searchresults' );
+							showDiv( "searchresults" );
 						} 
 					);
 				}else{ //no parcel with search criterion exists in cama 
@@ -741,12 +739,12 @@ function finder( data, container ){
 					var item = data.desc.split( "|" );
 												
 					Utils.mixin( data, {
-									stprefix: ( ( item[ 0 ] == "x" ) ?  null : item[ 0 ] ),
-									stname: ( ( item[ 1 ] == "x" ) ?  null : item[ 1 ] ),
-									sttype: ( ( item[ 2 ] == "x" ) ?  null : item[ 2 ] ), 
-									stsuffix: ( ( item[ 3 ] == "x" ) ?  null : item[ 3 ] ),
-									stmuni: ( ( item[ 4 ] == "x" ) ?  null : item[ 4 ] ),
-									removegraphics: [ "buffer", "road", "parcelpt" ]
+						stprefix: ( ( item[ 0 ] == "x" ) ?  null : item[ 0 ] ),
+						stname: ( ( item[ 1 ] == "x" ) ?  null : item[ 1 ] ),
+						sttype: ( ( item[ 2 ] == "x" ) ?  null : item[ 2 ] ), 
+						stsuffix: ( ( item[ 3 ] == "x" ) ?  null : item[ 3 ] ),
+						stmuni: ( ( item[ 4 ] == "x" ) ?  null : item[ 4 ] ),
+						removegraphics: [ "buffer", "road", "parcelpt" ]
 					} );
 							
 					finder( data, container );
@@ -755,7 +753,7 @@ function finder( data, container ){
 				}else{ //points of interest
 					//add location information
 					//add pointer to map and identify layer that intersect point
-					if ( data.hasOwnProperty ( "lat" ) && data.hasOwnProperty ( "lon" ) ){
+					if( data.hasOwnProperty( "lat" ) && data.hasOwnProperty( "lon" ) ){
 						addLocation( { x: data.x, y: data.y, lat: data.lat, lon: data.lon, desc: data.desc, zoom: true } );
 					}else{
 						request.get( config.web_service_local + "v1/ws_geo_projectpoint.php", {
@@ -766,7 +764,7 @@ function finder( data, container ){
 								fromsrid : 2264
 							}
 						} ).then( function( projdata ){
-							if ( projdata.length > 0 ){
+							if( projdata.length > 0 ){
 								addLocation( { x: data.x, y: data.y, lat: projdata[ 0 ].y, lon: projdata[ 0 ].x, desc: data.desc, zoom: true } );
 							}
 						} );							
@@ -791,8 +789,8 @@ function finder( data, container ){
 									fromsrid : 2264
 								}
 							} ).then( function( projdata ){
-								if ( projdata.length > 0 ) {
-									addLocation ( { x: data.x, y: data.y, lat: projdata[ 0 ].lat, lon: projdata[ 0 ].lon, desc: "Search Location", zoom: data.zoom } );
+								if( projdata.length > 0 ){
+									addLocation( { x: data.x, y: data.y, lat: projdata[ 0 ].lat, lon: projdata[ 0 ].lon, desc: "Search Location", zoom: data.zoom } );
 								}
 							} );	
 						}
