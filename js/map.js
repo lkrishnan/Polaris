@@ -68,7 +68,7 @@ function mapEventsInit( ){
 			document.getElementById( "searching" ).classList.remove( "hidden" );
 		}else if( mapClick === "identify" ){
 			require( [ "dojo/_base/connect", "dojo/request" ], function( connect, request ){
-				script.get( config.web_service_local + "v1/ws_geo_projectpoint.php", {
+				script.get( config.ws + "v1/ws_geo_projectpoint.php", {
 					handleAs: "json",
 					query: { 
 						x : event.mapPoint.x, 
@@ -169,8 +169,9 @@ function addGraphics( data ){
 		switch( data.graphictype ){
 			case "parcelpoly":
 				//get parcel gemoetry from gissde02 and add to map
-				request.get( config.web_service_local + "v1/ws_attributequery.php", {
+				request.get( config.ws + "v1/ws_attributequery.php", {
 					handleAs: "json",
+					headers: { "X-Requested-With": "" },
 					query: { 
 						"table" : "parcels_py", 
 						"fields" : "ST_AsText ( shape ) as parcelgeom", 
@@ -252,8 +253,9 @@ function addGraphics( data ){
 				}
 						
 				//get the road segments form gissde02 and add to the map
-				request.get( config.web_service_local + "v1/ws_attributequery.php", {
+				request.get( config.ws + "v1/ws_attributequery.php", {
 					handleAs: "json",
+					headers: { "X-Requested-With": "" },
 					query: { 
 						"table" : "Streets_ln", 
 						"fields" : "ST_AsText ( shape ) as roadgeom", 
@@ -344,7 +346,7 @@ function toggleOverlays( service, show, input_idx ){
 
 function geoLocate( location ){
 	require( [ "dojo/_base/connect", "dojo/request" ], function( connect, request ){
-		script.get( config.web_service_local + "v1/ws_geo_projectpoint.php", {
+		script.get( config.ws + "v1/ws_geo_projectpoint.php", {
 			handleAs: "json",
 			query: { 
 				x: location.coords.longitude, 

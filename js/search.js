@@ -1,7 +1,7 @@
 function searchInit( ){
-	require( [ "esri/tasks/GeometryService", "esri/tasks/BufferParameters", "dojox/data/QueryReadStore",
+	require( [ "esri/tasks/GeometryService", "esri/tasks/BufferParameters", "dojox/data/QueryReadStore", "dojox/data/JsonRestStore",
 		"dijit/form/ComboBox", "dijit/form/DateTextBox", "dijit/registry", "dojo/_base/connect",
-		"dojo/data/ItemFileWriteStore" ], function( GeometryService, BufferParameters, QueryReadStore, ComboBox, DateTextBox, registry, connect, ItemFileWriteStore ){
+		"dojo/data/ItemFileWriteStore" ], function( GeometryService, BufferParameters, QueryReadStore, JsonRestStore, ComboBox, DateTextBox, registry, connect, ItemFileWriteStore ){
 		//local variables
 		var mainSearch,
 			situsStSrch,
@@ -28,7 +28,7 @@ function searchInit( ){
 			labelFunc: Format.tagsrchresults, 
 			labelType: "html",
 			store: new QueryReadStore( { 
-				"url": config.web_service_local + "v1/ws_ubersearch.php?searchtypes=PID,GISID,Address,Owner,Intersection,Library,School,Park,CATS,Wholestname,Business" 
+				"url": config.ws + "v1/ws_ubersearch.php?searchtypes=PID,GISID,Address,Owner,Intersection,Library,School,Park,CATS,Wholestname,Business"
 			} ),
 			onInput: function( event ){
 				if( event.keyCode === 13 ){ 
@@ -85,7 +85,7 @@ function searchInit( ){
 			maxHeight: 300,
 			placeHolder: "Street (Required)",
 			store: new QueryReadStore( { 
-				"url": config.web_service_local + "v1/ws_ubersearch.php?searchtypes=Road"
+				"url": config.ws + "v1/ws_ubersearch.php?searchtypes=Road"
 			} )
 		} ).placeAt( document.getElementById( "situsstCont" ) );
 		situsStSrch.startup( );
@@ -225,7 +225,7 @@ function searchInit( ){
 			maxHeight: 300,
 			placeHolder: "Enter Street Name",
 			store: new QueryReadStore( { 
-				"url": config.web_service_local + "v1/ws_ubersearch.php?searchtypes=Road" 
+				"url": config.ws + "v1/ws_ubersearch.php?searchtypes=Road" 
 			} )
 		} ).placeAt( document.getElementById( "stnameCont" ) );
 		anlysStSrch.startup( );
@@ -453,8 +453,9 @@ function finder( data, container ){
 			
 		//2. Should have come from querystring find XY and full address of the master address point
 		else if( data.matid && data.taxpid && data.groundpid ){
-			request.get( config.web_service_local + "v1/ws_attributequery.php", {
+			request.get( config.ws + "v1/ws_attributequery.php", {
 				handleAs: "json",
+				headers: { "X-Requested-With": "" },
 				query: {
 					table: "masteraddress_pt",
 					source: "tax",
@@ -471,8 +472,9 @@ function finder( data, container ){
 			
 		//3. Get ground pid from cama	
 		else if( data.matid && data.taxpid ){
-			request.get( config.web_service_local + "v1/ws_cama_pidswitcher.php", {
+			request.get( config.ws + "v1/ws_cama_pidswitcher.php", {
 				handleAs: "json",
+				headers: { "X-Requested-With": "" },
 				query: { 
 					pid : data.taxpid,
 					pidtype : "tax"
@@ -489,8 +491,9 @@ function finder( data, container ){
 			
 		//4. Get tax pid from cama
 		else if( data.matid && data.groundpid ){
-			request.get( config.web_service_local + "v1/ws_cama_situsaddress.php", {
+			request.get( config.ws + "v1/ws_cama_situsaddress.php", {
 				handleAs: "json",
+				headers: { "X-Requested-With": "" },
 				query: { pid: data.groundpid }
 			} ).then ( function( camadata ) {
 				if( camadata.length > 0 ){ //the passed groundpid exists in cama
@@ -516,8 +519,9 @@ function finder( data, container ){
 			
 		//5. Get matid by intersecting parcel layer with master address table 
 		else if( data.groundpid && data.taxpid ){
-			request.get( config.web_service_local + "v1/ws_addresses_on_ground.php", {
+			request.get( config.ws + "v1/ws_addresses_on_ground.php", {
 				handleAs: "json",
+				headers: { "X-Requested-With": "" },
 				query: {
 					pid: data.groundpid
 				}
@@ -544,7 +548,7 @@ function finder( data, container ){
 				}else{
 					Utils.mixin( data, { matid: -1, address: "NA" } );
 										
-					script.get( config.web_service_local + "v1/ws_attributequery.php", {
+					script.get( config.ws + "v1/ws_attributequery.php", {
 						jsonp: "callback",
 						query: 
 						{
@@ -567,8 +571,9 @@ function finder( data, container ){
 			
 		//7. Probably control came from a master address search, find groundpid by intersecting with parcel layer
 		else if( data.matid ){ 
-			request.get ( config.web_service_local + "v1/ws_geo_featureoverlay.php", {
+			request.get ( config.ws + "v1/ws_geo_featureoverlay.php", {
 				handleAs: "json",
+				headers: { "X-Requested-With": "" },
 				query: {
 					from_table : "masteraddress_pt",
 					to_table : "parcels_py",
@@ -605,8 +610,9 @@ function finder( data, container ){
 						finder( data, container );
 					}
 				}else{ //no parcel intersects mat point
-					request.get( config.web_service_local + "v1/ws_attributequery.php", {
+					request.get( config.ws + "v1/ws_attributequery.php", {
 						handleAs: "json",
+						headers: { "X-Requested-With": "" },
 						query: {
 							table : "masteraddress_pt",
 							source: "tax",
@@ -644,8 +650,9 @@ function finder( data, container ){
 			
 		//8. Go to cama and get ground pid
 		else if( data.taxpid ){
-			request.get( config.web_service_local + "v1/ws_cama_pidswitcher.php", {
+			request.get( config.ws + "v1/ws_cama_pidswitcher.php", {
 				handleAs: "json",
+				headers: { "X-Requested-With": "" },
 				query: { 
 					pid : data.taxpid,
 					pidtype : "tax"		
@@ -666,8 +673,9 @@ function finder( data, container ){
 			
 		//9. Query cama based on passed parameter(s) 
 		else if( data.groundpid || data.lastname || data.stname ){
-			request.get( config.web_service_local + "v1/ws_cama_taxparcelinfo.php", {
+			request.get( config.ws + "v1/ws_cama_taxparcelinfo.php", {
 				handleAs: "json",
+				headers: { "X-Requested-With": "" },
 				query: {
 					compid: ( data.groundpid ? data.groundpid : "" ),
 					lastname: ( data.lastname ? data.lastname.trim( ) : "" ),
@@ -756,8 +764,9 @@ function finder( data, container ){
 					if( data.hasOwnProperty( "lat" ) && data.hasOwnProperty( "lon" ) ){
 						addLocation( { x: data.x, y: data.y, lat: data.lat, lon: data.lon, desc: data.desc, zoom: true } );
 					}else{
-						request.get( config.web_service_local + "v1/ws_geo_projectpoint.php", {
+						request.get( config.ws + "v1/ws_geo_projectpoint.php", {
 							handleAs: "json",
+							headers: { "X-Requested-With": "" },
 							query: { 
 								x : data.x, 
 								y : data.y, 
@@ -771,8 +780,9 @@ function finder( data, container ){
 					}	
 				}	
 			}else{ //map click
-				request.get( config.web_service_local + "v1/ws_geo_pointoverlay.php", {
+				request.get( config.ws + "v1/ws_geo_pointoverlay.php", {
 					handleAs: "json",
+					headers: { "X-Requested-With": "" },
 					query: { x : data.x, y : data.y, srid: "2264", table: "parcels_py", geometryfield: "shape", fields: "pid as groundpid", source: "tax" }
 				} ).then( function( parceldata ){
 					if( parceldata.length > 0 ){ //kick it back to Main Search
@@ -781,8 +791,9 @@ function finder( data, container ){
 						if( data.hasOwnProperty( "lat" ) && data.hasOwnProperty( "lon" ) ){
 							addLocation( { x: data.x, y: data.y, lat: data.lat, lon: data.lon, desc: "Search Location", zoom: data.zoom } );
 						} else {
-							request.get ( config.web_service_local + "v1/ws_geo_projectpoint.php", {
+							request.get ( config.ws + "v1/ws_geo_projectpoint.php", {
 								handleAs: "json",
+								headers: { "X-Requested-With": "" },
 								query: { 
 									x : data.x, 
 									y : data.y, 
@@ -822,8 +833,9 @@ function backupSearch( searchStr ){
 		}else if( Validate.isLatLon( searchStr ) ){
 			var latlon = Utils.parseLatLon( searchStr );
 							
-			request.get( config.web_service_local + "v1/ws_geo_projectpoint.php", {
+			request.get( config.ws + "v1/ws_geo_projectpoint.php", {
 				handleAs: "json",
+				headers: { "X-Requested-With": "" },
 				query: { 
 					x: latlon.lon, 
 					y: latlon.lat, 
@@ -858,8 +870,9 @@ function backupSearch( searchStr ){
 
 function standardizedAddrSearch( standardizedAddr, container ){
 	require( [ "dojo/request" ] , function( script ){
-		request.get( config.web_service_local + "v1/ws_attributequery.php", {
+		request.get( config.ws + "v1/ws_attributequery.php", {
 			handleAs: "json",
+			headers: { "X-Requested-With": "" },
 			query: {
 				"table" : "masteraddress_pt",
 				"fields" : "num_addr as matid, full_address as address",
@@ -931,8 +944,9 @@ function bufferSearch( buffersize ){
 		}	
 			
 		//get deed information parcels from cama for parcels with buffer 	
-		request.get( config.web_service_local + "v1/ws_cama_deedinfo.php", {
+		request.get( config.ws + "v1/ws_cama_deedinfo.php", {
 			handleAs: "json",
+			headers: { "X-Requested-With": "" },
 			query: { pid: "", gisid: selectedAddress.groundpid, buffer: buffersize }
 		} ). then( function( camadata ){
 			document.getElementById( "searchresults" ).innerHTML = "<h5><span class = 'note'>Are you looking for?</span></h5>";
@@ -1072,8 +1086,9 @@ function analyzeTheMarket( param, pageno, data ){
 				reportparams			
 			);
 		}else{
-			request.get( config.web_service_local + "v1/ws_cama_marketanalysis.php", {
+			request.get( config.ws + "v1/ws_cama_marketanalysis.php", {
 				handleAs: "json",
+				headers: { "X-Requested-With": "" },
 				query: param
 			} ).then( function( data ){
 				if( data.length > 0 ){
@@ -1100,8 +1115,9 @@ function showAnalyzedData( pageno, data, reportparams ){
 			}
 		} );
 			
-		request.get( config.web_service_local + "v1/ws_attributequery.php", {
+		request.get( config.ws + "v1/ws_attributequery.php", {
 			handleAs: "json",
+			headers: { "X-Requested-With": "" },
 			query: { 
 				table: "parcels_py", 
 				fields: "pid as common_pid, ST_Y(ST_PointOnSurface(shape)) as y, ST_X(ST_PointOnSurface(shape)) as x, " +
@@ -1271,8 +1287,9 @@ function idLayers( data ){
 					case "15": //census tract
 					case "16": //eng grid
 					case "19": //census block groups
-						request.get( config.web_service_local + "v1/ws_attributequery.php", {
+						request.get( config.ws + "v1/ws_attributequery.php", {
 							handleAs: "json",
+							headers: { "X-Requested-With": "" },
 							query: { 
 								table: polyTables[ data.lyridx ], 
 								fields: "*", 
@@ -1323,8 +1340,9 @@ function idLayers( data ){
 								}		
 						};
 												
-						request.get( config.web_service_local + "v1/ws_attributequery.php", {
+						request.get( config.ws + "v1/ws_attributequery.php", {
 							handleAs: "json",
+							headers: { "X-Requested-With": "" },
 							query: { 
 								table: ptTables[ data.lyridx ], 
 								fields: "*",
@@ -1339,8 +1357,9 @@ function idLayers( data ){
 					/* Line layers in SDE */	
 					case "2": //streets
 					case "17": //prelim plan
-						request.get( config.web_service_local + "v1/ws_attributequery.php", {
+						request.get( config.ws + "v1/ws_attributequery.php", {
 							handleAs: "json",
+							headers: { "X-Requested-With": "" },
 							query: { 
 								table: lineTables[ data.lyridx ], 
 								fields: "*",
@@ -1356,8 +1375,9 @@ function idLayers( data ){
 					case "6": //Zoning
 						all( [
 							//charlotte zoning
-							request.get( config.web_service_local + "v1/ws_attributequery.php", {
+							request.get( config.ws + "v1/ws_attributequery.php", {
 								handleAs: "json",
+								headers: { "X-Requested-With": "" },
 								query: { 
 									table: "Zoning_cityofcharlotte_py", 
 									fields: "*", 
@@ -1367,8 +1387,9 @@ function idLayers( data ){
 							} ),
 							
 							//town zoning
-							request.get( config.web_service_local + "v1/ws_attributequery.php", {
+							request.get( config.ws + "v1/ws_attributequery.php", {
 								handleAs: "json",
+								headers: { "X-Requested-With": "" },
 								query: { 
 									table: "zoning_towns_py", 
 									fields: "*", 
@@ -1504,17 +1525,17 @@ function getFieldValues( attributes ){
 //set reports links in the property detail tab
 function updateReportLinks( data ){
 	//set Property Summary
-	document.getElementById( "clickpropinforeport" ).setAttribute( "href", config.web_service_local + "v1/propsummary.php?pid=" + data.pid + 
+	document.getElementById( "clickpropinforeport" ).setAttribute( "href", config.ws + "v1/propsummary.php?pid=" + data.pid + 
 			"&orderby=" + data.orderby + "&orderdir=" + data.orderdir + 
 			"&lottype=" + data.lottype + "&propuse=" + data.propuse + 
 			"&srchtype=" + data.srchtype + "&srchval=" + data.srchval + 
 			"&buffer=" + data.buffersize );
 	
 	//set deed report
-	document.getElementById( "clickdeedreport" ).setAttribute( "href", config.web_service_local + "v1/deedreport.php?pid=" + data.pid + "&gisid=" + ( data.srchtype === "pidbuff" ? data.srchval : "" ) + "&buffer=" + ( data.srchtype === "pidbuff" ? data.buffersize : "" ) + "&format=pdf" );
+	document.getElementById( "clickdeedreport" ).setAttribute( "href", config.ws + "v1/deedreport.php?pid=" + data.pid + "&gisid=" + ( data.srchtype === "pidbuff" ? data.srchval : "" ) + "&buffer=" + ( data.srchtype === "pidbuff" ? data.buffersize : "" ) + "&format=pdf" );
 		
 	//set deed csv	
-	document.getElementById( "clickdeedcsv" ).setAttribute( "href", config.web_service_local + "v1/deedreport.php?pid=" + data.pid + "&gisid=" + ( data.srchtype === "pidbuff" ? data.srchval : "" ) + "&buffer=" + ( data.srchtype === "pidbuff" ? data.buffersize : "" ) + "&format=csv" );
+	document.getElementById( "clickdeedcsv" ).setAttribute( "href", config.ws + "v1/deedreport.php?pid=" + data.pid + "&gisid=" + ( data.srchtype === "pidbuff" ? data.srchval : "" ) + "&buffer=" + ( data.srchtype === "pidbuff" ? data.buffersize : "" ) + "&format=csv" );
 }
 
 //validate market analysis form

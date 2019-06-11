@@ -37,6 +37,6 @@ var config = {
 		}
 	}, geometry_service: "http://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/Utilities/Geometry/GeometryServer",
 	print_task: "http://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/Print/ExportWebMap/GPServer/Export%20Web%20Map",
-	web_service_local: "../ws/php_failover/",
+	ws: "../ws/php_failover/",
 	local_json: "data/"
 };		

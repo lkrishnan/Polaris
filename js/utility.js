@@ -631,7 +631,7 @@ Utils = {
 			
 	sendemail: function( to, subject, message ){
 		require( [ "dojo/request/xhr" ] , function( xhr ){
-			xhr( config.web_service_local + "v1/send_email.php", {
+			xhr( config.ws + "v1/send_email.php", {
 				query: 	{ 
 					"to" : to, 
 					"subject": subject, 

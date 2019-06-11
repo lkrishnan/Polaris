@@ -450,7 +450,7 @@ define( [
 							"' target='_blank'>" + ( this._maplayout.value === "MAP_ONLY" ? "Screenshot" : "Print Map" ) + "</a></span>";
 													
 						if( this._maplayout.value !== "MAP_ONLY" && printLegend ){
-							htmlstr += 	"&nbsp;&nbsp;<span class='mojoCont'><a href='" + config.web_service_local + "v1/basemaplegend.php?legend=" + printLegend + 
+							htmlstr += 	"&nbsp;&nbsp;<span class='mojoCont'><a href='" + config.ws + "v1/basemaplegend.php?legend=" + printLegend + 
 								"&orientation=" + this._maplayout.value.substr( 0, 1 ) + "' target='_blank'>Basemap Legend</a></span>";
 						}
 											

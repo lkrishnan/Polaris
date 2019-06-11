@@ -91,7 +91,7 @@ function issueInit( ){
 					" ( " + document.getElementById( "issueemail" ).value + " ) : " + document.getElementById( "issuedesc" ).value,
 					subject = "Polaris 3G Bug reported by " + document.getElementById( "issuename" ).value;
 			
-				xhr( config.web_service_local + "v1/send_email.php", {
+				xhr( config.ws + "v1/send_email.php", {
 					data: { 
 						to: "polaris3g@mecklenburgcountync.gov", 
 						subject: subject, 
@@ -191,8 +191,9 @@ function setIdentity( data ){
 			
 			//add address information
 			if( data.groundpid == data.taxpid ){ //get other address points associated with ground parcel
-				request.get( config.web_service_local + "v1/ws_addresses_on_ground.php", {
+				request.get( config.ws + "v1/ws_addresses_on_ground.php", {
 					handleAs: "json",
+					headers: { "X-Requested-With": "" },
 					query: {
 						pid: data.groundpid
 					}
@@ -238,8 +239,9 @@ function setIdentity( data ){
 			}
 			
 			//add ownership information
-			request.get( config.web_service_local + "v1/ws_cama_ownership.php", {
+			request.get( config.ws + "v1/ws_cama_ownership.php", {
 				handleAs: "json",
+				headers: { "X-Requested-With": "" },
 				query: { pid: data.groundpid, pidtype: "common" }
 			} ).then( function( camadata ){
 				if( camadata.length > 0 ){
@@ -314,8 +316,9 @@ function setIdentity( data ){
 			}			
 			
 			//get property photos
-			request.get( config.web_service_local + "v1/ws_misc_house_photos.php", {
+			request.get( config.ws + "v1/ws_misc_house_photos.php", {
 				handleAs: "json",
+				headers: { "X-Requested-With": "" },
 				query: { pid : data.taxpid, photo_source: "ilookabout" }
 			} ).then( function( photos ){
 				var hasPhoto = ( photos.length > 0 ? true : false );
@@ -338,7 +341,7 @@ function setIdentity( data ){
 			} );
 			
 			//set link for property report
-			document.getElementById( "clickpropreport" ).setAttribute( "href", config.web_service_local + "v1/propreport.php?mat=" + ( selectedAddress.matid ? selectedAddress.matid : "" ) +
+			document.getElementById( "clickpropreport" ).setAttribute( "href", config.ws + "v1/propreport.php?mat=" + ( selectedAddress.matid ? selectedAddress.matid : "" ) +
 				"&xcoord=" + ( selectedAddress.x ? selectedAddress.x : "" ) +
 				"&ycoord=" + ( selectedAddress.y ? selectedAddress.y : "" ) +
 				"&pid=" + ( selectedAddress.taxpid ? selectedAddress.taxpid : "" ) + 
@@ -358,11 +361,12 @@ function setIdentity( data ){
 function setCharacteristicsAndTaxInfo( data ){
 	require( [ "dojo/promise/all", "dojo/Deferred", "dojo/request" ] , function( all, Deferred, request ){
 		all( [
-			request.get( config.web_service_local + "v1/ws_cama_legal.php", {
+			request.get( config.ws + "v1/ws_cama_legal.php", {
 				handleAs: "json",
+				headers: { "X-Requested-With": "" },
 				query: { pid: data.taxpid }
 			} ),
-			request.get( config.web_service_local + "v1/ws_cama_landuse.php", {
+			request.get( config.ws + "v1/ws_cama_landuse.php", {
 				handleAs: "json",
 				query: { pid: data.taxpid }
 			} )
@@ -420,8 +424,9 @@ function setCharacteristicsAndTaxInfo( data ){
 			if( data.sqft ){ 
 				fillCharacteristics( info, links );
 			}else{
-				request.get( config.web_service_local + "v1/ws_attributequery.php", {
+				request.get( config.ws + "v1/ws_attributequery.php", {
 					handleAs: "json",
+					headers: { "X-Requested-With": "" },
 					query: {
 						table: "parcels_py",
 						source: "tax",
@@ -439,8 +444,9 @@ function setCharacteristicsAndTaxInfo( data ){
 
 function setDeed( data ){
 	require( [ "dojo/request" ] , function( request ){
-		request.get( config.web_service_local + "v1/ws_cama_saleshistory.php", {
+		request.get( config.ws + "v1/ws_cama_saleshistory.php", {
 			handleAs: "json",
+			headers: { "X-Requested-With": "" },
 			query: { pid: data.taxpid }
 		} ).then( function( camadata ){
 			var info = [ ],
@@ -493,8 +499,9 @@ function setLocInfo( data ){
 							
 		all( [
 			//find neighborhood code for quality if life dashboard data
-			request.get( config.web_service_local + "v1/ws_geo_pointoverlay.php", {
+			request.get( config.ws + "v1/ws_geo_pointoverlay.php", {
 				handleAs: "json",
+				headers: { "X-Requested-With": "" },
 				query: {
 					x: data.x,
 					y: data.y,
@@ -506,8 +513,9 @@ function setLocInfo( data ){
 				}
 			} ),
 			//find sphere of influence
-			request.get( config.web_service_local + "v1/ws_attributequery.php", {
+			request.get( config.ws + "v1/ws_attributequery.php", {
 				handleAs: "json",
+				headers: { "X-Requested-With": "" },
 				query: { 
 					table: "sphereofinfluence_py", 
 					fields: "name",
@@ -516,8 +524,9 @@ function setLocInfo( data ){
 				}
 			} ),
 			//find historic district
-			request.get( config.web_service_local + "v1/ws_attributequery.php", {
+			request.get( config.ws + "v1/ws_attributequery.php", {
 				handleAs: "json",
+				headers: { "X-Requested-With": "" },
 				query: { 
 					table: "historic_districts_py", 
 					fields: "objectid",
@@ -526,8 +535,9 @@ function setLocInfo( data ){
 				}
 			} ),
 			//find census tract
-			request.get( config.web_service_local + "v1/ws_attributequery.php", {
+			request.get( config.ws + "v1/ws_attributequery.php", {
 				handleAs: "json",
+				headers: { "X-Requested-With": "" },
 				query: { 
 					table: "census_tracts_2010_py", 
 					fields: "name10",
@@ -536,8 +546,9 @@ function setLocInfo( data ){
 				}
 			} ),
 			//find if parcel in BIP Opportunity Area
-			request.get ( config.web_service_local + "v1/ws_geo_featureoverlay.php", {
+			request.get ( config.ws + "v1/ws_geo_featureoverlay.php", {
 				handleAs: "json",
+				headers: { "X-Requested-With": "" },
 				query: { 
 					from_table: "parcels_py",
 					to_table: "commercial_70_buffer_py",
@@ -600,8 +611,9 @@ function setLocInfo( data ){
 		} );	
 		
 		//add situs address
-		request.get( config.web_service_local + "v1/ws_cama_situsaddress.php", {
+		request.get( config.ws + "v1/ws_cama_situsaddress.php", {
 			handleAs: "json",
+			headers: { "X-Requested-With": "" },
 			query: { pid: data.taxpid }
 		} ).then( function( camadata ){
 			if( camadata.length > 0 ){
@@ -684,8 +696,9 @@ function setEnvInfo( data ){
 		
 		all( [
 			//check if parcel intersects water quality buffer
-			request.get( config.web_service_local + "v1/ws_geo_featureoverlay.php", {
+			request.get( config.ws + "v1/ws_geo_featureoverlay.php", {
 				handleAs: "json",
+				headers: { "X-Requested-With": "" },
 				query: {
 					from_table: "parcels_py",
 					to_table: "water_quality_buffers_py",  
@@ -697,8 +710,9 @@ function setEnvInfo( data ){
 				}
 			} ),
 			//check if parcel intersects fema floodplain
-			request.get( config.web_service_local + "v1/ws_geo_featureoverlay.php", {
+			request.get( config.ws + "v1/ws_geo_featureoverlay.php", {
 				handleAs: "json",
+				headers: { "X-Requested-With": "" },
 				query: {
 					from_table: "parcels_py",
 					to_table: "fema_floodplain_changes_py",  
@@ -710,8 +724,9 @@ function setEnvInfo( data ){
 				}
 			} ),
 			//check if parcel intersects community floodplain	
-			request.get( config.web_service_local + "v1/ws_geo_featureoverlay.php", {
+			request.get( config.ws + "v1/ws_geo_featureoverlay.php", {
 				handleAs: "json",
+				headers: { "X-Requested-With": "" },
 				query: {
 					from_table: "parcels_py",
 					to_table: "community_floodplain_changes_py", 
@@ -725,8 +740,9 @@ function setEnvInfo( data ){
 			//find fema panel index
 			floodzoneIdentifyService.execute( fidParams ),
 			//check if parcel x,y intersects post construction district
-			request.get( config.web_service_local + "v1/ws_attributequery.php", {
+			request.get( config.ws + "v1/ws_attributequery.php", {
 				handleAs: "json",
+				headers: { "X-Requested-With": "" },
 				query: { 
 					table: "PostConst_Districts_py", 
 					fields: "district",
@@ -735,8 +751,9 @@ function setEnvInfo( data ){
 				}
 			} ),
 			//check if parcel x,y intersects stream watershed
-			request.get( config.web_service_local + "v1/ws_attributequery.php", {
+			request.get( config.ws + "v1/ws_attributequery.php", {
 				handleAs: "json",
+				headers: { "X-Requested-With": "" },
 				query: { 
 					table: "Watershed_Stormwater_py", 
 					fields: "name",
@@ -745,8 +762,9 @@ function setEnvInfo( data ){
 				}
 			} ),
 			//check if parcel x,y intersects drinking water watershed
-			request.get( config.web_service_local + "v1/ws_attributequery.php", {
+			request.get( config.ws + "v1/ws_attributequery.php", {
 				handleAs: "json",
+				headers: { "X-Requested-With": "" },
 				query: { 
 					table: "Watershed_DrinkingWater_py", 
 					fields: "name, subarea",
@@ -755,8 +773,9 @@ function setEnvInfo( data ){
 				}
 			} ),
 			//check if parcel x,y intersects drinking water watershed
-			request.get( config.web_service_local + "v1/ws_attributequery.php", {
+			request.get( config.ws + "v1/ws_attributequery.php", {
 				handleAs: "json",
+				headers: { "X-Requested-With": "" },
 				query: { 
 					table: "buaparcels", 
 					fields: "allowable_bua",
@@ -765,8 +784,9 @@ function setEnvInfo( data ){
 				}
 			} ),
 			//check if parcel x,y intersects jurisdiction
-			request.get( config.web_service_local + "v1/ws_attributequery.php", {
+			request.get( config.ws + "v1/ws_attributequery.php", {
 				handleAs: "json",
+				headers: { "X-Requested-With": "" },
 				query: { 
 					table: "Jurisdiction_py", 
 					fields: "nme_juris",
@@ -822,8 +842,9 @@ function setEnvInfo( data ){
 		//add toggle overlays
 		document.getElementById( "envtoggles" ).innerHTML = Format.objectAsTable( toggles , "proptbl", false );
 		
-		request.get( config.web_service_local + "v1/lancheck.php", {
-			handleAs: "json"
+		request.get( config.ws + "v1/lancheck.php", {
+			handleAs: "json",
+			headers: { "X-Requested-With": "" } // This is required to stop the server from rejecting the GET request
 		} ).then( function( ipdata ){
 			links.push( { 
 				"Link To": "<a href='http" + ( Utils.isPrivateIP ( ipdata.ip ) ? "" : "s" ) + "://webpermit.mecklenburgcountync.gov/Default.aspx?PossePresentation=SearchParcelNumber&ParcelNumber=" + data.taxpid.substr ( 0, 8 ) + "'" +
