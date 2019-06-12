@@ -368,6 +368,7 @@ function setCharacteristicsAndTaxInfo( data ){
 			} ),
 			request.get( config.ws + "v1/ws_cama_landuse.php", {
 				handleAs: "json",
+				headers: { "X-Requested-With": "" },
 				query: { pid: data.taxpid }
 			} )
 		] ).then( function( results ){

@@ -68,8 +68,9 @@ function mapEventsInit( ){
 			document.getElementById( "searching" ).classList.remove( "hidden" );
 		}else if( mapClick === "identify" ){
 			require( [ "dojo/_base/connect", "dojo/request" ], function( connect, request ){
-				script.get( config.ws + "v1/ws_geo_projectpoint.php", {
+				request.get( config.ws + "v1/ws_geo_projectpoint.php", {
 					handleAs: "json",
+					headers: { "X-Requested-With": "" },
 					query: { 
 						x : event.mapPoint.x, 
 						y : event.mapPoint.y, 
@@ -346,8 +347,9 @@ function toggleOverlays( service, show, input_idx ){
 
 function geoLocate( location ){
 	require( [ "dojo/_base/connect", "dojo/request" ], function( connect, request ){
-		script.get( config.ws + "v1/ws_geo_projectpoint.php", {
+		request.get( config.ws + "v1/ws_geo_projectpoint.php", {
 			handleAs: "json",
+			headers: { "X-Requested-With": "" },
 			query: { 
 				x: location.coords.longitude, 
 				y: location.coords.latitude, 

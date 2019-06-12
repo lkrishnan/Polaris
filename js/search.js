@@ -1,7 +1,7 @@
 function searchInit( ){
-	require( [ "esri/tasks/GeometryService", "esri/tasks/BufferParameters", "dojox/data/QueryReadStore", "dojox/data/JsonRestStore",
+	require( [ "esri/tasks/GeometryService", "esri/tasks/BufferParameters", "dojox/data/QueryReadStore",
 		"dijit/form/ComboBox", "dijit/form/DateTextBox", "dijit/registry", "dojo/_base/connect",
-		"dojo/data/ItemFileWriteStore" ], function( GeometryService, BufferParameters, QueryReadStore, JsonRestStore, ComboBox, DateTextBox, registry, connect, ItemFileWriteStore ){
+		"dojo/data/ItemFileWriteStore" ], function( GeometryService, BufferParameters, QueryReadStore, ComboBox, DateTextBox, registry, connect, ItemFileWriteStore ){
 		//local variables
 		var mainSearch,
 			situsStSrch,
@@ -548,10 +548,10 @@ function finder( data, container ){
 				}else{
 					Utils.mixin( data, { matid: -1, address: "NA" } );
 										
-					script.get( config.ws + "v1/ws_attributequery.php", {
-						jsonp: "callback",
-						query: 
-						{
+					request.get( config.ws + "v1/ws_attributequery.php", {
+						handleAs: "json",
+						headers: { "X-Requested-With": "" },
+						query: {
 							table: "parcels_py",
 							fields: "ST_Y(ST_PointOnSurface(shape)) as y, ST_X(ST_PointOnSurface(shape)) as x, ST_y( ST_transform( ST_PointOnSurface(shape), 4326 ) ) as lat, ST_x( ST_transform( ST_PointOnSurface(shape), 4326 ) ) as lon, ST_Area( shape ) As sqft",
 							parameters: "pid='" + data.groundpid + "'",
