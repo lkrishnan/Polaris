@@ -1526,8 +1526,8 @@ function getFieldValues( attributes ){
 function updateReportLinks( data ){
 	//set Property Summary
 	document.getElementById( "clickpropinforeport" ).setAttribute( "href", config.ws + "v1/propsummary.php?pid=" + data.pid + 
-			"&orderby=" + data.orderby + "&orderdir=" + data.orderdir + 
-			"&lottype=" + data.lottype + "&propuse=" + data.propuse + 
+			"&orderby=" + ( data.orderby ? data.orderby : "market_value" ) + "&orderdir=" + ( data.orderdir ? data.orderdir : "desc" ) + 
+			"&lottype=" + ( data.lottype ? data.lottype : "" ) + "&propuse=" + ( data.propuse ? data.propuse : "" ) + 
 			"&srchtype=" + data.srchtype + "&srchval=" + data.srchval + 
 			"&buffer=" + data.buffersize );
 	
