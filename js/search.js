@@ -790,7 +790,7 @@ function finder( data, container ){
 					}else{ //no parcel intersects identify point
 						if( data.hasOwnProperty( "lat" ) && data.hasOwnProperty( "lon" ) ){
 							addLocation( { x: data.x, y: data.y, lat: data.lat, lon: data.lon, desc: "Search Location", zoom: data.zoom } );
-						} else {
+						}else{
 							request.get ( config.ws + "v1/ws_geo_projectpoint.php", {
 								handleAs: "json",
 								headers: { "X-Requested-With": "" },
@@ -801,7 +801,7 @@ function finder( data, container ){
 								}
 							} ).then( function( projdata ){
 								if( projdata.length > 0 ){
-									addLocation( { x: data.x, y: data.y, lat: projdata[ 0 ].lat, lon: projdata[ 0 ].lon, desc: "Search Location", zoom: data.zoom } );
+									addLocation( { x: data.x, y: data.y, lat: projdata[ 0 ].y, lon: projdata[ 0 ].x, desc: "Search Location", zoom: data.zoom } );
 								}
 							} );	
 						}

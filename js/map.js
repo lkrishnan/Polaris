@@ -81,7 +81,7 @@ function mapEventsInit( ){
 						//add click point information		
 						var info = {  
 							"XY": parseFloat( event.mapPoint.x ).toFixed( 3 ) + ", " + parseFloat( event.mapPoint.y ).toFixed( 3 ), 
-							"Lat Lon": parseFloat( projdata[ 0 ].y).toFixed( 5 ) + ", " + parseFloat( projdata[ 0 ].x ).toFixed( 5 ), 
+							"Lat Lon": parseFloat( projdata[ 0 ].y ).toFixed( 5 ) + ", " + parseFloat( projdata[ 0 ].x ).toFixed( 5 ), 
 							"USNG": LLtoUSNG( parseFloat( projdata[ 0 ].y ), parseFloat( projdata[ 0 ].x ), 4 )
 						};
 						

@@ -890,13 +890,13 @@ function addLocation( data ){
 	require( [ "dojo/_base/connect" ] , function( connect ){
 		var info = { 
 			Desciption: data.desc, 
-			XY: parseInt( data.x ) + ", " + parseInt( data.y ),    
+			XY: parseFloat( data.x ).toFixed( 3 ) + ", " + parseFloat( data.y ).toFixed( 3 ),    
 			"Lat Lon": parseFloat( data.lat ).toFixed( 5 ) + ", " + parseFloat( data.lon ).toFixed( 5 ),
 			USNG: LLtoUSNG( parseFloat( data.lat ), parseFloat( data.lon ), 4 )
 		};
 							
 		//add click point information		
-		document.getElementById( "poicont" ).innerHTML = Format.objectAsTable ( info, "proptbl", true );
+		document.getElementById( "poicont" ).innerHTML = Format.objectAsTable( info, "proptbl", true );
 		
 		//show point of interest div
 		showDiv( "poi" );

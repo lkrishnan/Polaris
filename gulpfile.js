@@ -151,7 +151,7 @@ gulp.task( "datatobuild", function( ){
 
 //push root files to build
 gulp.task( "rootfilestobuild", function( ){
-	return gulp.src( [ web_dir + "/*.*", "!" + web_dir + "/*.html" ] )
+	return gulp.src( [ web_dir + "/*.*", "!" + web_dir + "/*.html", "!" + web_dir + "/*.js", "!" + web_dir + "/*.json" ] )
         .pipe( gulp.dest( dest + "/" ) );
 } );
 gulp.task( "cbtreetobuild", function( ){
