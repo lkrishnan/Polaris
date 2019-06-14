@@ -20,7 +20,7 @@ var config = {
 		{ layer: "2013", url: "http://meckmap.mecklenburgcountync.gov/arcgis/rest/services/aerial2013/MapServer" }
 	], overlay_services: {
 		overlays_trans: { 
-			url: "http://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/overlays5/MapServer",			
+			url: "http://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/layers/MapServer",			
 			opacity: 0.5, 
 			visible: true,
 			visiblelyrs: [ -1 ]
@@ -30,7 +30,7 @@ var config = {
 			visible: true,
 			visiblelyrs: [ -1 ]
 		}, overlays_streets: { 
-			url: "http://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/overlays5/MapServer",		
+			url: "http://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/layers/MapServer",		
 			opacity: 1.0, 			
 			visible: true,
 			visiblelyrs: [ -1 ]

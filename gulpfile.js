@@ -170,6 +170,16 @@ gulp.task( "htmltobuild", function( ){
 		.pipe( gulp.dest( dest + "/" ) );
 } );
 
+gulp.task( "publish_gispolaris1v", function( ){
+	return gulp.src( "build/**/*.*" )
+		.pipe( gulp.dest ( "//gispolaris1v/c$/inetpub/wwwroot/polaris3g" ) );
+} );
+
+gulp.task( "publish_gispolaris2v", function( ){
+	return gulp.src( "build/**/*.*" )
+		.pipe( gulp.dest ( "//gispolaris2v/c$/inetpub/wwwroot/polaris3g" ) );
+} );
+
 //rerun the task when less files change
 gulp.task( "watch", function( ){ 
 	gulp.watch( paths.styles, gulp.series( "lesstocss" ) ); 
@@ -178,3 +188,4 @@ gulp.task( "watch", function( ){
 //run in the background during development
 gulp.task( "develop", gulp.series( "lesstocss", "watch" ) );
 gulp.task( "default", gulp.series( "lesstocss", "jstobuild", "agsjstobuild", "sdejstobuild", "ags_sdejstobuild", "mojojstobuild", "images", "mojoimagetobuild", "csstobuild", "datatobuild", "rootfilestobuild", "htmltobuild", "cbtreetobuild" ) );
+gulp.task( "publish", gulp.series( "publish_gispolaris1v", "publish_gispolaris2v" ) );
