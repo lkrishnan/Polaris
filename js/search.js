@@ -819,7 +819,7 @@ function finder( data, container ){
 }
 
 function backupSearch( searchStr ){
-	require( [ "dojo/request" ], function( script ){
+	require( [ "dojo/request" ], function( request ){
 		if( Validate.isTaxPID( searchStr ) ){
 			finder( { "taxpid": searchStr.replace ( /-/g, "" ) }, "searchresults" );	
 			lastSearch = "main";
@@ -869,7 +869,7 @@ function backupSearch( searchStr ){
 }
 
 function standardizedAddrSearch( standardizedAddr, container ){
-	require( [ "dojo/request" ] , function( script ){
+	require( [ "dojo/request" ] , function( request ){
 		request.get( config.ws + "v1/ws_attributequery.php", {
 			handleAs: "json",
 			headers: { "X-Requested-With": "" },
