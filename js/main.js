@@ -19,8 +19,7 @@ var map,                    // the map
 	mapClick = "property",      // switch that determines if its ok to do a map identify
 	printLegend,           // the currently selected basemap, used to pass to print map
 	propPhotoGallery,
-	lastSearch = null,
-	meckAppsDialog = null;
+	lastSearch = null;
 	
 // Document Ready
 require( [ "esri/geometry/Extent", "esri/map", "dojo/domReady!" ], function( Extent, Map ){
@@ -60,9 +59,6 @@ require( [ "esri/geometry/Extent", "esri/map", "dojo/domReady!" ], function( Ext
 		connect.subscribe( "/set/envinfo", setEnvInfo ); // Set selected property environmental information
 		connect.subscribe( "/dojo/hashchange", handleHash );
 	} );	
-
-	// Initialize the dialog that shows list of applications
-	meckAppDialogInit( );
 } );
 
 //Initialize report issue controls
@@ -117,52 +113,6 @@ function issueInit( ){
 		} );
 		
 		document.getElementById( "issueclose" ).addEventListener( "click", showIssueForm );
-	} );
-}
-
-function meckAppDialogInit( ){
-	require( [ "dojo/request/script", "dijit/Dialog" ] , function( script, Dialog ){
-		script.get( "http://www.arcgis.com/sharing/rest/search", {
-			jsonp: "callback",
-			query: { 
-				num: 100,
-				start: 0,
-				sortField: "title",
-				sortOrder: "asc",
-				q: 'group:("56116f26bfb8412a8745981f296c0e95")-type:"Code Attachment"',
-				f: "json"
-			}
-		} ).then( function( apps ){
-			var htmlstr = "";
-			
-			apps.results.forEach( function( app, idx ){
-				var description,
-					div = document.createElement( "div" );
-				
-				div.innerHTML = app.description;
-				description = div.innerText;
-				
-				htmlstr += "<div class='mojoSearchResult' onclick='window.open(\"" + app.url + "\")'>" +
-								"<table class='mojoSRTable'>" +
-									"<tr>" + 
-										"<td><img src='http://meckgov.maps.arcgis.com/sharing/rest/content/items/" + app.id + "/info/" + app.thumbnail + "' /></td>" +
-										"<td>" + 
-											"<div><b>" + app.title.replace( /&nbsp;/g, '' ) + "</b></div>" +
-											"<div>" + description + "</div>" +
-										"</td>" +
-									"</tr><tr>" +
-										
-									"</tr>" +
-								"</table>"+
-							"</div>";
-			} );
-			
-			meckAppsDialog = new Dialog( {
-				title: "More Map Applications",
-				content: "<div style='width: 528px; height:450px; overflow: auto;'>" + htmlstr + "</div>",
-				style: "width: 550px; height:500px;"
-			} );
-		} );
 	} );
 }
 
@@ -972,10 +922,6 @@ function showTip( type ){
 function showIssueForm( ){
 	document.getElementById( "issueerror" ).innerHTML = "";
 	document.querySelector( "#issue" ).classList.toggle( "hidden" );
-}
-
-function showMeckGISApps( ){
-	meckAppsDialog.show( );
 }
 
 function toggleMrktAnalysis( ){
