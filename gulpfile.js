@@ -51,7 +51,8 @@ var web_dir = "C:/Users/krishl/OneDrive - Mecklenburg County/www/polaris",
 			web_dir + "/js/main.js",
 			web_dir + "/js/map.js",
 			web_dir + "/js/search.js",
-			web_dir + "/js/usng.js"
+			web_dir + "/js/usng.js",
+			web_dir + "/js/utility.js"
 		], htmls: [
 			web_dir + "/index.html",
 			web_dir + "/failover_ags.html",
