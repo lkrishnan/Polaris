@@ -17,7 +17,7 @@ var config = {
 		{ layer: "2016", url: "https://maps.mecklenburgcountync.gov/agsadaptor/rest/services/aerial2016/MapServer" },
 		{ layer: "2015", url: "https://maps.mecklenburgcountync.gov/agsadaptor/rest/services/aerial2015/MapServer" },
 		{ layer: "2014", url: "https://maps.mecklenburgcountync.gov/agsadaptor/rest/services/aerial2014/MapServer" },
-		{ layer: "2013", url: "http://meckmap.mecklenburgcountync.gov/arcgis/rest/services/aerial2013/MapServer" }
+		{ layer: "2013", url: "http://meckmap.mecklenburgcountync.gov/ArcGIS/rest/services/aerial2013/MapServer" }
 	], overlay_services: {
 		overlays_trans: { 
 			url: "http://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/layers/MapServer",			

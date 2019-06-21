@@ -1232,7 +1232,7 @@ function showAnalyzedData( pageno, data, reportparams ){
 //layer identify
 function idLayers( data ){
 	require( [ "esri/tasks/IdentifyTask", "esri/tasks/IdentifyParameters", "esri/geometry/Point",
-		"esri/SpatialReference", "dojo/Deferred", "dojo/promise/all", "dojo/request" ], function( IdentifyTask, IdentifyParameters, Point, SpatialReference, Deferred, all ){ 
+		"esri/SpatialReference", "dojo/Deferred", "dojo/promise/all", "dojo/request" ], function( IdentifyTask, IdentifyParameters, Point, SpatialReference, Deferred, all, request ){ 
 			Utils.getDomElements( document.querySelectorAll( "#idlayerdatacont > div" ) ).forEach( function( ctrl ){
 				ctrl.classList.add( "hidden" );
 			} );
