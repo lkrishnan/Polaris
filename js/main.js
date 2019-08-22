@@ -197,14 +197,10 @@ function setIdentity( data ){
 				if( camadata.length > 0 ){
 					//format the owner name
 					var owners = [ ],
-						ownerdata = camadata.filter( function( el ){ return el.parcel_id.trim( ) == data.taxpid; } );
-																
-					for( var i = 0; i < ownerdata.length; i++ ){ 
-						owners.push( null );
-					}
+						ownerdata = camadata.filter( function( el ){ return el.parcel_id.trim( ) == data.taxpid; } ).sort( Utils.compareValues( "owner_number", "asc" ) );
 					
 					ownerdata.forEach( function( item, i ){
-						owners.splice( parseInt( item.owner_number, 10 ) - 1, 1, { 
+						owners.push( { 
 							"Owner Name": Format.ownership( [ Format.nullToEmpty( item.last_name ), Format.nullToEmpty( item.first_name ) ] ), 
 							"Mailing Address": Format.trimNconcat( [ 
 								{ val: Format.nullToEmpty( item.address_1 ), appnd: " " },

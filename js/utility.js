@@ -280,6 +280,7 @@ var Format = {
 			owners = ownerlist.trim( ).split( "|" );
 		
 		ownerhtml = "1. " + owners[ 0 ].replace( ";", ", " );
+		
 		for ( l = 1; l < owners.length; l++ ) { 
 			if( owners[ l ].trim( ).length > 0 ){
 				ownerhtml += "<br/>" + parseInt ( l + 1, 10 ) + ". " + owners[ l ].replace( ";", ", " );
@@ -489,6 +490,27 @@ TextToGeom = {
 },
 
 Utils = {
+	compareValues: function( key, order = "asc" ){
+		return function(a, b){
+			if( !a.hasOwnProperty( key ) || !b.hasOwnProperty( key ) ){
+				return 0; 
+			}
+    
+			const varA = ( typeof a[ key ] === 'string' ) ? a[ key ].toUpperCase( ) : a[ key ];
+			const varB = ( typeof b[ key ] === 'string' ) ? b[ key ].toUpperCase( ) : b[ key ];
+      
+			let comparison = 0;
+			
+			if( varA > varB ){
+				comparison = 1;
+			}else if( varA < varB ){
+				comparison = -1;
+			}
+			
+			return ( ( order == "desc" ) ? ( comparison * -1 ) : comparison );
+		};
+	},
+	
 	generateExtent: function( ext ){
 		var extent;
 		
