@@ -490,7 +490,7 @@ TextToGeom = {
 },
 
 Utils = {
-	compareValues: function( key, order = "asc" ){
+	compareValues: function( key, order="asc" ){
 		return function(a, b){
 			if( !a.hasOwnProperty( key ) || !b.hasOwnProperty( key ) ){
 				return 0; 
