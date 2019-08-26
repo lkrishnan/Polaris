@@ -7,7 +7,7 @@ var config = {
 		spatialReference: { wkid: 2264 }
 	}, min_scale: 425000,
 	basemap_services: {
-		basemap: "http://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/basemap/MapServer",
+		basemap: "http://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/basemap2019/MapServer",
 		basemap_aerial: "http://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/basemap_aerial/MapServer",
 		topo: "http://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/topohillshade/MapServer"
 	}, aerial_services: [
