@@ -150,19 +150,16 @@ var Format = {
 		}
 	},
 	
-	landArea: function( unit, type_landuse, acres, gis_acres ){
+	landArea: function( acres, unit, gis_acres ){
 		var landarea = "";
 		
-		unit = ( unit ? parseFloat ( unit ) : null );
-		type_landuse = ( type_landuse ? type_landuse.trim( ) : null );
+		unit = ( unit ? unit.trim( ) : null );
 		acres = ( acres ? parseFloat ( acres ) : null );
 		
-		if( acres ){ //also checks if acres is greater than zero
-			landarea = parseFloat( acres ).toFixed( 3 ) + " AC";
-		}else{
-			if( gis_acres ){
-				landarea = parseFloat( gis_acres ).toFixed( 3 ) + " GIS Calc. Acres";
-			}
+		if( acres && unit && unit.length > 0 ){ //also checks if acres is greater than zero
+			landarea = parseFloat( acres ).toFixed( ( unit === 'AC' ? 3 : 0 ) ) + " " + unit;
+		}else if( gis_acres ){
+			landarea = parseFloat( gis_acres ).toFixed( 3 ) + " GIS Calc. Acres";
 		}					
 		
 		return landarea;

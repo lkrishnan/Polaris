@@ -978,7 +978,7 @@ function bufferSearch( buffersize ){
 							"</tr>" +
 							"<tr>" +
 								"<th class='fixed'>Land Area</th>" + 
-								"<td>" + Format.landArea( item.units, item.land_unit_type, item.total_acres, item.gis_acres ) + 
+								"<td>" + Format.landArea( item.total_acres, item.land_unit_type, item.gis_acres ) +
 							"</td>" + 
 							"</tr>" +
 							"<tr>" +
@@ -1176,7 +1176,7 @@ function showAnalyzedData( pageno, data, reportparams ){
 								"<tr>" +
 									"<th class='fixed'>Land Area</th>" + 
 									"<td>" + 
-										Format.landArea( item.land_unit, item.land_type, item.land_area, ( item.sqft / 43650 ) ) +
+										Format.landArea( item.land_area, item.land_unit_type, ( item.sqft / 43650 ) ) +
 									"</td>" + 
 								"</tr>" +
 								( reportparams.propuse === "Vacant" ? "" :  

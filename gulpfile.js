@@ -16,7 +16,7 @@ var gulp = require( "gulp" ),
 /************************************************/	
 	
 /* File Paths */	
-var web_dir = "C:/Users/krishl/OneDrive - Mecklenburg County/www/polaris",
+var web_dir = ".",
 	paths = {
 		styles: [
 			web_dir + "/less/frame.less",

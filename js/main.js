@@ -358,7 +358,7 @@ function setCharacteristicsAndTaxInfo( data ){
 			if( legaldata.length > 0 ){
 				info = {
 					"Legal Desc": Format.legalDesc( legaldata[ 0 ].legal_description ),
-					"Land Area": ( data.sqft ? ( Format.landArea( landuse_unit, landuse_type, legaldata[ 0 ].total_acres, ( data.sqft / 43650 ) ) ) : null ),
+					"Land Area": ( data.sqft ? ( Format.landArea( legaldata[ 0 ].total_acres, legaldata[ 0 ].land_unit_type, ( data.sqft / 43650 ) ) ) : null ),
 					"Fire District": Format.ucwords( legaldata[ 0 ].fire_district.toLowerCase( ) ),
 					"Special District": ( legaldata[ 0 ].special_district ? Format.ucwords( legaldata[ 0 ].special_district.toLowerCase( ) ) : "NA" ),
 					"Account Type": Format.ucwords( legaldata[ 0 ].account_type.toLowerCase( ) ),
@@ -381,7 +381,7 @@ function setCharacteristicsAndTaxInfo( data ){
 						parameters: "pid='" + data.groundpid + "'"
 					}
 				} ).then( function( parceldata ){
-					info[ "Land Area" ] = Format.landArea( landuse_unit, landuse_type, legaldata[ 0 ].total_acres, ( parceldata.length > 0 ? ( parceldata[ 0 ].sqft / 43650 ) : null ) );
+					info[ "Land Area" ] = Format.landArea( legaldata[ 0 ].total_acres, legaldata[ 0 ].land_unit_type, ( parceldata.length > 0 ? ( parceldata[ 0 ].sqft / 43650 ) : null ) );
 					fillCharacteristics( info, links );
 				} );
 			}
