@@ -154,13 +154,23 @@ var Format = {
 		var landarea = "";
 		
 		unit = ( unit ? unit.trim( ) : null );
-		acres = ( acres ? parseFloat ( acres ) : null );
+		acres = ( acres ? parseFloat( acres ) : null );
 		
-		if( acres && unit && unit.length > 0 ){ //also checks if acres is greater than zero
+		/*if( acres && unit && unit.length > 0 ){ //also checks if acres is greater than zero
 			landarea = parseFloat( acres ).toFixed( ( unit === 'AC' ? 3 : 0 ) ) + " " + unit;
 		}else if( gis_acres ){
 			landarea = parseFloat( gis_acres ).toFixed( 3 ) + " GIS Calc. Acres";
-		}					
+		}*/					
+		
+		if( acres ){
+			if( unit && unit.length > 0 ){ //also checks if acres is greater than zero
+				landarea = acres.toFixed( ( unit === 'AC' ? 3 : 0 ) ) + " " + unit;
+			}else{ //hack to take care of poorly maintained unit information
+				landarea = acres.toFixed( 3 ) + " AC";
+			}  	
+		}else if( gis_acres ){
+			landarea = parseFloat( gis_acres ).toFixed( 3 ) + " GIS Calc. Acres";
+		}
 		
 		return landarea;
 	},	
