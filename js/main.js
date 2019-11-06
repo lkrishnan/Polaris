@@ -46,7 +46,7 @@ require( [ "esri/geometry/Extent", "esri/map", "dojo/domReady!" ], function( Ext
 	// Initialize all Search Controls
 	searchInit( );
 	// Initialize Report Issue
-	issueInit( );
+	//issueInit( );
 		
 	// Initialize PubSub Subscriptions
 	require( [ "dojo/_base/connect" ], function( connect ){
@@ -62,7 +62,7 @@ require( [ "esri/geometry/Extent", "esri/map", "dojo/domReady!" ], function( Ext
 } );
 
 //Initialize report issue controls
-function issueInit( ){
+/*function issueInit( ){
 	require( [ "dojo/request/xhr" ] , function( xhr ){
 		document.getElementById( "issuebtn" ).addEventListener( "click", function( event ){
 			var errors = [ ];
@@ -114,7 +114,7 @@ function issueInit( ){
 		
 		document.getElementById( "issueclose" ).addEventListener( "click", showIssueForm );
 	} );
-}
+}*/
 
 //Set hash
 function chngSelection( data ){
@@ -246,6 +246,9 @@ function setIdentity( data ){
 					
 				document.getElementById( "supplementary" ).classList.remove( "hidden" );
 			}
+			
+			//add ownership change
+			document.getElementById( "changeownerinfo" ).innerHTML = "<span class='note'>Is ownership or parcel boundary wrong?</span>&nbsp;<a href='https://mecklenburgcountync-563955.workflowcloud.com/forms/d024bf6c-b9b0-4cf5-a7d9-7ac376f0370c' target='_blank' class='greenlink' >Request Change</a>";
 			
 			//add mail address change
 			document.getElementById( "changemailaddr" ).innerHTML = "<span class='note'>Is the mailing address wrong?</span>&nbsp;<a href='https://mecklenburgcountync-563955.workflowcloud.com/forms/52863dfb-3c52-4d91-a1c8-9d97ae2f5a7f' target='_blank' class='greenlink' >Request Change</a>";
@@ -915,10 +918,10 @@ function showTip( type ){
 	document.querySelector( "#tip" ).classList.remove( "hidden" );
 }
 
-function showIssueForm( ){
+/*function showIssueForm( ){
 	document.getElementById( "issueerror" ).innerHTML = "";
 	document.querySelector( "#issue" ).classList.toggle( "hidden" );
-}
+}*/
 
 function toggleMrktAnalysis( ){
 	Utils.getDomElements( document.querySelectorAll( "#advsearch, #searchhelp" ) ).forEach( function( ctrl ){
