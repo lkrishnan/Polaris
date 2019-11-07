@@ -163,142 +163,78 @@
 			
 			<!-- Menu -->
 			<div id="menu" class="textcenter cont unselectable" >
-			
 				<div class="toplinkcont alignleft">
 					<a href="https://www.youtube.com/playlist?list=PLB4an5GfqfkM7vvP2Obv4bUzKNmWFr5Q5&feature=em-share_playlist_user" target="_blank">Tutorials</a>
 				</div>
-							
 				<div class="toplinkcont alignleft">
 					<a href="data/POLARIS3GQUICKTIPS.pdf" target="_blank">Quick Tips</a>
 				</div>
-				
 				<div class="toplinkcont alignleft">
 					<a href="javascript:void(0);" class="redlink" onclick="showIssueForm( );">Report Issues</a>
 				</div>
-				
 				<div class="toplinkcont alignleft">
-					<a href="javascript:void(0);" class="greenlink" onclick="showMeckGISApps( );">More Map Apps</a>
+					<a href="https://maps.mecklenburgcountync.gov/polarisapps/" target="_blank" class="greenlink">More Map Apps</a>
 				</div>
-				
-				<!--<div class="linkcont alignright" style="margin-top: 3px;">
-					<a class="btnlinkbright" href="http://www.mysignup.com/gisdayexpo" target="_blank">Click for Free Workshop Nov.18</a>
-				</div>-->
-				
 				<div class="fixalign"></div>
-				
-				<div id="issue" class="fancycont closeable cont hidden">
-				
-					<div id="issueclose" class="textright cont">
-						<img src="image/red-close.png" />
-					</div>
-					<div class="alignleft">								
-						<span class="note">Is your property info or map wrong?</span>&nbsp;<a href="https://mecklenburgcountync-563955.workflowcloud.com/forms/d024bf6c-b9b0-4cf5-a7d9-7ac376f0370c" target="_blank" class="greenlink">Request Change</a>
-					</div>
-					<div class="alignleft">
-						For other issues, use the form below
-					</div>	
-				
-					<table>
-						
-						<tr>
-							<th>
-								<label for="issuename">Name&nbsp;<span class='note'>*</span></label>
-							</th>
-							<td>
-								<input type="text" id="issuename" class="max"/>
-							</td>
-						</tr>
-						
-						<tr>
-							<th>
-								<label for="issueemail">Email&nbsp;<span class='note'>*</span></label>
-							</th>
-							<td>
-								<input type="text" id="issueemail" class="max"/>
-							</td>
-						</tr>
-						
-						<tr>
-							<th>
-								<label for="issuedesc">Problem Description&nbsp;<span class='note'>*</span></label>
-							</th>
-							<td>
-								<textarea id="issuedesc" class="max" rows="10"></textarea>
-							</td>
-						</tr>	
-													
-					</table>
-
-					<div>
-						<div id="issueerror" class="searcherror alignright textleft"></div>
-						<div class="fixalign textright">
-							<input type="button" id="issueclear" value="Clear">&nbsp;
-							<input type="button" id="issuebtn" value="Post">
-						</div>	
-					</div>						
-									
-				</div>
-								
 			</div>
 									
 			<!-- Navigation -->
 			<div class="cont">
-				
 				<div id="navredoanalysis" class="navcont alignleft hidden">
 					<a href="javascript:void(0);" onclick="showDiv ( 'marketanalysis' );" class="btnlink">Redo Analysis</a>
 				</div>
-				
 				<div id="navredoadvsearch" class="navcont alignleft hidden">
 					<a href="javascript:void(0);" onclick="showDiv ( 'advsearch' );" class="btnlink">Redo Search</a>
 				</div>
-				
 				<div id="navsrchresults" class="navcont alignleft hidden">
 					<a href="javascript:void(0);" onclick="showDiv ( 'searchresults' );" class="btnlink"><span class="hidden-mobile">Search </span>Results</a>
 				</div>
-				
 				<div id="navpropdetails" class="navcont alignleft hidden">
 					<a href="javascript:void(0);" onclick="showDiv ( 'propdetails' );" class="btnlink" >Prop<span class="hidden-mobile">erty</span> Details</a>
 				</div>
-				
 				<div id="navlayers" class="navcont alignleft hidden">
 					<a class="btnlink" href="javascript:void(0);"  onclick="showDiv ( 'layers' );showTip ( 'toomanylayers' );">Layers<span class="hidden-mobile">/Labels</span></a>
 				</div>
-
 				<div id="navdictionary" class="navcont alignleft">
 					<a href="javascript:void(0);" onclick="window.open('maplayers_dictionary.html', 'MapLayer_Dictionary', 'location=1,status=1,scrollbars=1,width=620,height=650');" class="btnlink">Lyr Dictionary</a>
 				</div>
-				
 				<div id="navlegend" class="navcont alignleft">
 					<a class="btnlink" href="javascript:void(0);" onclick="showDiv ( 'legend' );">Legend</a>
 				</div>
-				
 				<div id="navpropinforeport" class="navcont alignleft hidden">
 					<a id="clickpropinforeport" class="btnlink" href="javascript:void(0);" target="_blank">Prop<span class="hidden-mobile">erty</span> Summary</a>
 				</div>
-						
 				<div id="navpropreport" class="navcont alignleft hidden">
 					<a id="clickpropreport" class="btnlink" href="javascript:void(0);" target="_blank">Prop<span class="hidden-mobile">erty</span> Report</a>
 				</div>					
-				
 				<div id="navdeedreport" class="navcont alignleft hidden">
 					<a id="clickdeedreport" href="javascript:void(0);" class="btnlink" target="_blank">Deed Report</a>
 				</div>					
-				
 				<div id="navdeedcsv" class="navcont alignleft hidden">
 					<a id="clickdeedcsv" href="javascript:void(0);" class="btnlink" target="_blank">Deed CSV</a>
 				</div>
-				
 				<div id="navzoomprop" class="navcont alignleft hidden">
 					<a href="javascript:void(0);" onclick="zoom.toSelectedParcel();" class="btnlink">Zoom<span class="hidden-mobile"> To</span></a>
 				</div>
-											
 				<div class="fixalign"></div>
-				
+			</div>
+
+			<!-- Issue -->
+			<div id="issue" class="fancycont hidden">
+				<h4>Report Issue</h4>
+				<div id="issueclose" class="textright">
+					<img src="image/red-close.png" />
+				</div>
+				<ol>
+					<li>Mailing address is wrong -> <a href='https://mecklenburgcountync-563955.workflowcloud.com/forms/52863dfb-3c52-4d91-a1c8-9d97ae2f5a7f' target='_blank' class='greenlink' >Request Change</a></li>
+					<li>Property info or map is wrong -> <a href="https://mecklenburgcountync-563955.workflowcloud.com/forms/d024bf6c-b9b0-4cf5-a7d9-7ac376f0370c" target="_blank" class="greenlink">Request Change</a></li>
+					<li>Download map layers that you see -> <a href="http://maps.co.mecklenburg.nc.us/openmapping" target="_blank" class="greenlink">Get it here</a></li>
+					<li>Website issues -> <a href="https://mecklenburgcountync-563955.workflowcloud.com/forms/7e935f44-bba6-4a6c-9887-de89bae68c8c" target="_blank" class="greenlink">Let us know</a></li>
+				</ol> 
 			</div>
 					
 			<!-- Data -->
 			<div id="datamain">
-																
 				<!-- Error -->
 				<div id="error" class="unselectable cont note textcenter hidden">
 					<img src='image/sadface.png' />
@@ -311,16 +247,11 @@
 				
 				<!-- Layer List -->
 				<div id="layers" class="unselectable">
-										
 					<div class="fancycont first">
-					
 						<h4>Overlay Toggle</h4>
-													
 						<div id="layerstree" class="cont unselectable">
 						</div>
-							
 					</div>	
-										
 				</div>	
 				
 				<!-- Legend -->

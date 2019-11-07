@@ -47,6 +47,7 @@ require( [ "esri/geometry/Extent", "esri/map", "dojo/domReady!" ], function( Ext
 	searchInit( );
 	// Initialize Report Issue
 	//issueInit( );
+	document.getElementById( "issueclose" ).addEventListener( "click", showIssueForm );
 		
 	// Initialize PubSub Subscriptions
 	require( [ "dojo/_base/connect" ], function( connect ){
@@ -918,10 +919,9 @@ function showTip( type ){
 	document.querySelector( "#tip" ).classList.remove( "hidden" );
 }
 
-/*function showIssueForm( ){
-	document.getElementById( "issueerror" ).innerHTML = "";
+function showIssueForm( ){
 	document.querySelector( "#issue" ).classList.toggle( "hidden" );
-}*/
+}
 
 function toggleMrktAnalysis( ){
 	Utils.getDomElements( document.querySelectorAll( "#advsearch, #searchhelp" ) ).forEach( function( ctrl ){
