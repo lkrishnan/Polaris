@@ -1049,6 +1049,7 @@ function engGridSearch( enggrid ){
 }
 
 function analyzeTheMarket( param, pageno, data ){
+	console.log(param);
 	require( [ "dojo/request" ], function( request ){
 		var reportparams = { 
 			pid: "",			
@@ -1130,10 +1131,10 @@ function showAnalyzedData( pageno, data, reportparams ){
 				groundpids	= [ ];
 			
 			data.forEach( function( item, i ){
-				if ( reportparams.srchtype !== "pidbuff" ){
+				//if ( reportparams.srchtype !== "pidbuff" ){
 					//append taxpids for deed report
 					reportparams.pid += ( reportparams.pid.length > 0 ? "," : "" ) + item.pid;	
-				}
+				//}
 						
 				var tempArr = parceldata.filter( function( parcel ){ return ( parcel.common_pid === item.common_pid.trim( ) ); } );
 							
