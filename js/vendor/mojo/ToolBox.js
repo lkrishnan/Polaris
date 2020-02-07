@@ -439,8 +439,7 @@ define( [
 				map.getLayersVisibleAtScale( map.getScale( ) ).forEach( function( layer ){
 					if( layer.maxScale === 600 ){
 						layer.setMaxScale( 599 );
-					}	
-				} );	
+					}				} );	
 				//esri.config.defaults.io.alwaysUseProxy = false;								
 				this.printTask.execute( 
 					lang.mixin( param, { map: map, template: template } ),

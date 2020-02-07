@@ -291,7 +291,7 @@ function setIdentity( data ){
 			} );
 			
 			//set link for property report
-			document.getElementById( "clickpropreport" ).setAttribute( "href", config.ws + "v1/propreport.php?mat=" + ( selectedAddress.matid ? selectedAddress.matid : "" ) +
+			document.getElementById( "clickpropreport" ).setAttribute( "href", config.ws + "v1/report_prop.php?mat=" + ( selectedAddress.matid ? selectedAddress.matid : "" ) +
 				"&xcoord=" + ( selectedAddress.x ? selectedAddress.x : "" ) +
 				"&ycoord=" + ( selectedAddress.y ? selectedAddress.y : "" ) +
 				"&pid=" + ( selectedAddress.taxpid ? selectedAddress.taxpid : "" ) + 

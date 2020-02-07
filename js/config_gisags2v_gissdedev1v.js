@@ -37,6 +37,6 @@ var config = {
 		}
 	}, geometry_service: "https://maps.mecklenburgcountync.gov/agsadaptor/rest/services/Utilities/Geometry/GeometryServer",
 	print_task: "https://maps.mecklenburgcountync.gov/agsadaptor/rest/services/polaris3g/ExportWebMap/GPServer/Export%20Web%20Map",
-	ws: "http://polaris3g.mecklenburgcountync.gov/ws/php_failover/",
+	ws: "http://maps.mecklenburgcountync.gov/ws/php_failover/",
 	local_json: "data/"
 };		

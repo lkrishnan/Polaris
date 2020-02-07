@@ -328,36 +328,9 @@ function searchInit( ){
 			}else{
 				var geometryService = new GeometryService( config.geometry_service ),
 					bufferParams = new BufferParameters( ),
-					params = {
-						"juris": "",
-						"nbc": "",
-						"st": "",
-						"pidbuff": "",
-						"propuse": "",
-						"minacres": "",
-						"maxacres": "",
-						"lottype": "",
-						"minmktval": "",
-						"maxmktval": "",
-						"minsalesprice": "",
-						"maxsalesprice": "",
-						"startdate": "",
-						"enddate": "",
-						"minyrblt": "",
-						"maxyrblt": "",
-						"minsqft": "",
-						"maxsqft": "",
-						"bdrms": "",
-						"btrms": "",
-						"extwall": "",
-						"storytype": "",
-						"orderby":"",
-						"orderdir": ""
-					};
+					params = data.params;
 					
-				Utils.mixin( params, data.params );
-							
-				if( params.pidbuff.trim( ) ){
+				if( params.hasOwnProperty( "pidbuff" ) ){	
 					var buffersize = parseInt( params.pidbuff.substr( params.pidbuff.indexOf ( "|" ) + 1, params.pidbuff.length - 1 ) );
 				
 					if( buffersize > 0 ){ //add buffer graphic if the buffer size is atleast 1 feet
@@ -998,19 +971,14 @@ function bufferSearch( buffersize ){
 						zoom: true,
 						backtoresults: true	
 					},
-					onClick: function( boxdata ) {
+					onClick: function( boxdata ){
 						finder( boxdata, "searchresults" );
 					}	
 				} ).placeAt( document.getElementById( "searchresults" ) );
 			} );	
 			
 			//set report links
-			updateReportLinks( { 
-				pid: "",
-				srchtype: "pidbuff", 
-				srchval: selectedAddress.groundpid, 
-				buffersize: buffersize 
-			} );
+			updateReportLinks( { pidbuff: selectedAddress.groundpid + "|" + buffersize } );
 									
 			//show search results div
 			showDiv( "searchresults" );		
@@ -1049,27 +1017,7 @@ function engGridSearch( enggrid ){
 }
 
 function analyzeTheMarket( param, pageno, data ){
-	console.log(param);
 	require( [ "dojo/request" ], function( request ){
-		var reportparams = { 
-			pid: "",			
-			orderby: param.orderby, 
-			orderdir: param.orderdir, 
-			lottype: param.lottype, 
-			propuse: param.propuse, 
-			buffersize: "" 
-		};
-	
-		[ "juris", "nbc", "st", "pidbuff" ].forEach( function( item, i ){
-			if( param[ item ].length > 0 ){
-				Utils.mixin( reportparams, { 
-					srchtype: item, 
-					srchval: ( param[ item ].indexOf( "|" ) > 0 ? param[ item ].substring( 0, param[ item ].indexOf( "|" ) ) : param[ item ] ), 
-					buffersize: ( param[ item ].indexOf( "|" ) > 0 ? param[ item ].substring( param[ item ].indexOf( "|" ) + 1, param[ item ].length ) : "" )
-				} );
-			}
-		} );
-		
 		if( data ){
 			document.getElementById( "searchresults" ).innerHTML = "<h5><span class = 'note'>Are you looking for?</span></h5>" + 
 					"<div class='cont textcenter'>" + getPagingHTML( pageno, data ) + "</div>";	
@@ -1084,7 +1032,8 @@ function analyzeTheMarket( param, pageno, data ){
 				data.filter( function( item, i ){	
 					return ( ( i >= ( pageno * 36 ) - 36 ) && ( i < ( pageno * 36 ) ) );
 				} ),
-				reportparams			
+				param
+				//reportparams			
 			);
 		}else{
 			request.get( config.ws + "v1/ws_cama_marketanalysis.php", {
@@ -1133,7 +1082,7 @@ function showAnalyzedData( pageno, data, reportparams ){
 			data.forEach( function( item, i ){
 				//if ( reportparams.srchtype !== "pidbuff" ){
 					//append taxpids for deed report
-					reportparams.pid += ( reportparams.pid.length > 0 ? "," : "" ) + item.pid;	
+					//reportparams.pid += ( reportparams.pid.length > 0 ? "," : "" ) + item.pid;	
 				//}
 						
 				var tempArr = parceldata.filter( function( parcel ){ return ( parcel.common_pid === item.common_pid.trim( ) ); } );
@@ -1524,19 +1473,29 @@ function getFieldValues( attributes ){
 }
 
 //set reports links in the property detail tab
-function updateReportLinks( data ){
+function updateReportLinks( params ){
+	var paramlist = "";
+	
+	
 	//set Property Summary
-	document.getElementById( "clickpropinforeport" ).setAttribute( "href", config.ws + "v1/propsummary.php?pid=" + data.pid + 
+	/*document.getElementById( "clickpropinforeport" ).setAttribute( "href", config.ws + "v1/propsummary.php?pid=" + data.pid + 
 			"&orderby=" + ( data.orderby ? data.orderby : "market_value" ) + "&orderdir=" + ( data.orderdir ? data.orderdir : "desc" ) + 
 			"&lottype=" + ( data.lottype ? data.lottype : "" ) + "&propuse=" + ( data.propuse ? data.propuse : "" ) + 
 			"&srchtype=" + data.srchtype + "&srchval=" + data.srchval + 
-			"&buffer=" + data.buffersize );
+			"&buffer=" + data.buffersize );*/
 	
+	
+	for( var param in params ){
+		paramlist += ( paramlist.length > 0 ? "&" : "?" ) + param + "=" + params[ param ];
+	}
+	
+	//set Property Summary
+	document.getElementById( "clickpropinforeport" ).setAttribute( "href", config.ws + "v1/report_summary.php" + paramlist );
 	//set deed report
-	document.getElementById( "clickdeedreport" ).setAttribute( "href", config.ws + "v1/deedreport.php?pid=" + data.pid + "&gisid=" + ( data.srchtype === "pidbuff" ? data.srchval : "" ) + "&buffer=" + ( data.srchtype === "pidbuff" ? data.buffersize : "" ) + "&format=pdf" );
-		
-	//set deed csv	
-	document.getElementById( "clickdeedcsv" ).setAttribute( "href", config.ws + "v1/deedreport.php?pid=" + data.pid + "&gisid=" + ( data.srchtype === "pidbuff" ? data.srchval : "" ) + "&buffer=" + ( data.srchtype === "pidbuff" ? data.buffersize : "" ) + "&format=csv" );
+	document.getElementById( "clickdeedreport" ).setAttribute( "href", config.ws + "v1/report_deed.php" + paramlist );
+	//set deed csv
+	document.getElementById( "clickdeedcsv" ).setAttribute( "href", config.ws + "v1/report_deed.php" + paramlist + "&format=csv" );
+
 }
 
 //validate market analysis form
@@ -1544,7 +1503,8 @@ function validateMrktAnlysForm( ){
 	var data = { 
 		params: { }, 
 		errors: [ ] 
-	};
+	},
+	set_cnt = 0;
 
 	require( [ "dijit/registry" ] , function( registry ){
 		var temp;
@@ -1554,17 +1514,25 @@ function validateMrktAnlysForm( ){
 				data.params.juris = document.getElementById( "jurisdiction" ).value;
 				break;
 			case "1": //neighborhoodcode
-				data.params.nbc = document.getElementById( "neighborcode" ).value;		
+				if( document.getElementById( "neighborcode" ).value.trim( ).length === 0 ){
+					data.errors.push( "Enter a valid Neighborhood code." );
+				}else{
+					data.params.nbc = document.getElementById( "neighborcode" ).value;		
+				}
 				break;
 			case "2": //street name
-				data.params.st = registry.byId( "stname" ).get( "value" );		
+				if( document.getElementById( "stname" ).value.trim( ).length === 0 ){
+					data.errors.push( "Enter a valid Street Name." );
+				}else{
+					data.params.st = document.getElementById( "stname" ).value;		
+				}		
 				break;
 			case "3": //buffersize
 				if( selectedAddress.hasOwnProperty( "groundpid" ) ){	
 					if( document.getElementById( "anlysbuffsize" ).value.trim( ).length === 0 ){
-						data.errors.push ( "Enter a valid buffer size." );
+						data.errors.push( "Enter a valid buffer size." );
 					}else{
-						var buffersize = parseInt( document.getElementById( "anlysbuffsize" ).value );
+						var buffersize = parseInt( document.getElementById( "anlysbuffsize" ).value.trim( ) );
 					
 						if( !isNaN( buffersize ) && ( buffersize > -1 && buffersize < 5281 ) ){
 							data.params.pidbuff = selectedAddress.groundpid + "|" + buffersize;		
@@ -1588,6 +1556,7 @@ function validateMrktAnlysForm( ){
 		if( temp.length > 1 ){
 			data.params.minacres = temp[ 0 ];
 			data.params.maxacres = temp[ 1 ];
+			set_cnt += 1;
 		}else if( temp.length > 0 ){
 			data.errors.push( temp[ 0 ] );
 		}	
@@ -1597,6 +1566,7 @@ function validateMrktAnlysForm( ){
 		if( temp.length > 1 ){
 			data.params.minmktval = temp[ 0 ];
 			data.params.maxmktval = temp[ 1 ];
+			set_cnt += 1;
 		}else if( temp.length > 0 ){
 			data.errors.push( temp[ 0 ] );
 		}	
@@ -1606,6 +1576,7 @@ function validateMrktAnlysForm( ){
 		if( temp.length > 1 ){
 			data.params.minsalesprice = temp[ 0 ];
 			data.params.maxsalesprice = temp[ 1 ];
+			set_cnt += 1;
 		}else if( temp.length > 0 ){
 			data.errors.push( temp[ 0 ] );
 		}	
@@ -1621,6 +1592,7 @@ function validateMrktAnlysForm( ){
 				if( startdate && enddate && ( startdate < enddate ) ){
 					data.params.startdate = Format.readableDate( startdate );
 					data.params.enddate = Format.readableDate( enddate );
+					set_cnt += 1;
 				}else{
 					data.errors.push( "Enter a valid Sale Date range" );
 				}	
@@ -1637,6 +1609,7 @@ function validateMrktAnlysForm( ){
 				if( Validate.isCountyYear( minyrblt ) && Validate.isCountyYear( maxyrblt ) && minyrblt < maxyrblt ){
 					data.params.minyrblt = minyrblt;
 					data.params.maxyrblt = maxyrblt;
+					set_cnt += 1;
 				}else{
 					data.errors.push( "Enter a valid minimum and maximum Year Built." );
 				}	
@@ -1647,6 +1620,7 @@ function validateMrktAnlysForm( ){
 			if( temp.length > 1 ){
 				data.params.minsqft = temp[ 0 ];
 				data.params.maxsqft = temp[ 1 ];
+				set_cnt += 1;
 			}else if( temp.length > 0 ){
 				data.errors.push( temp[ 0 ] );
 			}	
@@ -1654,13 +1628,29 @@ function validateMrktAnlysForm( ){
 			//bedrooms and bathrooms
 			if( document.getElementById( "propuse" ).value === "Condo/Townhome" || document.getElementById( "propuse" ).value === "Manufactured" ||
 				document.getElementById( "propuse" ).value === "Multi-Family" || document.getElementById( "propuse" ).value === "Single-Family" ) {
-					data.params.bdrms = document.getElementById( "bedrooms" ).value;
-					data.params.btrms = document.getElementById( "bathrooms" ).value;			
+					if( document.getElementById( "bedrooms" ).value.trim( ).length > 0 ){
+						data.params.bdrms = document.getElementById( "bedrooms" ).value;
+						set_cnt += 1;
+					}
+					
+					if( document.getElementById( "bathrooms" ).value.trim( ).length > 0 ){
+						data.params.btrms = document.getElementById( "bathrooms" ).value;
+						set_cnt += 1;
+					}
+					
 			}
 			
 			//exterior wall and story type
-			data.params.extwall = document.getElementById( "exteriorframe" ).value;
-			data.params.storytype = document.getElementById( "storytype" ).value;
+			if( document.getElementById( "exteriorframe" ).value.trim( ).length > 0 ){
+				data.params.extwall = document.getElementById( "exteriorframe" ).value;
+				set_cnt += 1;
+			}
+			
+			if( document.getElementById( "storytype" ).value.trim( ).length > 0 ){
+				data.params.storytype = document.getElementById( "storytype" ).value;
+				set_cnt += 1;
+			}
+			
 		}		
 							
 		//sort 
@@ -1668,35 +1658,15 @@ function validateMrktAnlysForm( ){
 		data.params.orderby = sortby.substr( 0, sortby.indexOf( "|" ) );
 		data.params.orderdir = sortby.substr( sortby.indexOf ( "|" ) + 1, sortby.length - 1 );
 		
-		//check if there is atleast one parameter set
-		if( data.params.hasOwnProperty( "juris" ) && data.params.propuse != "Vacant" ){
-			if( !( data.params.hasOwnProperty( "minacres" ) || data.params.hasOwnProperty( "maxacres" ) ||  
-				data.params.hasOwnProperty( "minmktval" ) || data.params.hasOwnProperty( "maxmktval" ) ||
-				data.params.hasOwnProperty( "minsalesprice" ) || data.params.hasOwnProperty( "maxsalesprice" ) ||
-				data.params.hasOwnProperty( "startdate" ) || data.params.hasOwnProperty( "enddate" ) ||
-				data.params.hasOwnProperty( "minyrblt" ) || data.params.hasOwnProperty( "maxyrblt" ) ||
-				data.params.hasOwnProperty( "minsqft" ) || data.params.hasOwnProperty( "maxsqft" ) ) && 
-				data.params.extwall.length === 0 && data.params.storytype.length === 0 ){
-				if( document.getElementById( "propuse" ).value === "Condo/Townhome" || document.getElementById( "propuse" ).value === "Manufactured" ||
-					document.getElementById( "propuse" ).value === "Multi-Family" || document.getElementById( "propuse" ).value === "Single-Family" ){
-					if( data.params.bdrms.length === 0 && data.params.btrms.length === 0 ){
-						data.errors.push( "Select some more paramerers to do a Market Analysis." );	
-					}else{
-						if( ( data.params.bdrms === "3" && data.params.btrms.length === 0 ) ||
-							( data.params.bdrms === "3" && data.params.btrms === "2" ) || 
-							( data.params.bdrms === "3" && data.params.btrms === "3" ) || 
-							( data.params.btrms.length > 0 && data.params.bdrms.length === 0 ) ){
-								data.errors.push ( "Select some more paramerers to do a Market Analysis." );		
-						}
-					}  	
-				} else {
-					data.errors.push ( "Select more paramerers to do a Market Analysis." );	
-				}	
-			}	
+		//check if there is atleast one parameter set when non vacant propuses are searched
+		if( set_cnt === 0 ){
+			data.errors.push( "Select more paramerers to do a Market Analysis." );
 		}
+		
 	} );
 	
 	return data;
+
 }
 
 //paging for market analysis
