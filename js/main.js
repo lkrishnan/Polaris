@@ -62,61 +62,6 @@ require( [ "esri/geometry/Extent", "esri/map", "dojo/domReady!" ], function( Ext
 	} );	
 } );
 
-//Initialize report issue controls
-/*function issueInit( ){
-	require( [ "dojo/request/xhr" ] , function( xhr ){
-		document.getElementById( "issuebtn" ).addEventListener( "click", function( event ){
-			var errors = [ ];
-			
-			document.getElementById( "issueerror" ).innerHTML = "";
-		
-			if( document.getElementById( "issuename" ).value.length === 0 ){
-				errors.push ( "Name required" );
-			}
-			if( !Validate.isEmail ( document.getElementById( "issueemail" ).value ) ){
-				errors.push( "Valid Email required" );
-			}
-			if( document.getElementById( "issuedesc" ).value.length === 0 ){
-				errors.push( "Problem description required" );
-			}
-			if( errors.length > 0 ){
-				errors.forEach( function( item, i ){
-					document.getElementById( "issueerror" ).insertAdjacentHTML( "afterend", "<div>" + ( i + 1 ) + ". " + item + "</div>" );	
-				} );
-			}else{
-				var message = "The Polaris 3G issue has been reported by " +  document.getElementById( "issuename" ).value +
-					" ( " + document.getElementById( "issueemail" ).value + " ) : " + document.getElementById( "issuedesc" ).value,
-					subject = "Polaris 3G Bug reported by " + document.getElementById( "issuename" ).value;
-			
-				xhr( config.ws + "v1/send_email.php", {
-					data: { 
-						to: "polaris3g@mecklenburgcountync.gov", 
-						subject: subject, 
-						message: message,
-						success: "The issue was reported successfully.",
-						failure: "An error occured. Try again."	
-					},
-					method: "POST"
-				} ).then( function( data ){
-					document.getElementById( "issueerror" ).innerHTML = data;
-					document.getElementById( "issuename" ).value = " ";
-					document.getElementById( "issueemail" ).value = " ";
-					document.getElementById( "issuedesc" ).value = " ";
-				} );
-			}
-		} );
-			
-		document.getElementById( "issueclear" ).addEventListener( "click", function( event ){				
-			document.getElementById( "issuename" ).value = " ";
-			document.getElementById( "issueemail" ).value = " " ;
-			document.getElementById( "issuedesc" ).value = " ";
-			document.getElementById( "issueerror" ).innerHTML = "";
-		} );
-		
-		document.getElementById( "issueclose" ).addEventListener( "click", showIssueForm );
-	} );
-}*/
-
 //Set hash
 function chngSelection( data ){
 	if( !selectedAddress.hasOwnProperty( "taxpid" ) ||
