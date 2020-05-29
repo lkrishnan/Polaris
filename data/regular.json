@@ -201,8 +201,9 @@
 			name: "Property Comparables", 
 			type: "group",
 			show: true,			
-			otrans: [ 49, 50, 51, 52, 53, 54, 55, 56, 57, 58 ],
+			otrans: [ 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 62 ],
 			children: [
+				{ _reference: "sales2020" },
 				{ _reference: "sales2019" },
 				{ _reference: "sales2018" },
 				{ _reference: "sales2017" },
@@ -214,6 +215,10 @@
 				{ _reference: "sales2011" },
 				{ _reference: "sales2010" }
 			]
+		}, { 
+			id: "sales2020", 
+			name: "2020 Sales", 
+			otrans: [ 62 ]
 		}, { 
 			id: "sales2019", 
 			name: "2019 Sales", 

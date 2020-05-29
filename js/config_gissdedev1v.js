@@ -5,19 +5,21 @@ var config = {
 		xmax: 1537013.50075424,
 		ymax: 660946.333333335,
 		spatialReference: { wkid: 2264 }
-	}, min_scale: 425000,
+	}, 
+	min_scale: 425000,
+	max_scale: 600,
 	basemap_services: {
 		basemap: "http://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/basemap/MapServer",
 		basemap_aerial: "http://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/basemap_aerial/MapServer",
 		topo: "http://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/topohillshade/MapServer"
 	}, aerial_services: [
+		{ layer: "2020", url: "http://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/aerial2020/MapServer" },
 		{ layer: "2019", url: "http://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/TESTaerial2019/MapServer" },
 		{ layer: "2018", url: "http://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/aerial2018/MapServer" },
-		{ layer: "2017", url: "http://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/aerial2017/MapServer" },
+		{ layer: "2017", url: "https://maps.mecklenburgcountync.gov/agsadaptor/rest/services/aerial2017/MapServer" },
 		{ layer: "2016", url: "https://maps.mecklenburgcountync.gov/agsadaptor/rest/services/aerial2016/MapServer" },
 		{ layer: "2015", url: "https://maps.mecklenburgcountync.gov/agsadaptor/rest/services/aerial2015/MapServer" },
-		{ layer: "2014", url: "https://maps.mecklenburgcountync.gov/agsadaptor/rest/services/aerial2014/MapServer" },
-		{ layer: "2013", url: "http://meckmap.mecklenburgcountync.gov/arcgis/rest/services/aerial2013/MapServer" }
+		{ layer: "2014", url: "https://maps.mecklenburgcountync.gov/agsadaptor/rest/services/aerial2014/MapServer" }
 	], overlay_services: {
 		overlays_trans: { 
 			url: "http://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/layers_failover/MapServer",			

@@ -4,7 +4,7 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
-		<meta charset="utf-8">
+	    <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>Polaris 3G</title>
         <meta name="description" content="Polaris 3G Mecklenburg County Property Ownership and Land Records System">
@@ -156,7 +156,6 @@
 		
 		<!-- Aside -->
 		<div id="aside" class="shadow">
-		
 			<!-- Header -->
 			<div id="header" class="unselectable">
 			</div>
@@ -235,64 +234,48 @@
 					
 			<!-- Data -->
 			<div id="datamain">
-																
 				<!-- Error -->
 				<div id="error" class="unselectable cont note textcenter hidden">
 					<img src='image/sadface.png' />
 					No Results found!
 				</div>
-				
+								
 				<!-- Tip -->
 				<div id="tip" class="unselectable cont advisory textcenter hidden hidden-mobile">
 				</div>
 				
 				<!-- Layer List -->
 				<div id="layers" class="unselectable">
-										
 					<div class="fancycont first">
-					
 						<h4>Overlay Toggle</h4>
-													
 						<div id="layerstree" class="cont unselectable">
 						</div>
-							
 					</div>	
-										
 				</div>	
 				
 				<!-- Legend -->
 				<div id="legend" class="unselectable hidden">
-										
 					<!-- Overlay Legend -->
 					<div class="fancycont first">
-					
 						<h4>Overlay Legend</h4>
-												
 						<div id="overlaylegend" class="cont">
 						</div>
-						
 					</div>	
 					
 					<!-- Basemap Legend -->
 					<div class="fancycont first">
-					
 						<h4>Basemap Legend</h4>
-												
 						<div id="basemaplegend" class="cont">
 						</div>
-						
 					</div>	
-														
 				</div>
 				
 				<!-- Search Results -->
 				<div id="searchresults" class="hidden">
-					
 					<div id="error" class="unselectable cont note textcenter">
 						<img src='image/sadface.png' />
 						No Search Results available!
 					</div>
-					
 				</div>
 				
 				<!-- Identify Layers -->
@@ -343,6 +326,8 @@
 								<option value="23">Single-Family Bldgs-Completed(Last 365days)</option>
 								<option value="24">Multi-Family Bldgs-InProgress(Last 365days)</option>
 								<option value="25">Multi-Family Bldgs-Completed(Last 365days)</option>
+								<option value="26">County MPL Contaminate Sites</option>
+								<option value="27">NCDEQ Brownfields</option>
 							</select>
 						</div>
 						
@@ -361,16 +346,11 @@
 				
 				<!-- Point of Interest -->
 				<div id="poi" class="hidden">
-				
 					<div class="fancycont first">
-				
 						<h4>Point of Interest</h4>
-					
 						<div id="poicont" class="cont">
 						</div>
-						
 					</div>
-				
 				</div>
 				
 				<!-- Advanced Search -->
@@ -505,11 +485,8 @@
 				
 					<!-- Owner Search -->
 					<div class="fancycont first">
-				
 						<h4>Owner Search</h4>
-					
 						<div id="ownersearch" class="cont">
-						
 							<table>
 								<tr>
 									<th>
@@ -539,18 +516,13 @@
 									</td>
 								</tr>
 							</table>
-														
 						</div>
-						
 					</div>
 
 					<!-- Buffer Search -->
 					<div class="fancycont first">
-				
 						<h4>Buffer Search</h4>
-					
 						<div id="buffersearch" class="cont">
-						
 							<table>
 								<tr>
 									<th>
@@ -573,18 +545,13 @@
 									</td>
 								</tr>
 							</table>
-														
 						</div>
-						
 					</div>						
 						
 					<!-- Preliminary Plan Search -->
 					<div class="fancycont first">
-				
 						<h4>Preliminary Plan Search</h4>
-												
 						<div class="cont">
-						
 							<table>
 								<tr>
 									<td>
@@ -595,18 +562,13 @@
 									</td>	
 								</tr>
 							</table>	
-							
 						</div>
-						
 					</div>	
 					
 					<!-- Engineering Grid Search -->
 					<div class="fancycont first">
-				
 						<h4>Engineering Grid Search</h4>
-												
 						<div class="cont">
-						
 							<table>
 								<tr>
 									<td>
@@ -1334,11 +1296,8 @@
 									</td>	
 								</tr>
 							</table>	
-																				
 						</div>
-						
 					</div>
-																	
 				</div>
 					
 				<!-- Market Analysis -->
@@ -1624,12 +1583,9 @@
 					</div>
 					
 					<div class="fancycont">
-					
 						<h4>Associated Information</h4>
-						
 						<div id="characteristics" class="cont">
 						</div>
-																			
 					</div>
 					
 					<div class="fancycont">
@@ -1709,10 +1665,10 @@
 							
 		<!-- Library scripts -->
 		<script src="//js.arcgis.com/3.32compact/"></script>
-
+				
 		<!-- app specific scripts -->
-		<script src="js/search.js"></script><script src="js/config_gisags2v_gissdedev1v.js"></script><script src="js/cachedmap.js"></script><script src="js/map.js"></script><script src="js/main.js"></script><script src="js/usng.js"></script><script src="js/utility.js"></script>
-								
+		<script src="js/search.js"></script><script src="js/config_dev.js"></script><script src="js/cachedmap.js"></script><script src="js/map.js"></script><script src="js/main.js"></script><script src="js/usng.js"></script><script src="js/utility.js"></script>
+						
         <!-- Google Analytics usage statistics -->
 		<script type="text/javascript">
 			var _gaq = _gaq || [];
@@ -1725,5 +1681,5 @@
 				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 			})();
 		</script>
-	</body>
+    </body>	
 </html>
