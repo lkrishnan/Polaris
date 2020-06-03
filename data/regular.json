@@ -264,10 +264,11 @@
 			name: "Historical", 
 			type: "group",
 			show: true,			
-			ostreets: [ 15, 16, 17, 18 ],
+			ostreets: [ 15, 16, 17, 18, 63 ],
 			children: [
 				{ _reference: "histcemeteries" }, 
-				{ _reference: "histdist" }, 
+				{ _reference: "histdist" },
+				{ _reference: "histdist2" }, 
 				{ _reference: "histprop" }
 			]
 		}, { 
@@ -278,6 +279,10 @@
 			id: "histdist", 
 			name: "Historic Districts(Charlotte)", 
 			ostreets: [ 15 ]
+		}, { 
+			id: "histdist2", 
+			name: "Historic Districts(Davidson)", 
+			ostreets: [ 63 ]
 		}, { 
 			id: "histprop", 
 			name: "Historic Properties", 
