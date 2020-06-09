@@ -195,15 +195,20 @@ gulp.task( "watch", function( ){
 	gulp.watch( paths.styles, gulp.series( "lesstocss" ) ); 
 } );
 
-//run in the background during development
+//run in the background while css is modified
 gulp.task( "develop", gulp.series( "lesstocss", "watch" ) );
+
+//package js and css
 gulp.task( "default", gulp.series( "lesstocss", "jstobuild", "agsjstobuild", "sdejstobuild", "ags_sdejstobuild", "devjstobuild", "mojojstobuild", "images", "mojoimagetobuild", "csstobuild", "datatobuild", "rootfilestobuild", "htmltobuild", "cbtreetobuild" ) );
-gulp.task( "publish", function( ){
+
+//publish tasks
+gulp.task( "publishpub", function( ){
 	return gulp.src( "build/**/*.*" )
 		.pipe( gulp.dest ( "//gispolaris1v/c$/inetpub/wwwroot" ) );
 } );
 gulp.task( "publishdev", function( ){
 	return gulp.src( "build/**/*.*" )
-		.pipe( gulp.dest ( "//gispolarisdev1v/c$/inetpub/wwwroot" ) );
+		.pipe( gulp.dest ( "//gispolarisdev1v/d$/www" ) );
 } );
+gulp.task( "publish", gulp.series( "publishpub", "publishdev" ) );
 
