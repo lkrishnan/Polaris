@@ -27,8 +27,7 @@ require( [ "esri/geometry/Extent", "esri/map", "dojo/domReady!" ], function( Ext
 	map = new Map( "map", { 
 		extent: new Extent( config.initial_extent ), 
 		logo: false, 
-		minScale: config.min_scale,
-		maxScale: config.max_scale,		
+		minScale: config.min_scale,		
 		zoom: 1 
 	} );
 		

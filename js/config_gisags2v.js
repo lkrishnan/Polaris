@@ -7,7 +7,6 @@ var config = {
 		spatialReference: { wkid: 2264 }
 	}, 
 	min_scale: 425000,
-	max_scale: 600,
 	basemap_services: {
 		basemap: "https://maps.mecklenburgcountync.gov/agsadaptor/rest/services/basemap/MapServer",
 		basemap_aerial: "https://maps.mecklenburgcountync.gov/agsadaptor/rest/services/basemap_aerial/MapServer",
