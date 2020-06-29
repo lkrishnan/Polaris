@@ -14,6 +14,7 @@ function toolboxInit( printLegendLayers ){
 			geometryService: new GeometryService( config.geometry_service ),
 			printTask: new PrintTask( config.print_task ),
 			printLegendLayers: printLegendLayers,
+			printServerName: config.print_server_name,
 			onToolOn: function( event ){
 				if( event.tool === "print" ){ 
 					mapClick = "property";

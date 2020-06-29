@@ -38,6 +38,7 @@ var config = {
 		}
 	}, geometry_service: "https://meckgisdev.mecklenburgcountync.gov/arcgis/rest/services/Utilities/Geometry/GeometryServer",
 	print_task: "https://meckgisdev.mecklenburgcountync.gov/arcgis/rest/services/Print/ExportWebMap/GPServer/Export%20Web%20Map",
+	print_server_name: "meckgisdev.mecklenburgcountync.gov",  
 	ws: "https://meckgisdev.mecklenburgcountync.gov/ws/php/",
 	local_json: "data/"
 };		

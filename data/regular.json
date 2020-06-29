@@ -1,377 +1,377 @@
 {
-	identifier: "id",
-	label: "name",
-	items: [
+	"identifier": "id",
+	"label": "name",
+	"items": [
 		{ 
-			id: "labelgrp", 
-			name: "Labels",
-			type: "group", 
-			show: true,
-			olabels: [ 0, 1, 2, 3, 4, 8, 9, 10, 11, 12, 13, 14, 15, 16 ], 
-			children: [
+			"id": "labelgrp", 
+			"name": "Labels",
+			"type": "group", 
+			"show": true,
+			"olabels": [ 0, 1, 2, 3, 4, 8, 9, 10, 11, 12, 13, 14, 15, 16 ], 
+			"children": [
 			
-				{ _reference: "dims" }, 
-				{ _reference: "addrnos" }, 
-				{ _reference: "pids" }, 
-				{ _reference: "businesses" },
-				{ _reference: "pois" }
+				{ "_reference": "dims" }, 
+				{ "_reference": "addrnos" }, 
+				{ "_reference": "pids" }, 
+				{ "_reference": "businesses" },
+				{ "_reference": "pois" }
 			]
 		}, { 
-			id: "dims", 
-			name: "Lot Dimensions", 
-			olabels: [ 0, 16 ]
+			"id": "dims", 
+			"name": "Lot Dimensions", 
+			"olabels": [ 0, 16 ]
 		}, { 
-			id: "addrnos", 
-			name: "Address No", 
-			olabels: [ 1 ]
+			"id": "addrnos", 
+			"name": "Address No", 
+			"olabels": [ 1 ]
 		}, { 
-			id: "pids", 
-			name: "Parcel IDs", 
-			olabels: [ 2 ]
+			"id": "pids", 
+			"name": "Parcel IDs", 
+			"olabels": [ 2 ]
 		}, { 
-			id: "businesses", 
-			name: "Businesses", 
-			olabels: [ 3 ]
+			"id": "businesses", 
+			"name": "Businesses", 
+			"olabels": [ 3 ]
 		}, { 
-			id: "pois", 
-			name: "Points of Interest", 
-			olabels: [ 4, 8, 9, 10, 11, 12, 13, 14, 15 ]
+			"id": "pois", 
+			"name": "Points of Interest", 
+			"olabels": [ 4, 8, 9, 10, 11, 12, 13, 14, 15 ]
 		}, { 
-			id: "bndrygrp", 
-			name: "Boundaries", 
-			type: "group", 
-			show: true,
-			ostreets: [ 11, 12, 13, 20, 23, 25, 26, 27 ], 
-			children: [
-				{ _reference: "commdist" }, 
-				{ _reference: "citycncldist" }, 
-				{ _reference: "mundist" }, 
-				{ _reference: "sphrinflu" }, 
-				{ _reference: "votprec" }, 
-				{ _reference: "zone" },
-				{ _reference: "zip" }
+			"id": "bndrygrp", 
+			"name": "Boundaries", 
+			"type": "group", 
+			"show": true,
+			"ostreets": [ 11, 12, 13, 20, 23, 25, 26, 27 ], 
+			"children": [
+				{ "_reference": "commdist" }, 
+				{ "_reference": "citycncldist" }, 
+				{ "_reference": "mundist" }, 
+				{ "_reference": "sphrinflu" }, 
+				{ "_reference": "votprec" }, 
+				{ "_reference": "zone" },
+				{ "_reference": "zip" }
 			]
 		}, { 
-			id: "commdist", 
-			name: "County Commissioner Districts", 
-			ostreets: [ 11 ]
+			"id": "commdist", 
+			"name": "County Commissioner Districts", 
+			"ostreets": [ 11 ]
 		}, { 
-			id: "citycncldist", 
-			name: "Charlotte City Council Districts", 
-			ostreets: [ 12 ]
+			"id": "citycncldist", 
+			"name": "Charlotte City Council Districts", 
+			"ostreets": [ 12 ]
 		}, { 
-			id: "mundist", 
-			name: "Municipal Service Districts", 
-			ostreets: [ 20 ]
+			"id": "mundist", 
+			"name": "Municipal Service Districts", 
+			"ostreets": [ 20 ]
 		}, { 
-			id: "sphrinflu", 
-			name: "Spheres of Influence (City ETJs)", 
-			ostreets: [ 23 ]
+			"id": "sphrinflu", 
+			"name": "Spheres of Influence (City ETJs)", 
+			"ostreets": [ 23 ]
 		}, { 
-			id: "votprec", 
-			name: "Voter Precincts", 
-			ostreets: [ 13 ]
+			"id": "votprec", 
+			"name": "Voter Precincts", 
+			"ostreets": [ 13 ]
 		}, { 
-			id: "zone", 
-			name: "Zoning", 
-			ostreets: [ 26, 27 ]
+			"id": "zone", 
+			"name": "Zoning", 
+			"ostreets": [ 26, 27 ]
 		}, { 
-			id: "zip", 
-			name: "Zip Code Boundaries", 
-			ostreets: [ 25 ]		
+			"id": "zip", 
+			"name": "Zip Code Boundaries", 
+			"ostreets": [ 25 ]		
 		}, { 
-			id: "envgrp", 
-			name: "Environmental", 
-			type: "group", 
-			show: true,
-			ostreets: [ 6, 24, 30, 36, 63, 64 ],
-			otrans: [ 38, 39, 40, 41, 42, 43, 60, 61 ],			
-			children: [
-				{ _reference: "fldp" }, 
-				{ _reference: "postconstdist" }, 
-				{ _reference: "postconstbuff" }, 
-				{ _reference: "strmwtrsheds" }, 
-				{ _reference: "drnkwtrsheds" }, 
-				{ _reference: "soils" },
-				{ _reference: "wtrqulbuff" }, 
-				{ _reference: "mplcntmn" },
-				{ _reference: "brwnflds" }
+			"id": "envgrp", 
+			"name": "Environmental", 
+			"type": "group", 
+			"show": true,
+			"ostreets": [ 6, 24, 30, 36, 63, 64 ],
+			"otrans": [ 38, 39, 40, 41, 42, 43, 60, 61 ],			
+			"children": [
+				{ "_reference": "fldp" }, 
+				{ "_reference": "postconstdist" }, 
+				{ "_reference": "postconstbuff" }, 
+				{ "_reference": "strmwtrsheds" }, 
+				{ "_reference": "drnkwtrsheds" }, 
+				{ "_reference": "soils" },
+				{ "_reference": "wtrqulbuff" }, 
+				{ "_reference": "mplcntmn" },
+				{ "_reference": "brwnflds" }
 			]
 		}, { 
-			id: "fldp", 
-			name: "Community & FEMA Floodplains, Floodways", 
-			otrans: [ 40, 41, 42, 43 ],
-			clone: true 
+			"id": "fldp", 
+			"name": "Community & FEMA Floodplains, Floodways", 
+			"otrans": [ 40, 41, 42, 43 ],
+			"clone": true 
 		}, { 
-			id: "postconstdist", 
-			name: "Post Construction Districts", 
-			ostreets: [ 6 ],
-			clone: true 
+			"id": "postconstdist", 
+			"name": "Post Construction Districts", 
+			"ostreets": [ 6 ],
+			"clone": true 
 		}, { 
-			id: "postconstbuff", 
-			name: "Post Construction Buffers", 
-			otrans: [ 38 ],
-			clone: false 
+			"id": "postconstbuff", 
+			"name": "Post Construction Buffers", 
+			"otrans": [ 38 ],
+			"clone": false 
 		}, { 
-			id: "strmwtrsheds", 
-			name: "Stream Watersheds", 
-			ostreets: [ 24 ],
-			clone: true 
+			"id": "strmwtrsheds", 
+			"name": "Stream Watersheds", 
+			"ostreets": [ 24 ],
+			"clone": true 
 		}, { 
-			id: "drnkwtrsheds", 
-			name: "Regulated Drinking Watersheds", 
-			ostreets: [ 36 ],
-			clone: true 
+			"id": "drnkwtrsheds", 
+			"name": "Regulated Drinking Watersheds", 
+			"ostreets": [ 36 ],
+			"clone": true 
 		}, { 
-			id: "soils", 
-			name: "Soils", 
-			ostreets: [ 30 ],
-			clone: true 
+			"id": "soils", 
+			"name": "Soils", 
+			"ostreets": [ 30 ],
+			"clone": true 
 		}, { 
-			id: "wtrqulbuff", 
-			name: "Water Quality Buffers(SWIM)", 
-			otrans: [ 39 ],
-			clone: true 		
+			"id": "wtrqulbuff", 
+			"name": "Water Quality Buffers(SWIM)", 
+			"otrans": [ 39 ],
+			"clone": true 		
 		},  { 
-			id: "mplcntmn", 
-			name: "County MPL Contamination Sites", 
-			otrans: [ 60 ],
-			clone: true 		
+			"id": "mplcntmn", 
+			"name": "County MPL Contamination Sites", 
+			"otrans": [ 60 ],
+			"clone": true 		
 		},  { 
-			id: "brwnflds", 
-			name: "NCDEQ Brownfields", 
-			otrans: [ 61 ],
-			clone: true 		
+			"id": "brwnflds", 
+			"name": "NCDEQ Brownfields", 
+			"otrans": [ 61 ],
+			"clone": true 		
 		}, { 
-			id: "lnddvlpmnt", 
-			name: "Land Development", 
-			type: "group", 
-			show: true,
-			ostreets: [ 0, 1, 2, 3, 4, 5, 14, 22 ],
-			otrans: [ 59 ],
-			children: [
-				{ _reference: "enggrid" },
-				{ _reference: "prelimplans" },
-				{ _reference: "comrclbldprog" },
-				{ _reference: "comrclbldcomp" },
-				{ _reference: "singfambldprog" },
-				{ _reference: "singfambldcomp" },
-				{ _reference: "multifambldprog" },
-				{ _reference: "multifambldcomp" },
-				{ _reference: "bipopprtuntyarea" }
+			"id": "lnddvlpmnt", 
+			"name": "Land Development", 
+			"type": "group", 
+			"show": true,
+			"ostreets": [ 0, 1, 2, 3, 4, 5, 14, 22 ],
+			"otrans": [ 59 ],
+			"children": [
+				{ "_reference": "enggrid" },
+				{ "_reference": "prelimplans" },
+				{ "_reference": "comrclbldprog" },
+				{ "_reference": "comrclbldcomp" },
+				{ "_reference": "singfambldprog" },
+				{ "_reference": "singfambldcomp" },
+				{ "_reference": "multifambldprog" },
+				{ "_reference": "multifambldcomp" },
+				{ "_reference": "bipopprtuntyarea" }
 			]
 		}, { 
-			id: "enggrid", 
-			name: "Engineering Map Grid", 
-			ostreets: [ 14 ]
+			"id": "enggrid", 
+			"name": "Engineering Map Grid", 
+			"ostreets": [ 14 ]
 		}, { 
-			id: "prelimplans", 
-			name: "Engineering Preliminary Plans", 
-			ostreets: [ 22 ]
+			"id": "prelimplans", 
+			"name": "Engineering Preliminary Plans", 
+			"ostreets": [ 22 ]
 		}, { 
-			id: "comrclbldprog", 
-			name: "Commercial Bldgs - In Progress(Last 365days)", 
-			ostreets: [ 0 ]
+			"id": "comrclbldprog", 
+			"name": "Commercial Bldgs - In Progress(Last 365days)", 
+			"ostreets": [ 0 ]
 		}, { 
-			id: "comrclbldcomp", 
-			name: "Commercial Bldgs - Completed(Last 365days)", 
-			ostreets: [ 1 ]
+			"id": "comrclbldcomp", 
+			"name": "Commercial Bldgs - Completed(Last 365days)", 
+			"ostreets": [ 1 ]
 		}, { 
-			id: "singfambldprog", 
-			name: "Single-Family Bldgs - In Progress(Last 365days)", 
-			ostreets: [ 2 ]
+			"id": "singfambldprog", 
+			"name": "Single-Family Bldgs - In Progress(Last 365days)", 
+			"ostreets": [ 2 ]
 		}, { 
-			id: "singfambldcomp", 
-			name: "Single-Family Bldgs - Completed(Last 365days)", 
-			ostreets: [ 3 ]
+			"id": "singfambldcomp", 
+			"name": "Single-Family Bldgs - Completed(Last 365days)", 
+			"ostreets": [ 3 ]
 		}, { 
-			id: "multifambldprog", 
-			name: "Multi-Family Bldgs - In Progress(Last 365days)", 
-			ostreets: [ 4 ]
+			"id": "multifambldprog", 
+			"name": "Multi-Family Bldgs - In Progress(Last 365days)", 
+			"ostreets": [ 4 ]
 		}, { 
-			id: "multifambldcomp", 
-			name: "Multi-Family Bldgs - Completed(Last 365days)", 
-			ostreets: [ 5 ]
+			"id": "multifambldcomp", 
+			"name": "Multi-Family Bldgs - Completed(Last 365days)", 
+			"ostreets": [ 5 ]
 		}, { 
-			id: "bipopprtuntyarea", 
-			name: "BIP Opportunity Area", 
-			otrans: [ 59 ]
+			"id": "bipopprtuntyarea", 
+			"name": "BIP Opportunity Area", 
+			"otrans": [ 59 ]
 		}, { 
-			id: "propcomp", 
-			name: "Property Comparables", 
-			type: "group",
-			show: true,			
-			otrans: [ 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 62 ],
-			children: [
-				{ _reference: "sales2020" },
-				{ _reference: "sales2019" },
-				{ _reference: "sales2018" },
-				{ _reference: "sales2017" },
-				{ _reference: "sales2016" },
-				{ _reference: "sales2015" }, 
-				{ _reference: "sales2014" }, 
-				{ _reference: "sales2013" },
-				{ _reference: "sales2012" },
-				{ _reference: "sales2011" },
-				{ _reference: "sales2010" }
+			"id": "propcomp", 
+			"name": "Property Comparables", 
+			"type": "group",
+			"show": true,			
+			"otrans": [ 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 62 ],
+			"children": [
+				{ "_reference": "sales2020" },
+				{ "_reference": "sales2019" },
+				{ "_reference": "sales2018" },
+				{ "_reference": "sales2017" },
+				{ "_reference": "sales2016" },
+				{ "_reference": "sales2015" }, 
+				{ "_reference": "sales2014" }, 
+				{ "_reference": "sales2013" },
+				{ "_reference": "sales2012" },
+				{ "_reference": "sales2011" },
+				{ "_reference": "sales2010" }
 			]
 		}, { 
-			id: "sales2020", 
-			name: "2020 Sales", 
-			otrans: [ 62 ]
+			"id": "sales2020", 
+			"name": "2020 Sales", 
+			"otrans": [ 62 ]
 		}, { 
-			id: "sales2019", 
-			name: "2019 Sales", 
-			otrans: [ 49 ]
+			"id": "sales2019", 
+			"name": "2019 Sales", 
+			"otrans": [ 49 ]
 		}, { 
-			id: "sales2018", 
-			name: "2018 Sales", 
-			otrans: [ 50 ]
+			"id": "sales2018", 
+			"name": "2018 Sales", 
+			"otrans": [ 50 ]
 		}, { 
-			id: "sales2017", 
-			name: "2017 Sales", 
-			otrans: [ 51 ]
+			"id": "sales2017", 
+			"name": "2017 Sales", 
+			"otrans": [ 51 ]
 		}, { 
-			id: "sales2016", 
-			name: "2016 Sales", 
-			otrans: [ 52 ]
+			"id": "sales2016", 
+			"name": "2016 Sales", 
+			"otrans": [ 52 ]
 		}, { 
-			id: "sales2015", 
-			name: "2015 Sales", 
-			otrans: [ 53 ]
+			"id": "sales2015", 
+			"name": "2015 Sales", 
+			"otrans": [ 53 ]
 		}, { 
-			id: "sales2014", 
-			name: "2014 Sales", 
-			otrans: [ 54 ]
+			"id": "sales2014", 
+			"name": "2014 Sales", 
+			"otrans": [ 54 ]
 		}, { 
-			id: "sales2013", 
-			name: "2013 Sales", 
-			otrans: [ 55 ]
+			"id": "sales2013", 
+			"name": "2013 Sales", 
+			"otrans": [ 55 ]
 		}, { 
-			id: "sales2012", 
-			name: "2012 Sales", 
-			otrans: [ 56 ]
+			"id": "sales2012", 
+			"name": "2012 Sales", 
+			"otrans": [ 56 ]
 		}, { 
-			id: "sales2011", 
-			name: "2011 Sales", 
-			otrans: [ 57 ]
+			"id": "sales2011", 
+			"name": "2011 Sales", 
+			"otrans": [ 57 ]
 		}, { 
-			id: "sales2010", 
-			name: "2010 Sales", 
-			otrans: [ 58 ]
+			"id": "sales2010", 
+			"name": "2010 Sales", 
+			"otrans": [ 58 ]
 		}, { 
-			id: "histgrp", 
-			name: "Historical", 
-			type: "group",
-			show: true,			
-			ostreets: [ 15, 16, 17, 18, 63 ],
-			children: [
-				{ _reference: "histcemeteries" }, 
-				{ _reference: "histdist" },
-				{ _reference: "histdist2" }, 
-				{ _reference: "histprop" }
+			"id": "histgrp", 
+			"name": "Historical", 
+			"type": "group",
+			"show": true,			
+			"ostreets": [ 15, 16, 17, 18, 63 ],
+			"children": [
+				{ "_reference": "histcemeteries" }, 
+				{ "_reference": "histdist" },
+				{ "_reference": "histdist2" }, 
+				{ "_reference": "histprop" }
 			]
 		}, { 
-			id: "histcemeteries", 
-			name: "Historic Cemeteries", 
-			ostreets: [ 16 ]
+			"id": "histcemeteries", 
+			"name": "Historic Cemeteries", 
+			"ostreets": [ 16 ]
 		}, { 
-			id: "histdist", 
-			name: "Historic Districts(Charlotte)", 
-			ostreets: [ 15 ]
+			"id": "histdist", 
+			"name": "Historic Districts(Charlotte)", 
+			"ostreets": [ 15 ]
 		}, { 
-			id: "histdist2", 
-			name: "Historic Districts(Davidson)", 
-			ostreets: [ 63 ]
+			"id": "histdist2", 
+			"name": "Historic Districts(Davidson)", 
+			"ostreets": [ 63 ]
 		}, { 
-			id: "histprop", 
-			name: "Historic Properties", 
-			ostreets: [ 17, 18 ]
+			"id": "histprop", 
+			"name": "Historic Properties", 
+			"ostreets": [ 17, 18 ]
 		}, { 
-			id: "transgrp", 
-			name: "Transportation", 
-			type: "group", 
-			show: true,
-			ostreets: [ 8, 9, 21, 35, 47, 48 ],
-			children: [
-				{ _reference: "cats" }, 
-				{ _reference: "trafficcnts" }, 
-				{ _reference: "ncroads" },
-				{ _reference: "bikelanes" }
+			"id": "transgrp", 
+			"name": "Transportation", 
+			"type": "group", 
+			"show": true,
+			"ostreets": [ 8, 9, 21, 35, 47, 48 ],
+			"children": [
+				{ "_reference": "cats" }, 
+				{ "_reference": "trafficcnts" }, 
+				{ "_reference": "ncroads" },
+				{ "_reference": "bikelanes" }
 			]
 		}, { 
-			id: "cats", 
-			name: "CATS Bus Routes and Stops", 
-			ostreets: [ 8, 9 ]
+			"id": "cats", 
+			"name": "CATS Bus Routes and Stops", 
+			"ostreets": [ 8, 9 ]
 		}, { 
-			id: "trafficcnts", 
-			name: "NC DOT Traffic Counts", 
-			ostreets: [ 21 ]
+			"id": "trafficcnts", 
+			"name": "NC DOT Traffic Counts", 
+			"ostreets": [ 21 ]
 		}, { 
-			id: "ncroads", 
-			name: "NC State Maintained Roads", 
-			ostreets: [ 35 ]
+			"id": "ncroads", 
+			"name": "NC State Maintained Roads", 
+			"ostreets": [ 35 ]
 		}, { 
-			id: "bikelanes", 
-			name: "Charlotte Bike Lanes", 
-			ostreets: [ 47, 48 ]
+			"id": "bikelanes", 
+			"name": "Charlotte Bike Lanes", 
+			"ostreets": [ 47, 48 ]
 		}, { 
-			id: "othrgrp", 
-			name: "Others", 
-			type: "group",
-			show: true,			
-			olabels: [ 6, 7, 5 ],
-			ostreets: [ 10, 19, 28, 29, 31, 32, 33, 34, 36 ],
-			otrans: [ 45, 46 ],
-			children: [
-				{ _reference: "censustracts" }, 
-				{ _reference: "easements" }, 
-				{ _reference: "fire" },
-				{ _reference: "police" },
-				{ _reference: "policerspns" },
-				{ _reference: "landuse" },
-				{ _reference: "publicprop" },
-				{ _reference: "monuments" },
-				{ _reference: "geodeticbuff" }
+			"id": "othrgrp", 
+			"name": "Others", 
+			"type": "group",
+			"show": true,			
+			"olabels": [ 6, 7, 5 ],
+			"ostreets": [ 10, 19, 28, 29, 31, 32, 33, 34, 36 ],
+			"otrans": [ 45, 46 ],
+			"children": [
+				{ "_reference": "censustracts" }, 
+				{ "_reference": "easements" }, 
+				{ "_reference": "fire" },
+				{ "_reference": "police" },
+				{ "_reference": "policerspns" },
+				{ "_reference": "landuse" },
+				{ "_reference": "publicprop" },
+				{ "_reference": "monuments" },
+				{ "_reference": "geodeticbuff" }
 			]
 		}, { 
-			id: "censustracts", 
-			name: "Census Tracts", 
-			ostreets: [ 10 ]
+			"id": "censustracts", 
+			"name": "Census Tracts", 
+			"ostreets": [ 10 ]
 		}, { 
-			id: "easements", 
-			name: "Easements - Interior Lot Lines", 
-			ostreets: [ 28, 29 ]
+			"id": "easements", 
+			"name": "Easements - Interior Lot Lines", 
+			"ostreets": [ 28, 29 ]
 		}, { 
-			id: "fire", 
-			name: "Fire Stations and Districts", 
-			olabels: [ 6, 7 ],
-			ostreets: [ 33 ]
+			"id": "fire", 
+			"name": "Fire Stations and Districts", 
+			"olabels": [ 6, 7 ],
+			"ostreets": [ 33 ]
 		}, { 
-			id: "police", 
-			name: "Police Offices and Divisions", 
-			olabels: [ 5 ],
-			ostreets: [ 31 ]
+			"id": "police", 
+			"name": "Police Offices and Divisions", 
+			"olabels": [ 5 ],
+			"ostreets": [ 31 ]
 		}, { 
-			id: "policerspns", 
-			name: "Police Response Areas", 
-			ostreets: [ 32 ]
+			"id": "policerspns", 
+			"name": "Police Response Areas", 
+			"ostreets": [ 32 ]
 		}, { 
-			id: "landuse", 
-			name: "Tax Parcel Landuse", 
-			ostreets: [ 19 ]
+			"id": "landuse", 
+			"name": "Tax Parcel Landuse", 
+			"ostreets": [ 19 ]
 		}, { 
-			id: "publicprop", 
-			name: "Public owned Properties", 
-			otrans: [ 46 ]
+			"id": "publicprop", 
+			"name": "Public owned Properties", 
+			"otrans": [ 46 ]
 		}, { 
-			id: "monuments", 
-			name: "NC Geodetic Monuments", 
-			ostreets: [ 34 ]
+			"id": "monuments", 
+			"name": "NC Geodetic Monuments", 
+			"ostreets": [ 34 ]
 		}, { 
-			id: "geodeticbuff", 
-			name: "2000ft Geodetic Buffers", 
-			otrans: [ 45 ]
+			"id": "geodeticbuff", 
+			"name": "2000ft Geodetic Buffers", 
+			"otrans": [ 45 ]
 		}
 	]
 }

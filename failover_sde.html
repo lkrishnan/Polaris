@@ -1,1722 +1,1718 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-		<meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>Polaris 3G</title>
-        <meta name="description" content="Polaris 3G Mecklenburg County Property Ownership and Land Records System">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta property="og:site_name" content="Polaris 3G" />
-		<meta property="og:type" content="website" />
-		<meta property="og:title" content="Property Ownership Land Records Information - Mecklenburg County, NC" />
-		<meta property="og:image" content="http://mapserver.mecklenburgcountync.gov/polaris3g/image/gislogo.png" />
-					
-		<!-- Place favicon and apple touch icon -->
-		<link rel="shortcut icon" href="favicon.ico">
-		<link rel="apple-touch-icon" href="apple-touch-icon.png">
-		
-		<!-- api CSS -->
-		<link rel="stylesheet" href="//js.arcgis.com/3.32/esri/css/esri.css">
-		<link rel="stylesheet" href="//js.arcgis.com/3.32/dijit/themes/tundra/tundra.css">
-			
-		<!-- plugin CSS -->
-		<link rel="stylesheet" href="js/vendor/cbtree/themes/tundra/tundra.css?foo=99999" />
-		
-		<!-- app CSS -->
-		<link rel="stylesheet" href="css/main.css?foo=99999" />
-	</head>
-	<body class="tundra">
-		<!-- Prompt IE<8 users to install Chrome Frame. -->
-		<!--[if lt IE 8]>
-			<div id="oldbrowserwarn">You are using an old browser. <a href="http://whatbrowser.org/">Upgrade your browser </a> for a better experience.</div>
-		<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Polaris 3G</title>
+	<meta name="description" content="Polaris 3G Mecklenburg County Property Ownership and Land Records System">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:site_name" content="Polaris 3G" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="Property Ownership Land Records Information - Mecklenburg County, NC" />
+	<meta property="og:image" content="http://mapserver.mecklenburgcountync.gov/polaris3g/image/gislogo.png" />
+				
+	<!-- Place favicon and apple touch icon -->
+	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="apple-touch-icon" href="apple-touch-icon.png">
 	
-		<!-- Map -->
-		<div id="map" class="unselectable">
+	<!-- api CSS -->
+	<link rel="stylesheet" href="//js.arcgis.com/3.32/esri/css/esri.css">
+	<link rel="stylesheet" href="//js.arcgis.com/3.32/dijit/themes/tundra/tundra.css">
+		
+	<!-- plugin CSS -->
+	<link rel="stylesheet" href="js/vendor/cbtree/themes/tundra/tundra.css?foo=99999" />
 	
-			<!-- Search -->
-			<div id="searchcont" class="shadow">
-			
-				<div id="mainsearchcont" >
-				</div>
-					
-				<div id="searchclear" class="unspin" >
-				</div>
-				
-				<div id="searchprogress" class="spin hidden">
-				</div>
-				
-				<div id="searchbtn" >
-				</div>
-					
-				<div id="searchoptions" >
-				
-					<div class="cont alignleft hidden-mobile">
-						<a href="javascript:void(0);" onclick="showDiv ( 'advsearch' );">Advanced Search</a>
-					</div>
-					<div class="cont alignleft mobile">
-						<a href="javascript:void(0);" onclick="showDiv ( 'advsearch' );">Adv Search</a>
-					</div>					
-					<div class="cont alignleft hidden-mobile">
-						<a href="javascript:void(0);" onclick="showDiv ( 'marketanalysis' );">Market Analysis</a>
-					</div>	
-					<div class="cont alignleft mobile">
-						<a href="javascript:void(0);" onclick="showDiv ( 'marketanalysis' );">Mrkt Analysis</a>
-					</div>
-					<div class="cont alignleft hidden-mobile">
-						<a href="javascript:void(0);" onclick="toggleSearchHelp()">Search Help</a>
-					</div>	
-					<div class="cont alignleft mobile">
-						<a href="javascript:void(0);" onclick="toggleSearchHelp()">Srch Help</a>
-					</div>
-					
-					<div class="fixalign"></div>
-					<div id="searchhelp" class="hidden">
-					
-						<div class="cont closeable">
-					
-							<div id="searchhelpclose" class="textright cont">
-								<img src="image/red-close.png" />
-							</div>
-												
-							<div>
-								<img src="image/tip.png" class="alignleft"/>
-								<div style="margin-left: 42px;">
-								
-									<h5>Tip 1:</h5>
-									<div>
-										Use the Search box to find your location. Just type the first part of what you're looking for 
-										and let the search control do the work for you. As an example, try typing 700 n. Then use your 
-										keyboard or mouse to select your match. You can search for:
-									</div>	
-									<ul>
-										<li>Addresses</li>
-										<li>Parcel IDs (Needs atleast the first 6 digits.)</li>
-										<li>GIS IDs (Needs the full C number.)</li>
-										<li>Owner Names (Should be entered as Last Name, First Name.)</li>
-										<li>Road Names (Adding prefix and suffix refines search.)</li>
-										<li>Street Intersections (Ex: Trade & Tryon. Omit street prefix, street type and street suffix.)</li>
-										<li>Landmarks (Parks, Libraries, Businesses, and others.)</li>
-									</ul>
-								</div>
-							</div>
+	<!-- app CSS -->
+	<link rel="stylesheet" href="css/main.css?foo=99999" />
+</head>
+<body class="tundra">
+	<!-- Prompt IE<8 users to install Chrome Frame. -->
+	<!--[if lt IE 8]>
+		<div id="oldbrowserwarn">You are using an old browser. <a href="http://whatbrowser.org/">Upgrade your browser </a> for a better experience.</div>
+	<![endif]-->
 
-							<div>
-								<img src="image/tip.png" class="alignleft"/>
-								<div style="margin-left: 42px;">						
-									<h5>Tip 2:</h5>
-									<div>
-										If nothing comes up in the dropdown list, click on the "Search Button" or just	
-										hit the "Enter" key in your keyboard to do a fall back search. The fallback search tries to find:
-									</div>	
-									<ul>
-										<li>Addresses (Addresses without house numbers are acceptable.)</li>
-										<li>Parcel IDs (Needs all 8 digits.)</li>
-										<li>GIS IDs (Needs full C number.)</li>
-										<li>Lat Lon (Ex: 35.11148, -80.86655)</li>
-										<li>XY Coordinate (Ex: 1511554.781, 525354.106)</li>
-									</ul>
-								
-								</div>	
-															
-							</div> 
+	<!-- Map -->
+	<div id="map" class="unselectable">
+
+		<!-- Search -->
+		<div id="searchcont" class="shadow">
+		
+			<div id="mainsearchcont" >
+			</div>
+				
+			<div id="searchclear" class="unspin" >
+			</div>
+			
+			<div id="searchprogress" class="spin hidden">
+			</div>
+			
+			<div id="searchbtn" >
+			</div>
+				
+			<div id="searchoptions" >
+			
+				<div class="cont alignleft hidden-mobile">
+					<a href="javascript:void(0);" onclick="showDiv ( 'advsearch' );">Advanced Search</a>
+				</div>
+				<div class="cont alignleft mobile">
+					<a href="javascript:void(0);" onclick="showDiv ( 'advsearch' );">Adv Search</a>
+				</div>					
+				<div class="cont alignleft hidden-mobile">
+					<a href="javascript:void(0);" onclick="showDiv ( 'marketanalysis' );">Market Analysis</a>
+				</div>	
+				<div class="cont alignleft mobile">
+					<a href="javascript:void(0);" onclick="showDiv ( 'marketanalysis' );">Mrkt Analysis</a>
+				</div>
+				<div class="cont alignleft hidden-mobile">
+					<a href="javascript:void(0);" onclick="toggleSearchHelp()">Search Help</a>
+				</div>	
+				<div class="cont alignleft mobile">
+					<a href="javascript:void(0);" onclick="toggleSearchHelp()">Srch Help</a>
+				</div>
+				
+				<div class="fixalign"></div>
+				<div id="searchhelp" class="hidden">
+				
+					<div class="cont closeable">
+				
+						<div id="searchhelpclose" class="textright cont">
+							<img src="image/red-close.png" />
+						</div>
+											
+						<div>
+							<img src="image/tip.png" class="alignleft"/>
+							<div style="margin-left: 42px;">
 							
-						</div>	
+								<h5>Tip 1:</h5>
+								<div>
+									Use the Search box to find your location. Just type the first part of what you're looking for 
+									and let the search control do the work for you. As an example, try typing 700 n. Then use your 
+									keyboard or mouse to select your match. You can search for:
+								</div>	
+								<ul>
+									<li>Addresses</li>
+									<li>Parcel IDs (Needs atleast the first 6 digits.)</li>
+									<li>GIS IDs (Needs the full C number.)</li>
+									<li>Owner Names (Should be entered as Last Name, First Name.)</li>
+									<li>Road Names (Adding prefix and suffix refines search.)</li>
+									<li>Street Intersections (Ex: Trade & Tryon. Omit street prefix, street type and street suffix.)</li>
+									<li>Landmarks (Parks, Libraries, Businesses, and others.)</li>
+								</ul>
+							</div>
+						</div>
+
+						<div>
+							<img src="image/tip.png" class="alignleft"/>
+							<div style="margin-left: 42px;">						
+								<h5>Tip 2:</h5>
+								<div>
+									If nothing comes up in the dropdown list, click on the "Search Button" or just	
+									hit the "Enter" key in your keyboard to do a fall back search. The fallback search tries to find:
+								</div>	
+								<ul>
+									<li>Addresses (Addresses without house numbers are acceptable.)</li>
+									<li>Parcel IDs (Needs all 8 digits.)</li>
+									<li>GIS IDs (Needs full C number.)</li>
+									<li>Lat Lon (Ex: 35.11148, -80.86655)</li>
+									<li>XY Coordinate (Ex: 1511554.781, 525354.106)</li>
+								</ul>
+							
+							</div>	
+														
+						</div> 
 						
-					</div>
+					</div>	
 					
 				</div>
-							
+				
 			</div>
-					
-			<!-- Toolbox -->
-			<div id="toolbox">
-			</div>
-											
-			<!-- Basemap Toggle -->
-			<div id="basemapswitch">
-			</div>
-			
-			<!-- Searching GIF -->
-			<div id="searching" class="spin hidden">
-				<img src="image/loading.gif" />
-			</div>
-			
-			<!-- Touch Scrollers -->
-			<div id="scrolltodataleft" class="iphonebadge tablet">
-				Data
-			</div>									
-			<div id="scrolltodataright" class="iphonebadge tablet">
-				Data
-			</div>									
+						
+		</div>
+				
+		<!-- Toolbox -->
+		<div id="toolbox">
+		</div>
+										
+		<!-- Basemap Toggle -->
+		<div id="basemapswitch">
 		</div>
 		
-		<!-- Aside -->
-		<div id="aside" class="shadow">
+		<!-- Searching GIF -->
+		<div id="searching" class="spin hidden">
+			<img src="image/loading.gif" />
+		</div>
 		
-			<!-- Header -->
-			<div id="header" class="unselectable">
+		<!-- Touch Scrollers -->
+		<div id="scrolltodataleft" class="iphonebadge tablet">
+			Data
+		</div>									
+		<div id="scrolltodataright" class="iphonebadge tablet">
+			Data
+		</div>									
+	</div>
+	
+	<!-- Aside -->
+	<div id="aside" class="shadow">
+	
+		<!-- Header -->
+		<div id="header" class="unselectable">
+		</div>
+		
+		<!-- Menu -->
+		<div id="menu" class="textcenter cont unselectable" >
+			<div class="toplinkcont alignleft">
+				<a href="https://www.youtube.com/playlist?list=PLB4an5GfqfkM7vvP2Obv4bUzKNmWFr5Q5&feature=em-share_playlist_user" target="_blank">Tutorials</a>
+			</div>
+			<div class="toplinkcont alignleft">
+				<a href="data/POLARIS3GQUICKTIPS.pdf" target="_blank">Quick Tips</a>
+			</div>
+			<div class="toplinkcont alignleft">
+				<a href="javascript:void(0);" class="redlink" onclick="showIssueForm( );">Report Issues</a>
+			</div>
+			<div class="toplinkcont alignleft">
+				<a href="https://maps.mecklenburgcountync.gov/polarisapps/" target="_blank" class="greenlink">More Map Apps</a>
+			</div>
+			<div class="fixalign"></div>
+		</div>
+								
+		<!-- Navigation -->
+		<div class="cont">
+			<div id="navredoanalysis" class="navcont alignleft hidden">
+				<a href="javascript:void(0);" onclick="showDiv ( 'marketanalysis' );" class="btnlink">Redo Analysis</a>
+			</div>
+			<div id="navredoadvsearch" class="navcont alignleft hidden">
+				<a href="javascript:void(0);" onclick="showDiv ( 'advsearch' );" class="btnlink">Redo Search</a>
+			</div>
+			<div id="navsrchresults" class="navcont alignleft hidden">
+				<a href="javascript:void(0);" onclick="showDiv ( 'searchresults' );" class="btnlink"><span class="hidden-mobile">Search </span>Results</a>
+			</div>
+			<div id="navpropdetails" class="navcont alignleft hidden">
+				<a href="javascript:void(0);" onclick="showDiv ( 'propdetails' );" class="btnlink" >Prop<span class="hidden-mobile">erty</span> Details</a>
+			</div>
+			<div id="navlayers" class="navcont alignleft hidden">
+				<a class="btnlink" href="javascript:void(0);"  onclick="showDiv ( 'layers' );showTip ( 'toomanylayers' );">Layers<span class="hidden-mobile">/Labels</span></a>
+			</div>
+			<div id="navdictionary" class="navcont alignleft">
+				<a href="javascript:void(0);" onclick="window.open('maplayers_dictionary.html', 'MapLayer_Dictionary', 'location=1,status=1,scrollbars=1,width=620,height=650');" class="btnlink">Lyr Dictionary</a>
+			</div>
+			<div id="navlegend" class="navcont alignleft">
+				<a class="btnlink" href="javascript:void(0);" onclick="showDiv ( 'legend' );">Legend</a>
+			</div>
+			<div id="navpropinforeport" class="navcont alignleft hidden">
+				<a id="clickpropinforeport" class="btnlink" href="javascript:void(0);" target="_blank">Prop<span class="hidden-mobile">erty</span> Summary</a>
+			</div>
+			<div id="navpropreport" class="navcont alignleft hidden">
+				<a id="clickpropreport" class="btnlink" href="javascript:void(0);" target="_blank">Prop<span class="hidden-mobile">erty</span> Report</a>
+			</div>					
+			<div id="navdeedreport" class="navcont alignleft hidden">
+				<a id="clickdeedreport" href="javascript:void(0);" class="btnlink" target="_blank">Deed Report</a>
+			</div>					
+			<div id="navdeedcsv" class="navcont alignleft hidden">
+				<a id="clickdeedcsv" href="javascript:void(0);" class="btnlink" target="_blank">Deed CSV</a>
+			</div>
+			<div id="navzoomprop" class="navcont alignleft hidden">
+				<a href="javascript:void(0);" onclick="zoom.toSelectedParcel();" class="btnlink">Zoom<span class="hidden-mobile"> To</span></a>
+			</div>
+			<div class="fixalign"></div>
+		</div>
+
+		<!-- Issue -->
+		<div id="issue" class="fancycont hidden">
+			<h4>Report Issue</h4>
+			<div id="issueclose" class="textright">
+				<img src="image/red-close.png" />
+			</div>
+			<ol>
+				<li>Mailing address is wrong -> <a href='https://mecklenburgcountync-563955.workflowcloud.com/forms/52863dfb-3c52-4d91-a1c8-9d97ae2f5a7f' target='_blank' class='greenlink' >Request Change</a></li>
+				<li>Property info or map is wrong -> <a href="https://mecklenburgcountync-563955.workflowcloud.com/forms/d024bf6c-b9b0-4cf5-a7d9-7ac376f0370c" target="_blank" class="greenlink">Request Change</a></li>
+				<li>Download map layers that you see -> <a href="http://maps.co.mecklenburg.nc.us/openmapping" target="_blank" class="greenlink">Get it here</a></li>
+				<li>Website issues -> <a href="https://mecklenburgcountync-563955.workflowcloud.com/forms/7e935f44-bba6-4a6c-9887-de89bae68c8c" target="_blank" class="greenlink">Let us know</a></li>
+			</ol> 
+		</div>
+				
+		<!-- Data -->
+		<div id="datamain">
+			<!-- Error -->
+			<div id="error" class="unselectable cont note textcenter hidden">
+				<img src='image/sadface.png' />
+				No Results found!
 			</div>
 			
-			<!-- Menu -->
-			<div id="menu" class="textcenter cont unselectable" >
-				<div class="toplinkcont alignleft">
-					<a href="https://www.youtube.com/playlist?list=PLB4an5GfqfkM7vvP2Obv4bUzKNmWFr5Q5&feature=em-share_playlist_user" target="_blank">Tutorials</a>
-				</div>
-				<div class="toplinkcont alignleft">
-					<a href="data/POLARIS3GQUICKTIPS.pdf" target="_blank">Quick Tips</a>
-				</div>
-				<div class="toplinkcont alignleft">
-					<a href="javascript:void(0);" class="redlink" onclick="showIssueForm( );">Report Issues</a>
-				</div>
-				<div class="toplinkcont alignleft">
-					<a href="https://maps.mecklenburgcountync.gov/polarisapps/" target="_blank" class="greenlink">More Map Apps</a>
-				</div>
-				<div class="fixalign"></div>
+			<!-- Tip -->
+			<div id="tip" class="unselectable cont advisory textcenter hidden hidden-mobile">
 			</div>
+			
+			<!-- Layer List -->
+			<div id="layers" class="unselectable">
+				<div class="fancycont first">
+					<h4>Overlay Toggle</h4>
+					<div id="layerstree" class="cont unselectable">
+					</div>
+				</div>	
+			</div>	
+			
+			<!-- Legend -->
+			<div id="legend" class="unselectable hidden">
 									
-			<!-- Navigation -->
-			<div class="cont">
-				<div id="navredoanalysis" class="navcont alignleft hidden">
-					<a href="javascript:void(0);" onclick="showDiv ( 'marketanalysis' );" class="btnlink">Redo Analysis</a>
-				</div>
-				<div id="navredoadvsearch" class="navcont alignleft hidden">
-					<a href="javascript:void(0);" onclick="showDiv ( 'advsearch' );" class="btnlink">Redo Search</a>
-				</div>
-				<div id="navsrchresults" class="navcont alignleft hidden">
-					<a href="javascript:void(0);" onclick="showDiv ( 'searchresults' );" class="btnlink"><span class="hidden-mobile">Search </span>Results</a>
-				</div>
-				<div id="navpropdetails" class="navcont alignleft hidden">
-					<a href="javascript:void(0);" onclick="showDiv ( 'propdetails' );" class="btnlink" >Prop<span class="hidden-mobile">erty</span> Details</a>
-				</div>
-				<div id="navlayers" class="navcont alignleft hidden">
-					<a class="btnlink" href="javascript:void(0);"  onclick="showDiv ( 'layers' );showTip ( 'toomanylayers' );">Layers<span class="hidden-mobile">/Labels</span></a>
-				</div>
-				<div id="navdictionary" class="navcont alignleft">
-					<a href="javascript:void(0);" onclick="window.open('maplayers_dictionary.html', 'MapLayer_Dictionary', 'location=1,status=1,scrollbars=1,width=620,height=650');" class="btnlink">Lyr Dictionary</a>
-				</div>
-				<div id="navlegend" class="navcont alignleft">
-					<a class="btnlink" href="javascript:void(0);" onclick="showDiv ( 'legend' );">Legend</a>
-				</div>
-				<div id="navpropinforeport" class="navcont alignleft hidden">
-					<a id="clickpropinforeport" class="btnlink" href="javascript:void(0);" target="_blank">Prop<span class="hidden-mobile">erty</span> Summary</a>
-				</div>
-				<div id="navpropreport" class="navcont alignleft hidden">
-					<a id="clickpropreport" class="btnlink" href="javascript:void(0);" target="_blank">Prop<span class="hidden-mobile">erty</span> Report</a>
-				</div>					
-				<div id="navdeedreport" class="navcont alignleft hidden">
-					<a id="clickdeedreport" href="javascript:void(0);" class="btnlink" target="_blank">Deed Report</a>
-				</div>					
-				<div id="navdeedcsv" class="navcont alignleft hidden">
-					<a id="clickdeedcsv" href="javascript:void(0);" class="btnlink" target="_blank">Deed CSV</a>
-				</div>
-				<div id="navzoomprop" class="navcont alignleft hidden">
-					<a href="javascript:void(0);" onclick="zoom.toSelectedParcel();" class="btnlink">Zoom<span class="hidden-mobile"> To</span></a>
-				</div>
-				<div class="fixalign"></div>
-			</div>
-
-			<!-- Issue -->
-			<div id="issue" class="fancycont hidden">
-				<h4>Report Issue</h4>
-				<div id="issueclose" class="textright">
-					<img src="image/red-close.png" />
-				</div>
-				<ol>
-					<li>Mailing address is wrong -> <a href='https://mecklenburgcountync-563955.workflowcloud.com/forms/52863dfb-3c52-4d91-a1c8-9d97ae2f5a7f' target='_blank' class='greenlink' >Request Change</a></li>
-					<li>Property info or map is wrong -> <a href="https://mecklenburgcountync-563955.workflowcloud.com/forms/d024bf6c-b9b0-4cf5-a7d9-7ac376f0370c" target="_blank" class="greenlink">Request Change</a></li>
-					<li>Download map layers that you see -> <a href="http://maps.co.mecklenburg.nc.us/openmapping" target="_blank" class="greenlink">Get it here</a></li>
-					<li>Website issues -> <a href="https://mecklenburgcountync-563955.workflowcloud.com/forms/7e935f44-bba6-4a6c-9887-de89bae68c8c" target="_blank" class="greenlink">Let us know</a></li>
-				</ol> 
-			</div>
+				<!-- Overlay Legend -->
+				<div class="fancycont first">
+				
+					<h4>Overlay Legend</h4>
+											
+					<div id="overlaylegend" class="cont">
+					</div>
 					
-			<!-- Data -->
-			<div id="datamain">
-				<!-- Error -->
-				<div id="error" class="unselectable cont note textcenter hidden">
-					<img src='image/sadface.png' />
-					No Results found!
-				</div>
-				
-				<!-- Tip -->
-				<div id="tip" class="unselectable cont advisory textcenter hidden hidden-mobile">
-				</div>
-				
-				<!-- Layer List -->
-				<div id="layers" class="unselectable">
-					<div class="fancycont first">
-						<h4>Overlay Toggle</h4>
-						<div id="layerstree" class="cont unselectable">
-						</div>
-					</div>	
 				</div>	
 				
-				<!-- Legend -->
-				<div id="legend" class="unselectable hidden">
+				<!-- Basemap Legend -->
+				<div class="fancycont first">
+				
+					<h4>Basemap Legend</h4>
+											
+					<div id="basemaplegend" class="cont">
+					</div>
+					
+				</div>	
+													
+			</div>
+			
+			<!-- Search Results -->
+			<div id="searchresults" class="hidden">
+				
+				<div id="error" class="unselectable cont note textcenter">
+					<img src='image/sadface.png' />
+					No Search Results available!
+				</div>
+				
+			</div>
+			
+			<!-- Identify Layers -->
+			<div id="idlayers" class="hidden">
+			
+				<div class="fancycont first">
+			
+					<h4>Location</h4>
+				
+					<div id="idlayerloccont" class="cont">
+					</div>
+					
+				</div>
+				
+				<div class="fancycont first">
+			
+					<h4>Drill Down Layer List</h4>
+					
+					<div class="cont note">
+						Choose a layer from the dropdown to see field values.
+					</div>
+											
+					<div class="cont">
+						<select id="idlayerlist" class="max">
+							<option value="0" selected>Jurisdictions</option> 
+							<option value="1">Master Address Table</option>
+							<option value="2">Streets</option>
+							<option value="3">Building Footprints</option>
+							<option value="4">Spheres of Influence</option>
+							<option value="5">Voter Precincts</option>
+							<option value="6">Zoning</option>
+							<option value="7">Zipcodes</option>
+							<option value="8">FEMA Floodplain</option>
+							<option value="9">Community Floodplain</option>
+							<option value="10">Post Construction Districts</option>
+							<option value="11">Post Construction Buffers</option>
+							<option value="12">Stream Watersheds</option>
+							<option value="13">Regulated Drinking Watersheds</option>
+							<option value="14">Water Quality Buffers</option>
+							<option value="15">Census Tracts</option> 
+							<option value="19">Census Block Groups</option>
+							<option value="16">Engineering Grid</option> 
+							<option value="17">Engineering Preliminary Plans</option> 
+							<option value="18">NC Geodetic Monuments</option>
+							<option value="20">Commercial Bldgs-InProgress(Last 365days)</option>
+							<option value="21">Commercial Bldgs-Completed(Last 365days)</option>
+							<option value="22">Single-Family Bldgs-InProgress(Last 365days)</option>
+							<option value="23">Single-Family Bldgs-Completed(Last 365days)</option>
+							<option value="24">Multi-Family Bldgs-InProgress(Last 365days)</option>
+							<option value="25">Multi-Family Bldgs-Completed(Last 365days)</option>
+						</select>
+					</div>
+					
+				</div>	
+				
+				<div class="fancycont first">
+			
+					<h4>Fields</h4>
 										
-					<!-- Overlay Legend -->
-					<div class="fancycont first">
+					<div id="idlayerdatacont" class="cont">
+					</div>
 					
-						<h4>Overlay Legend</h4>
-												
-						<div id="overlaylegend" class="cont">
-						</div>
-						
-					</div>	
-					
-					<!-- Basemap Legend -->
-					<div class="fancycont first">
-					
-						<h4>Basemap Legend</h4>
-												
-						<div id="basemaplegend" class="cont">
-						</div>
-						
-					</div>	
-														
-				</div>
+				</div>	
 				
-				<!-- Search Results -->
-				<div id="searchresults" class="hidden">
-					
-					<div id="error" class="unselectable cont note textcenter">
-						<img src='image/sadface.png' />
-						No Search Results available!
+			</div>
+			
+			<!-- Point of Interest -->
+			<div id="poi" class="hidden">
+			
+				<div class="fancycont first">
+			
+					<h4>Point of Interest</h4>
+				
+					<div id="poicont" class="cont">
 					</div>
 					
 				</div>
+			
+			</div>
+			
+			<!-- Advanced Search -->
+			<div id="advsearch" class="hidden">
+			
+				<!-- Tax Situs Address Search -->
+				<div class="fancycont first">
+			
+					<h4>Tax Situs Address Search</h4>
 				
-				<!-- Identify Layers -->
-				<div id="idlayers" class="hidden">
-				
-					<div class="fancycont first">
-				
-						<h4>Location</h4>
-					
-						<div id="idlayerloccont" class="cont">
-						</div>
+					<div id="situsaddrsearch" class="cont">
+													
+						<table>
 						
+							<tr>
+								<th>
+									<label for="situsaddrno">House No</label>
+								</th>
+								<td>
+									<input type="text" id="situsaddrno" placeholder="Optional" class="medium">
+								</td>
+							</tr>
+							<tr>
+								<th>
+									<label for="situsprefix">Prefix</label>
+								</th>
+								<td>
+									<select id="situsprefix" class="small">
+										<option value="" selected></option>
+										<option value="N">North</option>
+										<option value="E">East</option>
+										<option value="W">West</option>
+										<option value="S">South</option>
+									</select>
+								</td>
+							</tr>	
+							<tr>
+								<th>
+									<label for="situsst">Street</label>
+								</th>
+								<td>
+									<div id="situsstCont"></div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">&nbsp;</td>
+							</tr>
+							<tr>
+								<th>
+									<label for="situssttype">Street Type</label>
+								</th>
+								<td>
+									<select id="situssttype" class="small">
+										<option value="" selected></option>
+										<option value="AL">AL</option>
+										<option value="AV">AV</option>
+										<option value="BV">BV</option>
+										<option value="BY">BY</option>
+										<option value="CR">CR</option>
+										<option value="CS">CS</option>
+										<option value="CT">CT</option>
+										<option value="CV">CV</option>
+										<option value="DR">DR</option>
+										<option value="HY">HY</option>
+										<option value="LN">LN</option>
+										<option value="LP">LP</option>
+										<option value="PL">PL</option>
+										<option value="PY">PY</option>
+										<option value="RA">RA</option>
+										<option value="RD">RD</option>
+										<option value="RN">RN</option>
+										<option value="RW">RW</option>
+										<option value="ST">ST</option>
+										<option value="TC">TC</option>
+										<option value="TL">TL</option>
+										<option value="TR">TR</option>
+										<option value="WY">WY</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<th>
+									<label for="situssuffix">Suffix</label>
+								</th>
+								<td>
+									<select id="situssuffix" class="small">
+										<option value="" selected></option>
+										<option value="PVT">PVT</option>
+										<option value="EAST">EAST</option>    
+										<option value="EXT">EXT</option>     
+										<option value="NORTH">NORTH</option>   
+										<option value="SOUTH">SOUTH</option>   
+										<option value="WEST">WEST</option>	
+									</select>	
+								</td>
+							</tr>
+							<tr>
+								<th>
+									<label for="situsmuni">Jurisdiction</label>
+								</th>
+								<td>
+									<select id="situsmuni" class="max">	
+										<option value="" selected></option>
+										<option value="CHARLOTTE">Charlotte</option>
+										<option value="CORNELIUS">Cornelius</option>
+										<option value="DAVIDSON">Davidson</option>
+										<option value="HUNTERSVILLE">Huntersville</option>
+										<option value="MATTHEWS">Matthews</option>
+										<option value="MINT HILL">Mint Hill</option>
+										<option value="PINEVILLE">Pineville</option>
+										<option value="STALLINGS">Stallings</option>
+										<option value="UNINC">Mecklenburg</option>
+									</select>	
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<div id="situssearcherror" class="alignleft searcherror"></div>
+									<div class="alignright">
+										<img id="situssearchprogress" class="spin hidden" src="image/spin.gif" />
+										<input type="button" id="situssearchclear" value="Clear">&nbsp;
+										<input type="button" id="situssearchbtn" value="Search">
+									</div>	
+									<div class="fixalign"></div>
+								</td>
+							</tr>
+						</table>
+													
 					</div>
-					
-					<div class="fancycont first">
-				
-						<h4>Drill Down Layer List</h4>
-						
-						<div class="cont note">
-							Choose a layer from the dropdown to see field values.
-						</div>
-												
-						<div class="cont">
-							<select id="idlayerlist" class="max">
-								<option value="0" selected>Jurisdictions</option> 
-								<option value="1">Master Address Table</option>
-								<option value="2">Streets</option>
-								<option value="3">Building Footprints</option>
-								<option value="4">Spheres of Influence</option>
-								<option value="5">Voter Precincts</option>
-								<option value="6">Zoning</option>
-								<option value="7">Zipcodes</option>
-								<option value="8">FEMA Floodplain</option>
-								<option value="9">Community Floodplain</option>
-								<option value="10">Post Construction Districts</option>
-								<option value="11">Post Construction Buffers</option>
-								<option value="12">Stream Watersheds</option>
-								<option value="13">Regulated Drinking Watersheds</option>
-								<option value="14">Water Quality Buffers</option>
-								<option value="15">Census Tracts</option> 
-								<option value="19">Census Block Groups</option>
-								<option value="16">Engineering Grid</option> 
-								<option value="17">Engineering Preliminary Plans</option> 
-								<option value="18">NC Geodetic Monuments</option>
-								<option value="20">Commercial Bldgs-InProgress(Last 365days)</option>
-								<option value="21">Commercial Bldgs-Completed(Last 365days)</option>
-								<option value="22">Single-Family Bldgs-InProgress(Last 365days)</option>
-								<option value="23">Single-Family Bldgs-Completed(Last 365days)</option>
-								<option value="24">Multi-Family Bldgs-InProgress(Last 365days)</option>
-								<option value="25">Multi-Family Bldgs-Completed(Last 365days)</option>
-							</select>
-						</div>
-						
-					</div>	
-					
-					<div class="fancycont first">
-				
-						<h4>Fields</h4>
-											
-						<div id="idlayerdatacont" class="cont">
-						</div>
-						
-					</div>	
 					
 				</div>
+			
+				<!-- Owner Search -->
+				<div class="fancycont first">
+			
+					<h4>Owner Search</h4>
 				
-				<!-- Point of Interest -->
-				<div id="poi" class="hidden">
-				
-					<div class="fancycont first">
-				
-						<h4>Point of Interest</h4>
+					<div id="ownersearch" class="cont">
 					
-						<div id="poicont" class="cont">
-						</div>
-						
+						<table>
+							<tr>
+								<th>
+									<label for="lastname">Last Name / Business Name</label>
+								</th>
+								<td>
+									<input type="text" id="lastname" class="max" placeholder="Required">
+								</td>	
+							</tr>
+							<tr>
+								<th>
+									<label for="lastname">First Name</label>
+								</th>
+								<td>
+									<input type="text" id="firstname" class="max" placeholder="Optional">
+								</td>	
+							</tr>
+							<tr>
+								<td colspan="2">
+									<div id="onamesearcherror" class="alignleft searcherror"></div>
+									<div class="alignright">
+										<img id="onamesearchprogress" class="spin hidden" src="image/spin.gif" />
+										<input type="button" id="onamesearchclear" value="Clear">&nbsp;
+										<input type="button" id="onamesearchbtn" value="Search">
+									</div>	
+									<div class="fixalign"></div>
+								</td>
+							</tr>
+						</table>
+													
 					</div>
-				
+					
 				</div>
-				
-				<!-- Advanced Search -->
-				<div id="advsearch" class="hidden">
-				
-					<!-- Tax Situs Address Search -->
-					<div class="fancycont first">
-				
-						<h4>Tax Situs Address Search</h4>
-					
-						<div id="situsaddrsearch" class="cont">
-														
-							<table>
-							
-								<tr>
-									<th>
-										<label for="situsaddrno">House No</label>
-									</th>
-									<td>
-										<input type="text" id="situsaddrno" placeholder="Optional" class="medium">
-									</td>
-								</tr>
-								<tr>
-									<th>
-										<label for="situsprefix">Prefix</label>
-									</th>
-									<td>
-										<select id="situsprefix" class="small">
-											<option value="" selected></option>
-											<option value="N">North</option>
-											<option value="E">East</option>
-											<option value="W">West</option>
-											<option value="S">South</option>
-										</select>
-									</td>
-								</tr>	
-								<tr>
-									<th>
-										<label for="situsst">Street</label>
-									</th>
-									<td>
-										<div id="situsstCont"></div>
-									</td>
-								</tr>
-								<tr>
-									<td colspan="2">&nbsp;</td>
-								</tr>
-								<tr>
-									<th>
-										<label for="situssttype">Street Type</label>
-									</th>
-									<td>
-										<select id="situssttype" class="small">
-											<option value="" selected></option>
-											<option value="AL">AL</option>
-											<option value="AV">AV</option>
-											<option value="BV">BV</option>
-											<option value="BY">BY</option>
-											<option value="CR">CR</option>
-											<option value="CS">CS</option>
-											<option value="CT">CT</option>
-											<option value="CV">CV</option>
-											<option value="DR">DR</option>
-											<option value="HY">HY</option>
-											<option value="LN">LN</option>
-											<option value="LP">LP</option>
-											<option value="PL">PL</option>
-											<option value="PY">PY</option>
-											<option value="RA">RA</option>
-											<option value="RD">RD</option>
-											<option value="RN">RN</option>
-											<option value="RW">RW</option>
-											<option value="ST">ST</option>
-											<option value="TC">TC</option>
-											<option value="TL">TL</option>
-											<option value="TR">TR</option>
-											<option value="WY">WY</option>
-										</select>
-									</td>
-								</tr>
-								<tr>
-									<th>
-										<label for="situssuffix">Suffix</label>
-									</th>
-									<td>
-										<select id="situssuffix" class="small">
-											<option value="" selected></option>
-											<option value="PVT">PVT</option>
-											<option value="EAST">EAST</option>    
-											<option value="EXT">EXT</option>     
-											<option value="NORTH">NORTH</option>   
-											<option value="SOUTH">SOUTH</option>   
-											<option value="WEST">WEST</option>	
-										</select>	
-									</td>
-								</tr>
-								<tr>
-									<th>
-										<label for="situsmuni">Jurisdiction</label>
-									</th>
-									<td>
-										<select id="situsmuni" class="max">	
-											<option value="" selected></option>
-											<option value="CHARLOTTE">Charlotte</option>
-											<option value="CORNELIUS">Cornelius</option>
-											<option value="DAVIDSON">Davidson</option>
-											<option value="HUNTERSVILLE">Huntersville</option>
-											<option value="MATTHEWS">Matthews</option>
-											<option value="MINT HILL">Mint Hill</option>
-											<option value="PINEVILLE">Pineville</option>
-											<option value="STALLINGS">Stallings</option>
-											<option value="UNINC">Mecklenburg</option>
-										</select>	
-									</td>
-								</tr>
-								<tr>
-									<td colspan="2">
-										<div id="situssearcherror" class="alignleft searcherror"></div>
-										<div class="alignright">
-											<img id="situssearchprogress" class="spin hidden" src="image/spin.gif" />
-											<input type="button" id="situssearchclear" value="Clear">&nbsp;
-											<input type="button" id="situssearchbtn" value="Search">
-										</div>	
-										<div class="fixalign"></div>
-									</td>
-								</tr>
-							</table>
-														
-						</div>
-						
-					</div>
-				
-					<!-- Owner Search -->
-					<div class="fancycont first">
-				
-						<h4>Owner Search</h4>
-					
-						<div id="ownersearch" class="cont">
-						
-							<table>
-								<tr>
-									<th>
-										<label for="lastname">Last Name / Business Name</label>
-									</th>
-									<td>
-										<input type="text" id="lastname" class="max" placeholder="Required">
-									</td>	
-								</tr>
-								<tr>
-									<th>
-										<label for="lastname">First Name</label>
-									</th>
-									<td>
-										<input type="text" id="firstname" class="max" placeholder="Optional">
-									</td>	
-								</tr>
-								<tr>
-									<td colspan="2">
-										<div id="onamesearcherror" class="alignleft searcherror"></div>
-										<div class="alignright">
-											<img id="onamesearchprogress" class="spin hidden" src="image/spin.gif" />
-											<input type="button" id="onamesearchclear" value="Clear">&nbsp;
-											<input type="button" id="onamesearchbtn" value="Search">
-										</div>	
-										<div class="fixalign"></div>
-									</td>
-								</tr>
-							</table>
-														
-						</div>
-						
-					</div>
 
-					<!-- Buffer Search -->
-					<div class="fancycont first">
+				<!-- Buffer Search -->
+				<div class="fancycont first">
+			
+					<h4>Buffer Search</h4>
 				
-						<h4>Buffer Search</h4>
+					<div id="buffersearch" class="cont">
 					
-						<div id="buffersearch" class="cont">
-						
-							<table>
-								<tr>
-									<th>
-										<label for="buffersize">Buffer Size</label>
-									</th>
-									<td>
-										<input type="text" id="buffersize" class="medium" placeholder="Required" />&nbsp;ft
-										<span class="note">(Within (0-5280) ft.)</span>
-									</td>	
-								</tr>
-								<tr>
-									<td colspan="2">
-										<div id="buffersearcherror" class="alignleft searcherror"></div>
-										<div class="alignright">
-											<img id="buffersearchprogress" class="spin hidden" src="image/spin.gif" />
-											<input type="button" id="buffersearchclear" value="Clear">&nbsp;
-											<input type="button" id="buffersearchbtn" value="Search">
-										</div>	
-										<div class="fixalign"></div>
-									</td>
-								</tr>
-							</table>
-														
-						</div>
-						
-					</div>						
-						
-					<!-- Preliminary Plan Search -->
-					<div class="fancycont first">
-				
-						<h4>Preliminary Plan Search</h4>
-												
-						<div class="cont">
-						
-							<table>
-								<tr>
-									<td>
-										<select id="prelimplansearch" class="max"></select>
-									</td>	
-									<td class="right">
-										<input type="button" id="prelimplansearchbtn" value="Search">
-									</td>	
-								</tr>
-							</table>	
-							
-						</div>
-						
-					</div>	
-					
-					<!-- Engineering Grid Search -->
-					<div class="fancycont first">
-				
-						<h4>Engineering Grid Search</h4>
-												
-						<div class="cont">
-						
-							<table>
-								<tr>
-									<td>
-										<select id="enggridsearch" class="max">
-											<option value="A34" selected>A34</option>
-											<option value="A35">A35</option>
-											<option value="A36">A36</option>
-											<option value="A38">A38</option>
-											<option value="A39">A39</option>
-											<option value="A40">A40</option>
-											<option value="A41">A41</option>
-											<option value="A42">A42</option>
-											<option value="A43">A43</option>
-											<option value="B34">B34</option>
-											<option value="B35">B35</option>
-											<option value="B36">B36</option>
-											<option value="B37">B37</option>
-											<option value="B38">B38</option>
-											<option value="B39">B39</option>
-											<option value="B40">B40</option>
-											<option value="B41">B41</option>
-											<option value="B42">B42</option>
-											<option value="B43">B43</option>
-											<option value="C21">C21</option>
-											<option value="C22">C22</option>
-											<option value="C23">C23</option>
-											<option value="C24">C24</option>
-											<option value="C25">C25</option>
-											<option value="C26">C26</option>
-											<option value="C27">C27</option>
-											<option value="C28">C28</option>
-											<option value="C29">C29</option>
-											<option value="C30">C30</option>
-											<option value="C31">C31</option>
-											<option value="C32">C32</option>
-											<option value="C33">C33</option>
-											<option value="C34">C34</option>
-											<option value="C35">C35</option>
-											<option value="C36">C36</option>
-											<option value="C37">C37</option>
-											<option value="C38">C38</option>
-											<option value="C39">C39</option>
-											<option value="C40">C40</option>
-											<option value="C41">C41</option>
-											<option value="C42">C42</option>
-											<option value="D13">D13</option>
-											<option value="D14">D14</option>
-											<option value="D18">D18</option>
-											<option value="D19">D19</option>
-											<option value="D20">D20</option>
-											<option value="D21">D21</option>
-											<option value="D22">D22</option>
-											<option value="D23">D23</option>
-											<option value="D24">D24</option>
-											<option value="D25">D25</option>
-											<option value="D26">D26</option>
-											<option value="D27">D27</option>
-											<option value="D28">D28</option>
-											<option value="D29">D29</option>
-											<option value="D30">D30</option>
-											<option value="D31">D31</option>
-											<option value="D32">D32</option>
-											<option value="D33">D33</option>
-											<option value="D34">D34</option>
-											<option value="D35">D35</option>
-											<option value="D36">D36</option>
-											<option value="D37">D37</option>
-											<option value="D38">D38</option>
-											<option value="D39">D39</option>
-											<option value="D40">D40</option>
-											<option value="D41">D41</option>
-											<option value="E12">E12</option>
-											<option value="E13">E13</option>
-											<option value="E14">E14</option>
-											<option value="E16">E16</option>
-											<option value="E17">E17</option>
-											<option value="E18">E18</option>
-											<option value="E19">E19</option>
-											<option value="E20">E20</option>
-											<option value="E21">E21</option>
-											<option value="E22">E22</option>
-											<option value="E23">E23</option>
-											<option value="E24">E24</option>
-											<option value="E25">E25</option>
-											<option value="E26">E26</option>
-											<option value="E27">E27</option>
-											<option value="E28">E28</option>
-											<option value="E29">E29</option>
-											<option value="E30">E30</option>
-											<option value="E31">E31</option>
-											<option value="E32">E32</option>
-											<option value="E33">E33</option>
-											<option value="E34">E34</option>
-											<option value="E35">E35</option>
-											<option value="E36">E36</option>
-											<option value="E37">E37</option>
-											<option value="E38">E38</option>
-											<option value="E39">E39</option>
-											<option value="E40">E40</option>
-											<option value="F01">F01</option>
-											<option value="F02">F02</option>
-											<option value="F03">F03</option>
-											<option value="F04">F04</option>
-											<option value="F05">F05</option>
-											<option value="F07">F07</option>
-											<option value="F08">F08</option>
-											<option value="F09">F09</option>
-											<option value="F10">F10</option>
-											<option value="F11">F11</option>
-											<option value="F12">F12</option>
-											<option value="F13">F13</option>
-											<option value="F14">F14</option>
-											<option value="F16">F16</option>
-											<option value="F17">F17</option>
-											<option value="F18">F18</option>
-											<option value="F19">F19</option>
-											<option value="F20">F20</option>
-											<option value="F21">F21</option>
-											<option value="F22">F22</option>
-											<option value="F23">F23</option>
-											<option value="F24">F24</option>
-											<option value="F25">F25</option>
-											<option value="F26">F26</option>
-											<option value="F27">F27</option>
-											<option value="F28">F28</option>
-											<option value="F29">F29</option>
-											<option value="F30">F30</option>
-											<option value="F31">F31</option>
-											<option value="F32">F32</option>
-											<option value="F33">F33</option>
-											<option value="F34">F34</option>
-											<option value="F35">F35</option>
-											<option value="F36">F36</option>
-											<option value="F37">F37</option>
-											<option value="F38">F38</option>
-											<option value="F39">F39</option>
-											<option value="G01">G01</option>
-											<option value="G02">G02</option>
-											<option value="G03">G03</option>
-											<option value="G04">G04</option>
-											<option value="G05">G05</option>
-											<option value="G06">G06</option>
-											<option value="G07">G07</option>
-											<option value="G08">G08</option>
-											<option value="G09">G09</option>
-											<option value="G10">G10</option>
-											<option value="G11">G11</option>
-											<option value="G12">G12</option>
-											<option value="G13">G13</option>
-											<option value="G14">G14</option>
-											<option value="G15">G15</option>
-											<option value="G16">G16</option>
-											<option value="G17">G17</option>
-											<option value="G18">G18</option>
-											<option value="G19">G19</option>
-											<option value="G20">G20</option>
-											<option value="G21">G21</option>
-											<option value="G22">G22</option>
-											<option value="G23">G23</option>
-											<option value="G24">G24</option>
-											<option value="G25">G25</option>
-											<option value="G26">G26</option>
-											<option value="G27">G27</option>
-											<option value="G28">G28</option>
-											<option value="G29">G29</option>
-											<option value="G30">G30</option>
-											<option value="G31">G31</option>
-											<option value="G32">G32</option>
-											<option value="G33">G33</option>
-											<option value="G34">G34</option>
-											<option value="G35">G35</option>
-											<option value="G36">G36</option>
-											<option value="G37">G37</option>
-											<option value="G38">G38</option>
-											<option value="G39">G39</option>
-											<option value="H01">H01</option>
-											<option value="H02">H02</option>
-											<option value="H03">H03</option>
-											<option value="H04">H04</option>
-											<option value="H05">H05</option>
-											<option value="H06">H06</option>
-											<option value="H07">H07</option>
-											<option value="H08">H08</option>
-											<option value="H09">H09</option>
-											<option value="H10">H10</option>
-											<option value="H11">H11</option>
-											<option value="H12">H12</option>
-											<option value="H13">H13</option>
-											<option value="H14">H14</option>
-											<option value="H15">H15</option>
-											<option value="H16">H16</option>
-											<option value="H17">H17</option>
-											<option value="H18">H18</option>
-											<option value="H19">H19</option>
-											<option value="H20">H20</option>
-											<option value="H21">H21</option>
-											<option value="H22">H22</option>
-											<option value="H23">H23</option>
-											<option value="H24">H24</option>
-											<option value="H25">H25</option>
-											<option value="H26">H26</option>
-											<option value="H27">H27</option>
-											<option value="H28">H28</option>
-											<option value="H29">H29</option>
-											<option value="H30">H30</option>
-											<option value="H31">H31</option>
-											<option value="H32">H32</option>
-											<option value="H33">H33</option>
-											<option value="H34">H34</option>
-											<option value="H35">H35</option>
-											<option value="H36">H36</option>
-											<option value="H37">H37</option>
-											<option value="H38">H38</option>
-											<option value="H39">H39</option>
-											<option value="H40">H40</option>
-											<option value="H41">H41</option>
-											<option value="I01">I01</option>
-											<option value="I02">I02</option>
-											<option value="I03">I03</option>
-											<option value="I04">I04</option>
-											<option value="I05">I05</option>
-											<option value="I06">I06</option>
-											<option value="I07">I07</option>
-											<option value="I08">I08</option>
-											<option value="I09">I09</option>
-											<option value="I10">I10</option>
-											<option value="I11">I11</option>
-											<option value="I12">I12</option>
-											<option value="I13">I13</option>
-											<option value="I14">I14</option>
-											<option value="I15">I15</option>
-											<option value="I16">I16</option>
-											<option value="I17">I17</option>
-											<option value="I18">I18</option>
-											<option value="I19">I19</option>
-											<option value="I20">I20</option>
-											<option value="I21">I21</option>
-											<option value="I22">I22</option>
-											<option value="I23">I23</option>
-											<option value="I24">I24</option>
-											<option value="I25">I25</option>
-											<option value="I26">I26</option>
-											<option value="I27">I27</option>
-											<option value="I28">I28</option>
-											<option value="I29">I29</option>
-											<option value="I30">I30</option>
-											<option value="I31">I31</option>
-											<option value="I32">I32</option>
-											<option value="I33">I33</option>
-											<option value="I34">I34</option>
-											<option value="I35">I35</option>
-											<option value="I36">I36</option>
-											<option value="I37">I37</option>
-											<option value="I38">I38</option>
-											<option value="I39">I39</option>
-											<option value="I40">I40</option>
-											<option value="I41">I41</option>
-											<option value="I42">I42</option>
-											<option value="I43">I43</option>
-											<option value="I44">I44</option>
-											<option value="J01">J01</option>
-											<option value="J02">J02</option>
-											<option value="J03">J03</option>
-											<option value="J04">J04</option>
-											<option value="J05">J05</option>
-											<option value="J06">J06</option>
-											<option value="J07">J07</option>
-											<option value="J08">J08</option>
-											<option value="J09">J09</option>
-											<option value="J10">J10</option>
-											<option value="J11">J11</option>
-											<option value="J12">J12</option>
-											<option value="J13">J13</option>
-											<option value="J14">J14</option>
-											<option value="J15">J15</option>
-											<option value="J16">J16</option>
-											<option value="J17">J17</option>
-											<option value="J18">J18</option>
-											<option value="J19">J19</option>
-											<option value="J20">J20</option>
-											<option value="J21">J21</option>
-											<option value="J22">J22</option>
-											<option value="J23">J23</option>
-											<option value="J24">J24</option>
-											<option value="J25">J25</option>
-											<option value="J26">J26</option>
-											<option value="J27">J27</option>
-											<option value="J28">J28</option>
-											<option value="J29">J29</option>
-											<option value="J30">J30</option>
-											<option value="J31">J31</option>
-											<option value="J32">J32</option>
-											<option value="J33">J33</option>
-											<option value="J34">J34</option>
-											<option value="J35">J35</option>
-											<option value="J36">J36</option>
-											<option value="J37">J37</option>
-											<option value="J38">J38</option>
-											<option value="J39">J39</option>
-											<option value="J40">J40</option>
-											<option value="J41">J41</option>
-											<option value="J42">J42</option>
-											<option value="J43">J43</option>
-											<option value="J44">J44</option>
-											<option value="J45">J45</option>
-											<option value="J46">J46</option>
-											<option value="K01">K01</option>
-											<option value="K02">K02</option>
-											<option value="K03">K03</option>
-											<option value="K04">K04</option>
-											<option value="K05">K05</option>
-											<option value="K06">K06</option>
-											<option value="K07">K07</option>
-											<option value="K08">K08</option>
-											<option value="K09">K09</option>
-											<option value="K10">K10</option>
-											<option value="K11">K11</option>
-											<option value="K12">K12</option>
-											<option value="K13">K13</option>
-											<option value="K14">K14</option>
-											<option value="K15">K15</option>
-											<option value="K16">K16</option>
-											<option value="K17">K17</option>
-											<option value="K18">K18</option>
-											<option value="K19">K19</option>
-											<option value="K20">K20</option>
-											<option value="K21">K21</option>
-											<option value="K22">K22</option>
-											<option value="K23">K23</option>
-											<option value="K24">K24</option>
-											<option value="K25">K25</option>
-											<option value="K26">K26</option>
-											<option value="K27">K27</option>
-											<option value="K28">K28</option>
-											<option value="K29">K29</option>
-											<option value="K30">K30</option>
-											<option value="K31">K31</option>
-											<option value="K32">K32</option>
-											<option value="K33">K33</option>
-											<option value="K34">K34</option>
-											<option value="K35">K35</option>
-											<option value="K36">K36</option>
-											<option value="K37">K37</option>
-											<option value="K38">K38</option>
-											<option value="K39">K39</option>
-											<option value="K40">K40</option>
-											<option value="K41">K41</option>
-											<option value="K42">K42</option>
-											<option value="K43">K43</option>
-											<option value="K44">K44</option>
-											<option value="K45">K45</option>
-											<option value="K46">K46</option>
-											<option value="K47">K47</option>
-											<option value="K48">K48</option>
-											<option value="L01">L01</option>
-											<option value="L02">L02</option>
-											<option value="L03">L03</option>
-											<option value="L04">L04</option>
-											<option value="L05">L05</option>
-											<option value="L06">L06</option>
-											<option value="L07">L07</option>
-											<option value="L08">L08</option>
-											<option value="L09">L09</option>
-											<option value="L10">L10</option>
-											<option value="L11">L11</option>
-											<option value="L12">L12</option>
-											<option value="L13">L13</option>
-											<option value="L14">L14</option>
-											<option value="L15">L15</option>
-											<option value="L16">L16</option>
-											<option value="L17">L17</option>
-											<option value="L18">L18</option>
-											<option value="L19">L19</option>
-											<option value="L20">L20</option>
-											<option value="L21">L21</option>
-											<option value="L22">L22</option>
-											<option value="L23">L23</option>
-											<option value="L24">L24</option>
-											<option value="L25">L25</option>
-											<option value="L26">L26</option>
-											<option value="L27">L27</option>
-											<option value="L28">L28</option>
-											<option value="L29">L29</option>
-											<option value="L30">L30</option>
-											<option value="L31">L31</option>
-											<option value="L32">L32</option>
-											<option value="L33">L33</option>
-											<option value="L34">L34</option>
-											<option value="L35">L35</option>
-											<option value="L36">L36</option>
-											<option value="L37">L37</option>
-											<option value="L38">L38</option>
-											<option value="L39">L39</option>
-											<option value="L40">L40</option>
-											<option value="L41">L41</option>
-											<option value="L42">L42</option>
-											<option value="L43">L43</option>
-											<option value="L44">L44</option>
-											<option value="L45">L45</option>
-											<option value="L46">L46</option>
-											<option value="L47">L47</option>
-											<option value="M01">M01</option>
-											<option value="M02">M02</option>
-											<option value="M03">M03</option>
-											<option value="M04">M04</option>
-											<option value="M05">M05</option>
-											<option value="M06">M06</option>
-											<option value="M07">M07</option>
-											<option value="M08">M08</option>
-											<option value="M09">M09</option>
-											<option value="M10">M10</option>
-											<option value="M11">M11</option>
-											<option value="M12">M12</option>
-											<option value="M13">M13</option>
-											<option value="M14">M14</option>
-											<option value="M15">M15</option>
-											<option value="M16">M16</option>
-											<option value="M17">M17</option>
-											<option value="M18">M18</option>
-											<option value="M19">M19</option>
-											<option value="M20">M20</option>
-											<option value="M21">M21</option>
-											<option value="M22">M22</option>
-											<option value="M23">M23</option>
-											<option value="M24">M24</option>
-											<option value="M25">M25</option>
-											<option value="M26">M26</option>
-											<option value="M27">M27</option>
-											<option value="M28">M28</option>
-											<option value="M29">M29</option>
-											<option value="M30">M30</option>
-											<option value="M31">M31</option>
-											<option value="M32">M32</option>
-											<option value="M33">M33</option>
-											<option value="M34">M34</option>
-											<option value="M35">M35</option>
-											<option value="M36">M36</option>
-											<option value="M37">M37</option>
-											<option value="M38">M38</option>
-											<option value="M39">M39</option>
-											<option value="M40">M40</option>
-											<option value="M41">M41</option>
-											<option value="M42">M42</option>
-											<option value="M43">M43</option>
-											<option value="M44">M44</option>
-											<option value="M45">M45</option>
-											<option value="M46">M46</option>
-											<option value="N02">N02</option>
-											<option value="N03">N03</option>
-											<option value="N04">N04</option>
-											<option value="N05">N05</option>
-											<option value="N06">N06</option>
-											<option value="N07">N07</option>
-											<option value="N08">N08</option>
-											<option value="N09">N09</option>
-											<option value="N10">N10</option>
-											<option value="N11">N11</option>
-											<option value="N12">N12</option>
-											<option value="N13">N13</option>
-											<option value="N14">N14</option>
-											<option value="N15">N15</option>
-											<option value="N16">N16</option>
-											<option value="N17">N17</option>
-											<option value="N18">N18</option>
-											<option value="N19">N19</option>
-											<option value="N20">N20</option>
-											<option value="N21">N21</option>
-											<option value="N22">N22</option>
-											<option value="N23">N23</option>
-											<option value="N24">N24</option>
-											<option value="N25">N25</option>
-											<option value="N26">N26</option>
-											<option value="N27">N27</option>
-											<option value="N28">N28</option>
-											<option value="N29">N29</option>
-											<option value="N30">N30</option>
-											<option value="N31">N31</option>
-											<option value="N32">N32</option>
-											<option value="N33">N33</option>
-											<option value="N34">N34</option>
-											<option value="N35">N35</option>
-											<option value="N36">N36</option>
-											<option value="N37">N37</option>
-											<option value="N38">N38</option>
-											<option value="N39">N39</option>
-											<option value="N40">N40</option>
-											<option value="N41">N41</option>
-											<option value="N42">N42</option>
-											<option value="N43">N43</option>
-											<option value="N44">N44</option>
-											<option value="N45">N45</option>
-											<option value="O02">O02</option>
-											<option value="O03">O03</option>
-											<option value="O04">O04</option>
-											<option value="O05">O05</option>
-											<option value="O06">O06</option>
-											<option value="O07">O07</option>
-											<option value="O08">O08</option>
-											<option value="O09">O09</option>
-											<option value="O10">O10</option>
-											<option value="O11">O11</option>
-											<option value="O12">O12</option>
-											<option value="O13">O13</option>
-											<option value="O14">O14</option>
-											<option value="O15">O15</option>
-											<option value="O16">O16</option>
-											<option value="O17">O17</option>
-											<option value="O18">O18</option>
-											<option value="O19">O19</option>
-											<option value="O20">O20</option>
-											<option value="O21">O21</option>
-											<option value="O22">O22</option>
-											<option value="O23">O23</option>
-											<option value="O24">O24</option>
-											<option value="O25">O25</option>
-											<option value="O26">O26</option>
-											<option value="O27">O27</option>
-											<option value="O28">O28</option>
-											<option value="O29">O29</option>
-											<option value="O30">O30</option>
-											<option value="O31">O31</option>
-											<option value="O32">O32</option>
-											<option value="O33">O33</option>
-											<option value="O34">O34</option>
-											<option value="O35">O35</option>
-											<option value="O36">O36</option>
-											<option value="O37">O37</option>
-											<option value="O38">O38</option>
-											<option value="O39">O39</option>
-											<option value="O40">O40</option>
-											<option value="O41">O41</option>
-											<option value="O42">O42</option>
-											<option value="O43">O43</option>
-											<option value="O44">O44</option>
-											<option value="O45">O45</option>
-											<option value="P08">P08</option>
-											<option value="P09">P09</option>
-											<option value="P10">P10</option>
-											<option value="P11">P11</option>
-											<option value="P12">P12</option>
-											<option value="P13">P13</option>
-											<option value="P14">P14</option>
-											<option value="P15">P15</option>
-											<option value="P16">P16</option>
-											<option value="P17">P17</option>
-											<option value="P18">P18</option>
-											<option value="P19">P19</option>
-											<option value="P20">P20</option>
-											<option value="P21">P21</option>
-											<option value="P22">P22</option>
-											<option value="P23">P23</option>
-											<option value="P24">P24</option>
-											<option value="P25">P25</option>
-											<option value="P26">P26</option>
-											<option value="P27">P27</option>
-											<option value="P28">P28</option>
-											<option value="P29">P29</option>
-											<option value="P30">P30</option>
-											<option value="P31">P31</option>
-											<option value="P32">P32</option>
-											<option value="P33">P33</option>
-											<option value="P34">P34</option>
-											<option value="P35">P35</option>
-											<option value="P36">P36</option>
-											<option value="P37">P37</option>
-											<option value="P38">P38</option>
-											<option value="P39">P39</option>
-											<option value="P40">P40</option>
-											<option value="P41">P41</option>
-											<option value="P42">P42</option>
-											<option value="P43">P43</option>
-											<option value="P44">P44</option>
-											<option value="Q13">Q13</option>
-											<option value="Q14">Q14</option>
-											<option value="Q15">Q15</option>
-											<option value="Q16">Q16</option>
-											<option value="Q17">Q17</option>
-											<option value="Q18">Q18</option>
-											<option value="Q19">Q19</option>
-											<option value="Q20">Q20</option>
-											<option value="Q21">Q21</option>
-											<option value="Q22">Q22</option>
-											<option value="Q23">Q23</option>
-											<option value="Q24">Q24</option>
-											<option value="Q25">Q25</option>
-											<option value="Q26">Q26</option>
-											<option value="Q27">Q27</option>
-											<option value="Q28">Q28</option>
-											<option value="Q29">Q29</option>
-											<option value="Q30">Q30</option>
-											<option value="Q31">Q31</option>
-											<option value="Q32">Q32</option>
-											<option value="Q33">Q33</option>
-											<option value="Q34">Q34</option>
-											<option value="Q35">Q35</option>
-											<option value="Q36">Q36</option>
-											<option value="Q37">Q37</option>
-											<option value="Q38">Q38</option>
-											<option value="Q39">Q39</option>
-											<option value="Q40">Q40</option>
-											<option value="Q41">Q41</option>
-											<option value="Q42">Q42</option>
-											<option value="R15">R15</option>
-											<option value="R16">R16</option>
-											<option value="R17">R17</option>
-											<option value="R18">R18</option>
-											<option value="R19">R19</option>
-											<option value="R20">R20</option>
-											<option value="R21">R21</option>
-											<option value="R22">R22</option>
-											<option value="R23">R23</option>
-											<option value="R24">R24</option>
-											<option value="R25">R25</option>
-											<option value="R26">R26</option>
-											<option value="R27">R27</option>
-											<option value="R28">R28</option>
-											<option value="R29">R29</option>
-											<option value="R30">R30</option>
-											<option value="R31">R31</option>
-											<option value="R32">R32</option>
-											<option value="R33">R33</option>
-											<option value="R34">R34</option>
-											<option value="R35">R35</option>
-											<option value="R36">R36</option>
-											<option value="R37">R37</option>
-											<option value="R38">R38</option>
-											<option value="R39">R39</option>
-											<option value="R40">R40</option>
-											<option value="R41">R41</option>
-											<option value="S16">S16</option>
-											<option value="S17">S17</option>
-											<option value="S18">S18</option>
-											<option value="S19">S19</option>
-											<option value="S20">S20</option>
-											<option value="S21">S21</option>
-											<option value="S22">S22</option>
-											<option value="S23">S23</option>
-											<option value="S24">S24</option>
-											<option value="S25">S25</option>
-											<option value="S26">S26</option>
-											<option value="S27">S27</option>
-											<option value="S28">S28</option>
-											<option value="S29">S29</option>
-											<option value="S30">S30</option>
-											<option value="S31">S31</option>
-											<option value="S32">S32</option>
-											<option value="S33">S33</option>
-											<option value="S34">S34</option>
-											<option value="S35">S35</option>
-											<option value="S36">S36</option>
-											<option value="S37">S37</option>
-											<option value="S38">S38</option>
-											<option value="S39">S39</option>
-											<option value="S40">S40</option>
-											<option value="T20">T20</option>
-											<option value="T21">T21</option>
-											<option value="T22">T22</option>
-											<option value="T23">T23</option>
-											<option value="T24">T24</option>
-											<option value="T25">T25</option>
-											<option value="T26">T26</option>
-											<option value="T27">T27</option>
-											<option value="T28">T28</option>
-											<option value="T29">T29</option>
-											<option value="T30">T30</option>
-											<option value="T31">T31</option>
-											<option value="T32">T32</option>
-											<option value="T33">T33</option>
-											<option value="T34">T34</option>
-											<option value="T35">T35</option>
-											<option value="T36">T36</option>
-											<option value="T37">T37</option>
-											<option value="T38">T38</option>
-											<option value="U24">U24</option>
-											<option value="U25">U25</option>
-											<option value="U26">U26</option>
-											<option value="U27">U27</option>
-											<option value="U28">U28</option>
-											<option value="U29">U29</option>
-											<option value="U30">U30</option>
-											<option value="U31">U31</option>
-											<option value="U32">U32</option>
-											<option value="U33">U33</option>
-											<option value="U34">U34</option>
-											<option value="U35">U35</option>
-											<option value="U36">U36</option>
-											<option value="U37">U37</option>
-											<option value="V25">V25</option>
-											<option value="V26">V26</option>
-											<option value="V27">V27</option>
-											<option value="V28">V28</option>
-											<option value="V29">V29</option>
-											<option value="V30">V30</option>
-											<option value="V31">V31</option>
-											<option value="V32">V32</option>
-											<option value="V33">V33</option>
-											<option value="V34">V34</option>
-											<option value="V35">V35</option>
-											<option value="W26">W26</option>
-											<option value="W27">W27</option>
-											<option value="W28">W28</option>
-											<option value="W29">W29</option>
-											<option value="W30">W30</option>
-											<option value="W31">W31</option>
-											<option value="W32">W32</option>
-											<option value="W33">W33</option>
-											<option value="W34">W34</option>
-											<option value="X27">X27</option>
-											<option value="X28">X28</option>
-											<option value="X29">X29</option>
-											<option value="X30">X30</option>
-											<option value="X31">X31</option>
-											<option value="X32">X32</option>
-											<option value="X33">X33</option>
-											<option value="Y28">Y28</option>
-											<option value="Y29">Y29</option>
-											<option value="Y30">Y30</option>
-											<option value="Y31">Y31</option>
-											<option value="Z29">Z29</option>
-											<option value="Z30">Z30</option>
-										</select>
-									</td>	
-									<td class="right">
-										<input type="button" id="enggridsearchbtn" value="Search">
-									</td>	
-								</tr>
-							</table>	
-																				
-						</div>
-						
+						<table>
+							<tr>
+								<th>
+									<label for="buffersize">Buffer Size</label>
+								</th>
+								<td>
+									<input type="text" id="buffersize" class="medium" placeholder="Required" />&nbsp;ft
+									<span class="note">(Within (0-5280) ft.)</span>
+								</td>	
+							</tr>
+							<tr>
+								<td colspan="2">
+									<div id="buffersearcherror" class="alignleft searcherror"></div>
+									<div class="alignright">
+										<img id="buffersearchprogress" class="spin hidden" src="image/spin.gif" />
+										<input type="button" id="buffersearchclear" value="Clear">&nbsp;
+										<input type="button" id="buffersearchbtn" value="Search">
+									</div>	
+									<div class="fixalign"></div>
+								</td>
+							</tr>
+						</table>
+													
 					</div>
-																	
-				</div>
 					
-				<!-- Market Analysis -->
-				<div id="marketanalysis" class="hidden">
-				
-					<div class="fancycont first">
-				
-						<h4>Market Analysis</h4>
-												
-						<div class="cont">
-						
-							<table id="mrktanlysform">
-								<tr>
-									<th>
-										Primary Search Type
-									</th>	
-									<td>
-										<select id="primarysrchtype" class="max">
-											<option value="0">Jurisdiction</option>
-											<option value="1">Appraisal Neighborhood Code</option>
-											<option value="2">Street Name</option>
-											<option value="3">Buffer Selected Property</option>
-										</select>
-									</td>	
-								</tr>
-								<tr>
-									<th>
-										Jurisdiction
-									</th>	
-									<td>
-										<select id="jurisdiction" class="max">
-											<option value="1" selected>Charlotte</option>
-											<option value="2">Davidson</option>
-											<option value="3">Cornelius</option>
-											<option value="4">Pineville</option>
-											<option value="5">Matthews</option>
-											<option value="6">Huntersville</option>
-											<option value="7">Mint Hill</option>
-											<option value="8">Stallings</option>
-											<option value="0">UNINC Mecklenburg Co</option>
-										</select>
-									</td>	
-								</tr>
-								<tr class="hidden">
-									<th>
-										Neighborhood Code
-									</th>	
-									<td>
-										<input id="neighborcode" class="small" />
-									</td>	
-								</tr>
-								<tr class="hidden">
-									<th>
-										Street Name
-									</th>	
-									<td>
-										<div id="stnameCont" ></div>
-									</td>	
-								</tr>
-								<tr class="hidden">
-									<th>
-										Buffer Size
-									</th>	
-									<td>
-										<input id="anlysbuffsize" class="small" />&nbsp;ft
-										<span class="note">(Should be within (0-5280) ft.)</span>
-									</td>	
-								</tr>
-								<tr>
-									<th>
-										Property Use
-									</th>	
-									<td>
-										<select id="propuse" class="max">
-											<option value="Condo/Townhome">Condominium / Attached Residence</option>
-											<option value="Commercial">Commercial</option>
-											<option value="Govt-Inst">Govt-Inst</option>
-											<option value="Hotel/Motel">Hotel / Motel</option>
-											<option value="Manufactured">Manufactured Home</option>
-											<option value="Multi-Family">Multi-Family</option>
-											<option value="Office">Office</option>
-											<option value="Single-Family" selected>Single-Family</option>
-											<option value="StadiumArena">Stadium/Arena</option>
-											<option value="Vacant">Vacant Land</option>
-											<option value="Warehouse">Warehouse</option>
-											<option value="Warehouse Lg">Warehouse Large</option>
-										</select>
-									</td>	
-								</tr>
-								<tr>
-									<th class="top">
-										Parcel Acreage
-									</th>	
-									<td>
-										<input id="acrefrom" class="small" placeholder="Min" />
-										<span class="pad">-</span>										
-										<input id="acreto" class="small" placeholder="Max" /><span class="last">Acres</span>
-									</td>	
-								</tr>
-								<tr>
-									<td colspan="2">
-										<div class="note">(Not all parcels are assessed by acres.)</div>
-									</td>
-								</tr>
-								<tr>
-									<th>
-										Parcels without Acreage
-									</th>	
-									<td>
-										<select id="noacre" class="max">
-											<option value="LT">Lots Only (No Acreage)</option>
-											<option value="WF">Waterfront Lots</option>
-											<option value="ALL" selected>Both</option>
-										</select>
-									</td>	
-								</tr>
-								<tr>
-									<th>
-										Market Value ($)
-									</th>	
-									<td>
-										<input id="mrktvalfrom" class="medium" placeholder="Min" />
-										<span class="pad">-</span>										
-										<input id="mrktvalto" class="medium" placeholder="Max" />
-									</td>	
-								</tr>
-								<tr>
-									<th>
-										Sale Price ($)
-									</th>	
-									<td>
-										<input id="salepricefrom" class="medium" placeholder="Min" />
-										<span class="pad">-</span>										
-										<input id="salepriceto" class="medium" placeholder="Max" />
-									</td>	
-								</tr>
-								<tr>
-									<th>
-										Sale Date Range
-									</th>	
-									<td>
-										<input id="saledatefrom" />
-										<span class="pad">-</span>										
-										<input id="saledateto" />
-									</td>	
-								</tr>
-								<tr>
-									<th>
-										Year Built
-									</th>	
-									<td>
-										<input id="yearbuiltfrom" class="small" placeholder="Min" />
-										<span class="pad">-</span>										
-										<input id="yearbuiltto" class="small" placeholder="Max" />
-									</td>	
-								</tr>
-								<tr>
-									<th>
-										Square Feet
-									</th>	
-									<td>
-										<input id="sqftfrom" class="medium" placeholder="Min" />
-										<span class="pad">-</span>										
-										<input id="sqftto" class="medium" placeholder="Max" />
-									</td>	
-								</tr>
-								<tr>
-									<th>
-										Bedrooms
-									</th>	
-									<td>
-										<select id="bedrooms" class="max">
-											<option value="" selected>Any</option>
-											<option value="1">1 Bedroom</option>
-											<option value="2">2 Bedrooms</option>
-											<option value="3">3 Bedrooms</option>	
-											<option value="4">4 Bedrooms</option>
-											<option value="5">5 or More</option>
-										</select>
-									</td>	
-								</tr>
-								<tr>
-									<th>
-										Full Baths
-									</th>	
-									<td>
-										<select id="bathrooms" class="max">
-											<option value="" selected>Any</option>
-											<option value="1">1 Full Bath</option>
-											<option value="2">2 Full Baths</option>
-											<option value="3">3 Full Baths</option>	
-											<option value="4">4 Full Baths</option>
-											<option value="5">5 or More</option>
-										</select>
-									</td>	
-								</tr>
-								<tr>
-									<th>
-										Exterior Frame
-									</th>	
-									<td>
-										<select id="exteriorframe" class="max">
-											<option value="" selected>Any</option>
-											<option value="ALUM,VINYL">Alum,Vinyl</option>
-											<option value="BLOCK">Block</option>
-											<option value="BRICK">Brick</option>
-											<option value="GLASS">Glass</option>
-											<option value="LOG">Log</option>
-											<option value="METAL">Metal</option>
-											<option value="SIDING">Siding</option>
-											<option value="STONE">Stone</option>
-											<option value="STUCCO">Stucco</option>
-											<option value="WOOD">Wood</option>
-										</select>	
-									</td>	
-								</tr>
-								<tr>
-									<th>
-										Story Type
-									</th>	
-									<td>
-										<select id="storytype" class="max">
-											<option value="" selected>Any</option>
-											<option value="01">1 Story</option>
-											<option value="02">1.5 Story</option>
-											<option value="03">2 Story</option>
-											<option value="04">&gt;= 2.5 Story</option>
-											<option value="05">Ranch W/BSMT</option>
-											<option value="06">A-Frame</option>
-											<option value="07">Split Level</option>
-											<option value="08">BI-Level</option>
-											<option value="09">Cape Cod</option>
-										</select>
-									</td>	
-								</tr>
-								<tr>
-									<th>
-										Sort By
-									</th>	
-									<td>
-										<select id="sortby" class="max">
-											<option value="market_value|desc" selected>Descending Market Value</option>
-											<option value="sale_date_price|desc">Descending Sale Date/Sale Price</option>
-											<option value="sale_price|desc">Descending Sale Price</option>
-											<option value="market_value|asc">Ascending Market Value</option>
-											<option value="sale_date_price|asc">Ascending Sale Date/Sale Price</option>
-											<option value="market_value|asc">Ascending Sale Price</option>
-											<option value="addr|asc">Address</option>
-										</select>	
-									</td>	
-								</tr>
-							</table>	
-							
-							<div class="textright">
-								
-								<div id="mrktanlyserror" class="searcherror"></div>
-								<div>
-									<img id="mrktanlysprogress" class="spin hidden" src="image/spin.gif" />
-									<input type="button" id="mrktanlysclear" value="Clear">&nbsp;
-									<input type="button" id="mrktanlysbtn" value="Analyze">
-								</div>
-							</div>
-							
-						</div>
-						
-					</div>
+				</div>						
+					
+				<!-- Preliminary Plan Search -->
+				<div class="fancycont first">
+			
+					<h4>Preliminary Plan Search</h4>
 											
-				</div>
+					<div class="cont">
 					
-				<!-- Property Information -->
-				<div id="propdetails" class="hidden">
-					<div class="fancycont first">
-						<h4>Property Key</h4>
-						<div id="identity" class="cont"></div>
-						<div id="address" class="cont"></div>
-						<div id="ownership" class="cont"></div>
-						<div id="supplementary" class="cont hidden"></div>
-						<div id="changemailaddr" class="cont"></div>
-						<div id="photo" class="textcenter"></div>
-						<div id="idlinks" class="cont"></div>
-						<div id="unselectprop" class="cont textright"></div>
+						<table>
+							<tr>
+								<td>
+									<select id="prelimplansearch" class="max"></select>
+								</td>	
+								<td class="right">
+									<input type="button" id="prelimplansearchbtn" value="Search">
+								</td>	
+							</tr>
+						</table>	
+						
 					</div>
 					
-					<div class="fancycont">
+				</div>	
+				
+				<!-- Engineering Grid Search -->
+				<div class="fancycont first">
+			
+					<h4>Engineering Grid Search</h4>
+											
+					<div class="cont">
 					
-						<h4>Associated Information</h4>
-						
-						<div id="characteristics" class="cont">
-						</div>
+						<table>
+							<tr>
+								<td>
+									<select id="enggridsearch" class="max">
+										<option value="A34" selected>A34</option>
+										<option value="A35">A35</option>
+										<option value="A36">A36</option>
+										<option value="A38">A38</option>
+										<option value="A39">A39</option>
+										<option value="A40">A40</option>
+										<option value="A41">A41</option>
+										<option value="A42">A42</option>
+										<option value="A43">A43</option>
+										<option value="B34">B34</option>
+										<option value="B35">B35</option>
+										<option value="B36">B36</option>
+										<option value="B37">B37</option>
+										<option value="B38">B38</option>
+										<option value="B39">B39</option>
+										<option value="B40">B40</option>
+										<option value="B41">B41</option>
+										<option value="B42">B42</option>
+										<option value="B43">B43</option>
+										<option value="C21">C21</option>
+										<option value="C22">C22</option>
+										<option value="C23">C23</option>
+										<option value="C24">C24</option>
+										<option value="C25">C25</option>
+										<option value="C26">C26</option>
+										<option value="C27">C27</option>
+										<option value="C28">C28</option>
+										<option value="C29">C29</option>
+										<option value="C30">C30</option>
+										<option value="C31">C31</option>
+										<option value="C32">C32</option>
+										<option value="C33">C33</option>
+										<option value="C34">C34</option>
+										<option value="C35">C35</option>
+										<option value="C36">C36</option>
+										<option value="C37">C37</option>
+										<option value="C38">C38</option>
+										<option value="C39">C39</option>
+										<option value="C40">C40</option>
+										<option value="C41">C41</option>
+										<option value="C42">C42</option>
+										<option value="D13">D13</option>
+										<option value="D14">D14</option>
+										<option value="D18">D18</option>
+										<option value="D19">D19</option>
+										<option value="D20">D20</option>
+										<option value="D21">D21</option>
+										<option value="D22">D22</option>
+										<option value="D23">D23</option>
+										<option value="D24">D24</option>
+										<option value="D25">D25</option>
+										<option value="D26">D26</option>
+										<option value="D27">D27</option>
+										<option value="D28">D28</option>
+										<option value="D29">D29</option>
+										<option value="D30">D30</option>
+										<option value="D31">D31</option>
+										<option value="D32">D32</option>
+										<option value="D33">D33</option>
+										<option value="D34">D34</option>
+										<option value="D35">D35</option>
+										<option value="D36">D36</option>
+										<option value="D37">D37</option>
+										<option value="D38">D38</option>
+										<option value="D39">D39</option>
+										<option value="D40">D40</option>
+										<option value="D41">D41</option>
+										<option value="E12">E12</option>
+										<option value="E13">E13</option>
+										<option value="E14">E14</option>
+										<option value="E16">E16</option>
+										<option value="E17">E17</option>
+										<option value="E18">E18</option>
+										<option value="E19">E19</option>
+										<option value="E20">E20</option>
+										<option value="E21">E21</option>
+										<option value="E22">E22</option>
+										<option value="E23">E23</option>
+										<option value="E24">E24</option>
+										<option value="E25">E25</option>
+										<option value="E26">E26</option>
+										<option value="E27">E27</option>
+										<option value="E28">E28</option>
+										<option value="E29">E29</option>
+										<option value="E30">E30</option>
+										<option value="E31">E31</option>
+										<option value="E32">E32</option>
+										<option value="E33">E33</option>
+										<option value="E34">E34</option>
+										<option value="E35">E35</option>
+										<option value="E36">E36</option>
+										<option value="E37">E37</option>
+										<option value="E38">E38</option>
+										<option value="E39">E39</option>
+										<option value="E40">E40</option>
+										<option value="F01">F01</option>
+										<option value="F02">F02</option>
+										<option value="F03">F03</option>
+										<option value="F04">F04</option>
+										<option value="F05">F05</option>
+										<option value="F07">F07</option>
+										<option value="F08">F08</option>
+										<option value="F09">F09</option>
+										<option value="F10">F10</option>
+										<option value="F11">F11</option>
+										<option value="F12">F12</option>
+										<option value="F13">F13</option>
+										<option value="F14">F14</option>
+										<option value="F16">F16</option>
+										<option value="F17">F17</option>
+										<option value="F18">F18</option>
+										<option value="F19">F19</option>
+										<option value="F20">F20</option>
+										<option value="F21">F21</option>
+										<option value="F22">F22</option>
+										<option value="F23">F23</option>
+										<option value="F24">F24</option>
+										<option value="F25">F25</option>
+										<option value="F26">F26</option>
+										<option value="F27">F27</option>
+										<option value="F28">F28</option>
+										<option value="F29">F29</option>
+										<option value="F30">F30</option>
+										<option value="F31">F31</option>
+										<option value="F32">F32</option>
+										<option value="F33">F33</option>
+										<option value="F34">F34</option>
+										<option value="F35">F35</option>
+										<option value="F36">F36</option>
+										<option value="F37">F37</option>
+										<option value="F38">F38</option>
+										<option value="F39">F39</option>
+										<option value="G01">G01</option>
+										<option value="G02">G02</option>
+										<option value="G03">G03</option>
+										<option value="G04">G04</option>
+										<option value="G05">G05</option>
+										<option value="G06">G06</option>
+										<option value="G07">G07</option>
+										<option value="G08">G08</option>
+										<option value="G09">G09</option>
+										<option value="G10">G10</option>
+										<option value="G11">G11</option>
+										<option value="G12">G12</option>
+										<option value="G13">G13</option>
+										<option value="G14">G14</option>
+										<option value="G15">G15</option>
+										<option value="G16">G16</option>
+										<option value="G17">G17</option>
+										<option value="G18">G18</option>
+										<option value="G19">G19</option>
+										<option value="G20">G20</option>
+										<option value="G21">G21</option>
+										<option value="G22">G22</option>
+										<option value="G23">G23</option>
+										<option value="G24">G24</option>
+										<option value="G25">G25</option>
+										<option value="G26">G26</option>
+										<option value="G27">G27</option>
+										<option value="G28">G28</option>
+										<option value="G29">G29</option>
+										<option value="G30">G30</option>
+										<option value="G31">G31</option>
+										<option value="G32">G32</option>
+										<option value="G33">G33</option>
+										<option value="G34">G34</option>
+										<option value="G35">G35</option>
+										<option value="G36">G36</option>
+										<option value="G37">G37</option>
+										<option value="G38">G38</option>
+										<option value="G39">G39</option>
+										<option value="H01">H01</option>
+										<option value="H02">H02</option>
+										<option value="H03">H03</option>
+										<option value="H04">H04</option>
+										<option value="H05">H05</option>
+										<option value="H06">H06</option>
+										<option value="H07">H07</option>
+										<option value="H08">H08</option>
+										<option value="H09">H09</option>
+										<option value="H10">H10</option>
+										<option value="H11">H11</option>
+										<option value="H12">H12</option>
+										<option value="H13">H13</option>
+										<option value="H14">H14</option>
+										<option value="H15">H15</option>
+										<option value="H16">H16</option>
+										<option value="H17">H17</option>
+										<option value="H18">H18</option>
+										<option value="H19">H19</option>
+										<option value="H20">H20</option>
+										<option value="H21">H21</option>
+										<option value="H22">H22</option>
+										<option value="H23">H23</option>
+										<option value="H24">H24</option>
+										<option value="H25">H25</option>
+										<option value="H26">H26</option>
+										<option value="H27">H27</option>
+										<option value="H28">H28</option>
+										<option value="H29">H29</option>
+										<option value="H30">H30</option>
+										<option value="H31">H31</option>
+										<option value="H32">H32</option>
+										<option value="H33">H33</option>
+										<option value="H34">H34</option>
+										<option value="H35">H35</option>
+										<option value="H36">H36</option>
+										<option value="H37">H37</option>
+										<option value="H38">H38</option>
+										<option value="H39">H39</option>
+										<option value="H40">H40</option>
+										<option value="H41">H41</option>
+										<option value="I01">I01</option>
+										<option value="I02">I02</option>
+										<option value="I03">I03</option>
+										<option value="I04">I04</option>
+										<option value="I05">I05</option>
+										<option value="I06">I06</option>
+										<option value="I07">I07</option>
+										<option value="I08">I08</option>
+										<option value="I09">I09</option>
+										<option value="I10">I10</option>
+										<option value="I11">I11</option>
+										<option value="I12">I12</option>
+										<option value="I13">I13</option>
+										<option value="I14">I14</option>
+										<option value="I15">I15</option>
+										<option value="I16">I16</option>
+										<option value="I17">I17</option>
+										<option value="I18">I18</option>
+										<option value="I19">I19</option>
+										<option value="I20">I20</option>
+										<option value="I21">I21</option>
+										<option value="I22">I22</option>
+										<option value="I23">I23</option>
+										<option value="I24">I24</option>
+										<option value="I25">I25</option>
+										<option value="I26">I26</option>
+										<option value="I27">I27</option>
+										<option value="I28">I28</option>
+										<option value="I29">I29</option>
+										<option value="I30">I30</option>
+										<option value="I31">I31</option>
+										<option value="I32">I32</option>
+										<option value="I33">I33</option>
+										<option value="I34">I34</option>
+										<option value="I35">I35</option>
+										<option value="I36">I36</option>
+										<option value="I37">I37</option>
+										<option value="I38">I38</option>
+										<option value="I39">I39</option>
+										<option value="I40">I40</option>
+										<option value="I41">I41</option>
+										<option value="I42">I42</option>
+										<option value="I43">I43</option>
+										<option value="I44">I44</option>
+										<option value="J01">J01</option>
+										<option value="J02">J02</option>
+										<option value="J03">J03</option>
+										<option value="J04">J04</option>
+										<option value="J05">J05</option>
+										<option value="J06">J06</option>
+										<option value="J07">J07</option>
+										<option value="J08">J08</option>
+										<option value="J09">J09</option>
+										<option value="J10">J10</option>
+										<option value="J11">J11</option>
+										<option value="J12">J12</option>
+										<option value="J13">J13</option>
+										<option value="J14">J14</option>
+										<option value="J15">J15</option>
+										<option value="J16">J16</option>
+										<option value="J17">J17</option>
+										<option value="J18">J18</option>
+										<option value="J19">J19</option>
+										<option value="J20">J20</option>
+										<option value="J21">J21</option>
+										<option value="J22">J22</option>
+										<option value="J23">J23</option>
+										<option value="J24">J24</option>
+										<option value="J25">J25</option>
+										<option value="J26">J26</option>
+										<option value="J27">J27</option>
+										<option value="J28">J28</option>
+										<option value="J29">J29</option>
+										<option value="J30">J30</option>
+										<option value="J31">J31</option>
+										<option value="J32">J32</option>
+										<option value="J33">J33</option>
+										<option value="J34">J34</option>
+										<option value="J35">J35</option>
+										<option value="J36">J36</option>
+										<option value="J37">J37</option>
+										<option value="J38">J38</option>
+										<option value="J39">J39</option>
+										<option value="J40">J40</option>
+										<option value="J41">J41</option>
+										<option value="J42">J42</option>
+										<option value="J43">J43</option>
+										<option value="J44">J44</option>
+										<option value="J45">J45</option>
+										<option value="J46">J46</option>
+										<option value="K01">K01</option>
+										<option value="K02">K02</option>
+										<option value="K03">K03</option>
+										<option value="K04">K04</option>
+										<option value="K05">K05</option>
+										<option value="K06">K06</option>
+										<option value="K07">K07</option>
+										<option value="K08">K08</option>
+										<option value="K09">K09</option>
+										<option value="K10">K10</option>
+										<option value="K11">K11</option>
+										<option value="K12">K12</option>
+										<option value="K13">K13</option>
+										<option value="K14">K14</option>
+										<option value="K15">K15</option>
+										<option value="K16">K16</option>
+										<option value="K17">K17</option>
+										<option value="K18">K18</option>
+										<option value="K19">K19</option>
+										<option value="K20">K20</option>
+										<option value="K21">K21</option>
+										<option value="K22">K22</option>
+										<option value="K23">K23</option>
+										<option value="K24">K24</option>
+										<option value="K25">K25</option>
+										<option value="K26">K26</option>
+										<option value="K27">K27</option>
+										<option value="K28">K28</option>
+										<option value="K29">K29</option>
+										<option value="K30">K30</option>
+										<option value="K31">K31</option>
+										<option value="K32">K32</option>
+										<option value="K33">K33</option>
+										<option value="K34">K34</option>
+										<option value="K35">K35</option>
+										<option value="K36">K36</option>
+										<option value="K37">K37</option>
+										<option value="K38">K38</option>
+										<option value="K39">K39</option>
+										<option value="K40">K40</option>
+										<option value="K41">K41</option>
+										<option value="K42">K42</option>
+										<option value="K43">K43</option>
+										<option value="K44">K44</option>
+										<option value="K45">K45</option>
+										<option value="K46">K46</option>
+										<option value="K47">K47</option>
+										<option value="K48">K48</option>
+										<option value="L01">L01</option>
+										<option value="L02">L02</option>
+										<option value="L03">L03</option>
+										<option value="L04">L04</option>
+										<option value="L05">L05</option>
+										<option value="L06">L06</option>
+										<option value="L07">L07</option>
+										<option value="L08">L08</option>
+										<option value="L09">L09</option>
+										<option value="L10">L10</option>
+										<option value="L11">L11</option>
+										<option value="L12">L12</option>
+										<option value="L13">L13</option>
+										<option value="L14">L14</option>
+										<option value="L15">L15</option>
+										<option value="L16">L16</option>
+										<option value="L17">L17</option>
+										<option value="L18">L18</option>
+										<option value="L19">L19</option>
+										<option value="L20">L20</option>
+										<option value="L21">L21</option>
+										<option value="L22">L22</option>
+										<option value="L23">L23</option>
+										<option value="L24">L24</option>
+										<option value="L25">L25</option>
+										<option value="L26">L26</option>
+										<option value="L27">L27</option>
+										<option value="L28">L28</option>
+										<option value="L29">L29</option>
+										<option value="L30">L30</option>
+										<option value="L31">L31</option>
+										<option value="L32">L32</option>
+										<option value="L33">L33</option>
+										<option value="L34">L34</option>
+										<option value="L35">L35</option>
+										<option value="L36">L36</option>
+										<option value="L37">L37</option>
+										<option value="L38">L38</option>
+										<option value="L39">L39</option>
+										<option value="L40">L40</option>
+										<option value="L41">L41</option>
+										<option value="L42">L42</option>
+										<option value="L43">L43</option>
+										<option value="L44">L44</option>
+										<option value="L45">L45</option>
+										<option value="L46">L46</option>
+										<option value="L47">L47</option>
+										<option value="M01">M01</option>
+										<option value="M02">M02</option>
+										<option value="M03">M03</option>
+										<option value="M04">M04</option>
+										<option value="M05">M05</option>
+										<option value="M06">M06</option>
+										<option value="M07">M07</option>
+										<option value="M08">M08</option>
+										<option value="M09">M09</option>
+										<option value="M10">M10</option>
+										<option value="M11">M11</option>
+										<option value="M12">M12</option>
+										<option value="M13">M13</option>
+										<option value="M14">M14</option>
+										<option value="M15">M15</option>
+										<option value="M16">M16</option>
+										<option value="M17">M17</option>
+										<option value="M18">M18</option>
+										<option value="M19">M19</option>
+										<option value="M20">M20</option>
+										<option value="M21">M21</option>
+										<option value="M22">M22</option>
+										<option value="M23">M23</option>
+										<option value="M24">M24</option>
+										<option value="M25">M25</option>
+										<option value="M26">M26</option>
+										<option value="M27">M27</option>
+										<option value="M28">M28</option>
+										<option value="M29">M29</option>
+										<option value="M30">M30</option>
+										<option value="M31">M31</option>
+										<option value="M32">M32</option>
+										<option value="M33">M33</option>
+										<option value="M34">M34</option>
+										<option value="M35">M35</option>
+										<option value="M36">M36</option>
+										<option value="M37">M37</option>
+										<option value="M38">M38</option>
+										<option value="M39">M39</option>
+										<option value="M40">M40</option>
+										<option value="M41">M41</option>
+										<option value="M42">M42</option>
+										<option value="M43">M43</option>
+										<option value="M44">M44</option>
+										<option value="M45">M45</option>
+										<option value="M46">M46</option>
+										<option value="N02">N02</option>
+										<option value="N03">N03</option>
+										<option value="N04">N04</option>
+										<option value="N05">N05</option>
+										<option value="N06">N06</option>
+										<option value="N07">N07</option>
+										<option value="N08">N08</option>
+										<option value="N09">N09</option>
+										<option value="N10">N10</option>
+										<option value="N11">N11</option>
+										<option value="N12">N12</option>
+										<option value="N13">N13</option>
+										<option value="N14">N14</option>
+										<option value="N15">N15</option>
+										<option value="N16">N16</option>
+										<option value="N17">N17</option>
+										<option value="N18">N18</option>
+										<option value="N19">N19</option>
+										<option value="N20">N20</option>
+										<option value="N21">N21</option>
+										<option value="N22">N22</option>
+										<option value="N23">N23</option>
+										<option value="N24">N24</option>
+										<option value="N25">N25</option>
+										<option value="N26">N26</option>
+										<option value="N27">N27</option>
+										<option value="N28">N28</option>
+										<option value="N29">N29</option>
+										<option value="N30">N30</option>
+										<option value="N31">N31</option>
+										<option value="N32">N32</option>
+										<option value="N33">N33</option>
+										<option value="N34">N34</option>
+										<option value="N35">N35</option>
+										<option value="N36">N36</option>
+										<option value="N37">N37</option>
+										<option value="N38">N38</option>
+										<option value="N39">N39</option>
+										<option value="N40">N40</option>
+										<option value="N41">N41</option>
+										<option value="N42">N42</option>
+										<option value="N43">N43</option>
+										<option value="N44">N44</option>
+										<option value="N45">N45</option>
+										<option value="O02">O02</option>
+										<option value="O03">O03</option>
+										<option value="O04">O04</option>
+										<option value="O05">O05</option>
+										<option value="O06">O06</option>
+										<option value="O07">O07</option>
+										<option value="O08">O08</option>
+										<option value="O09">O09</option>
+										<option value="O10">O10</option>
+										<option value="O11">O11</option>
+										<option value="O12">O12</option>
+										<option value="O13">O13</option>
+										<option value="O14">O14</option>
+										<option value="O15">O15</option>
+										<option value="O16">O16</option>
+										<option value="O17">O17</option>
+										<option value="O18">O18</option>
+										<option value="O19">O19</option>
+										<option value="O20">O20</option>
+										<option value="O21">O21</option>
+										<option value="O22">O22</option>
+										<option value="O23">O23</option>
+										<option value="O24">O24</option>
+										<option value="O25">O25</option>
+										<option value="O26">O26</option>
+										<option value="O27">O27</option>
+										<option value="O28">O28</option>
+										<option value="O29">O29</option>
+										<option value="O30">O30</option>
+										<option value="O31">O31</option>
+										<option value="O32">O32</option>
+										<option value="O33">O33</option>
+										<option value="O34">O34</option>
+										<option value="O35">O35</option>
+										<option value="O36">O36</option>
+										<option value="O37">O37</option>
+										<option value="O38">O38</option>
+										<option value="O39">O39</option>
+										<option value="O40">O40</option>
+										<option value="O41">O41</option>
+										<option value="O42">O42</option>
+										<option value="O43">O43</option>
+										<option value="O44">O44</option>
+										<option value="O45">O45</option>
+										<option value="P08">P08</option>
+										<option value="P09">P09</option>
+										<option value="P10">P10</option>
+										<option value="P11">P11</option>
+										<option value="P12">P12</option>
+										<option value="P13">P13</option>
+										<option value="P14">P14</option>
+										<option value="P15">P15</option>
+										<option value="P16">P16</option>
+										<option value="P17">P17</option>
+										<option value="P18">P18</option>
+										<option value="P19">P19</option>
+										<option value="P20">P20</option>
+										<option value="P21">P21</option>
+										<option value="P22">P22</option>
+										<option value="P23">P23</option>
+										<option value="P24">P24</option>
+										<option value="P25">P25</option>
+										<option value="P26">P26</option>
+										<option value="P27">P27</option>
+										<option value="P28">P28</option>
+										<option value="P29">P29</option>
+										<option value="P30">P30</option>
+										<option value="P31">P31</option>
+										<option value="P32">P32</option>
+										<option value="P33">P33</option>
+										<option value="P34">P34</option>
+										<option value="P35">P35</option>
+										<option value="P36">P36</option>
+										<option value="P37">P37</option>
+										<option value="P38">P38</option>
+										<option value="P39">P39</option>
+										<option value="P40">P40</option>
+										<option value="P41">P41</option>
+										<option value="P42">P42</option>
+										<option value="P43">P43</option>
+										<option value="P44">P44</option>
+										<option value="Q13">Q13</option>
+										<option value="Q14">Q14</option>
+										<option value="Q15">Q15</option>
+										<option value="Q16">Q16</option>
+										<option value="Q17">Q17</option>
+										<option value="Q18">Q18</option>
+										<option value="Q19">Q19</option>
+										<option value="Q20">Q20</option>
+										<option value="Q21">Q21</option>
+										<option value="Q22">Q22</option>
+										<option value="Q23">Q23</option>
+										<option value="Q24">Q24</option>
+										<option value="Q25">Q25</option>
+										<option value="Q26">Q26</option>
+										<option value="Q27">Q27</option>
+										<option value="Q28">Q28</option>
+										<option value="Q29">Q29</option>
+										<option value="Q30">Q30</option>
+										<option value="Q31">Q31</option>
+										<option value="Q32">Q32</option>
+										<option value="Q33">Q33</option>
+										<option value="Q34">Q34</option>
+										<option value="Q35">Q35</option>
+										<option value="Q36">Q36</option>
+										<option value="Q37">Q37</option>
+										<option value="Q38">Q38</option>
+										<option value="Q39">Q39</option>
+										<option value="Q40">Q40</option>
+										<option value="Q41">Q41</option>
+										<option value="Q42">Q42</option>
+										<option value="R15">R15</option>
+										<option value="R16">R16</option>
+										<option value="R17">R17</option>
+										<option value="R18">R18</option>
+										<option value="R19">R19</option>
+										<option value="R20">R20</option>
+										<option value="R21">R21</option>
+										<option value="R22">R22</option>
+										<option value="R23">R23</option>
+										<option value="R24">R24</option>
+										<option value="R25">R25</option>
+										<option value="R26">R26</option>
+										<option value="R27">R27</option>
+										<option value="R28">R28</option>
+										<option value="R29">R29</option>
+										<option value="R30">R30</option>
+										<option value="R31">R31</option>
+										<option value="R32">R32</option>
+										<option value="R33">R33</option>
+										<option value="R34">R34</option>
+										<option value="R35">R35</option>
+										<option value="R36">R36</option>
+										<option value="R37">R37</option>
+										<option value="R38">R38</option>
+										<option value="R39">R39</option>
+										<option value="R40">R40</option>
+										<option value="R41">R41</option>
+										<option value="S16">S16</option>
+										<option value="S17">S17</option>
+										<option value="S18">S18</option>
+										<option value="S19">S19</option>
+										<option value="S20">S20</option>
+										<option value="S21">S21</option>
+										<option value="S22">S22</option>
+										<option value="S23">S23</option>
+										<option value="S24">S24</option>
+										<option value="S25">S25</option>
+										<option value="S26">S26</option>
+										<option value="S27">S27</option>
+										<option value="S28">S28</option>
+										<option value="S29">S29</option>
+										<option value="S30">S30</option>
+										<option value="S31">S31</option>
+										<option value="S32">S32</option>
+										<option value="S33">S33</option>
+										<option value="S34">S34</option>
+										<option value="S35">S35</option>
+										<option value="S36">S36</option>
+										<option value="S37">S37</option>
+										<option value="S38">S38</option>
+										<option value="S39">S39</option>
+										<option value="S40">S40</option>
+										<option value="T20">T20</option>
+										<option value="T21">T21</option>
+										<option value="T22">T22</option>
+										<option value="T23">T23</option>
+										<option value="T24">T24</option>
+										<option value="T25">T25</option>
+										<option value="T26">T26</option>
+										<option value="T27">T27</option>
+										<option value="T28">T28</option>
+										<option value="T29">T29</option>
+										<option value="T30">T30</option>
+										<option value="T31">T31</option>
+										<option value="T32">T32</option>
+										<option value="T33">T33</option>
+										<option value="T34">T34</option>
+										<option value="T35">T35</option>
+										<option value="T36">T36</option>
+										<option value="T37">T37</option>
+										<option value="T38">T38</option>
+										<option value="U24">U24</option>
+										<option value="U25">U25</option>
+										<option value="U26">U26</option>
+										<option value="U27">U27</option>
+										<option value="U28">U28</option>
+										<option value="U29">U29</option>
+										<option value="U30">U30</option>
+										<option value="U31">U31</option>
+										<option value="U32">U32</option>
+										<option value="U33">U33</option>
+										<option value="U34">U34</option>
+										<option value="U35">U35</option>
+										<option value="U36">U36</option>
+										<option value="U37">U37</option>
+										<option value="V25">V25</option>
+										<option value="V26">V26</option>
+										<option value="V27">V27</option>
+										<option value="V28">V28</option>
+										<option value="V29">V29</option>
+										<option value="V30">V30</option>
+										<option value="V31">V31</option>
+										<option value="V32">V32</option>
+										<option value="V33">V33</option>
+										<option value="V34">V34</option>
+										<option value="V35">V35</option>
+										<option value="W26">W26</option>
+										<option value="W27">W27</option>
+										<option value="W28">W28</option>
+										<option value="W29">W29</option>
+										<option value="W30">W30</option>
+										<option value="W31">W31</option>
+										<option value="W32">W32</option>
+										<option value="W33">W33</option>
+										<option value="W34">W34</option>
+										<option value="X27">X27</option>
+										<option value="X28">X28</option>
+										<option value="X29">X29</option>
+										<option value="X30">X30</option>
+										<option value="X31">X31</option>
+										<option value="X32">X32</option>
+										<option value="X33">X33</option>
+										<option value="Y28">Y28</option>
+										<option value="Y29">Y29</option>
+										<option value="Y30">Y30</option>
+										<option value="Y31">Y31</option>
+										<option value="Z29">Z29</option>
+										<option value="Z30">Z30</option>
+									</select>
+								</td>	
+								<td class="right">
+									<input type="button" id="enggridsearchbtn" value="Search">
+								</td>	
+							</tr>
+						</table>	
 																			
 					</div>
 					
-					<div class="fancycont">
-						<h4>Tax Information</h4>
-						<div id="taxlinks" class="cont"></div>
-					</div>
-					
-					<div class="fancycont">
-					
-						<h4>Deed Reference(s) and Sales Price</h4>
-						
-						<div id="deed" class="cont">
-						</div>
-						
-						<div id="deedlinks" class="cont">
-						</div>
-																				
-					</div>
-									
-					<div class="fancycont">
-					
-						<h4>Location Information</h4>
-													
-						<div id="locinfo" class="cont">
-						</div>
-						
-						<div id="situsaddress" class="cont">
-						</div>
-						
-						<div id="loctoggles" class="cont">
-						</div>
-						
-						<div id="loclinks" class="cont">
-						</div>
-																				
-					</div>
-					
-					<div class="fancycont">
-					
-						<h4>Environmental Information</h4>
-						
-						<div id="envinfo" class="cont">
-						</div>
-						
-						<div id="envtoggles" class="cont">
-						</div>
-													
-						<div id="envlinks" class="cont">
-						</div>
-																											
-					</div>
-											
-				</div>	
-									
+				</div>
+																
 			</div>
+				
+			<!-- Market Analysis -->
+			<div id="marketanalysis" class="hidden">
 			
-		<!-- The following content is not displayed at run time -->
-		<!-- JavaScript at the bottom for fast page loading -->
+				<div class="fancycont first">
+			
+					<h4>Market Analysis</h4>
+											
+					<div class="cont">
+					
+						<table id="mrktanlysform">
+							<tr>
+								<th>
+									Primary Search Type
+								</th>	
+								<td>
+									<select id="primarysrchtype" class="max">
+										<option value="0">Jurisdiction</option>
+										<option value="1">Appraisal Neighborhood Code</option>
+										<option value="2">Street Name</option>
+										<option value="3">Buffer Selected Property</option>
+									</select>
+								</td>	
+							</tr>
+							<tr>
+								<th>
+									Jurisdiction
+								</th>	
+								<td>
+									<select id="jurisdiction" class="max">
+										<option value="1" selected>Charlotte</option>
+										<option value="2">Davidson</option>
+										<option value="3">Cornelius</option>
+										<option value="4">Pineville</option>
+										<option value="5">Matthews</option>
+										<option value="6">Huntersville</option>
+										<option value="7">Mint Hill</option>
+										<option value="8">Stallings</option>
+										<option value="0">UNINC Mecklenburg Co</option>
+									</select>
+								</td>	
+							</tr>
+							<tr class="hidden">
+								<th>
+									Neighborhood Code
+								</th>	
+								<td>
+									<input id="neighborcode" class="small" />
+								</td>	
+							</tr>
+							<tr class="hidden">
+								<th>
+									Street Name
+								</th>	
+								<td>
+									<div id="stnameCont" ></div>
+								</td>	
+							</tr>
+							<tr class="hidden">
+								<th>
+									Buffer Size
+								</th>	
+								<td>
+									<input id="anlysbuffsize" class="small" />&nbsp;ft
+									<span class="note">(Should be within (0-5280) ft.)</span>
+								</td>	
+							</tr>
+							<tr>
+								<th>
+									Property Use
+								</th>	
+								<td>
+									<select id="propuse" class="max">
+										<option value="Condo/Townhome">Condominium / Attached Residence</option>
+										<option value="Commercial">Commercial</option>
+										<option value="Govt-Inst">Govt-Inst</option>
+										<option value="Hotel/Motel">Hotel / Motel</option>
+										<option value="Manufactured">Manufactured Home</option>
+										<option value="Multi-Family">Multi-Family</option>
+										<option value="Office">Office</option>
+										<option value="Single-Family" selected>Single-Family</option>
+										<option value="StadiumArena">Stadium/Arena</option>
+										<option value="Vacant">Vacant Land</option>
+										<option value="Warehouse">Warehouse</option>
+										<option value="Warehouse Lg">Warehouse Large</option>
+									</select>
+								</td>	
+							</tr>
+							<tr>
+								<th class="top">
+									Parcel Acreage
+								</th>	
+								<td>
+									<input id="acrefrom" class="small" placeholder="Min" />
+									<span class="pad">-</span>										
+									<input id="acreto" class="small" placeholder="Max" /><span class="last">Acres</span>
+								</td>	
+							</tr>
+							<tr>
+								<td colspan="2">
+									<div class="note">(Not all parcels are assessed by acres.)</div>
+								</td>
+							</tr>
+							<tr>
+								<th>
+									Parcels without Acreage
+								</th>	
+								<td>
+									<select id="noacre" class="max">
+										<option value="LT">Lots Only (No Acreage)</option>
+										<option value="WF">Waterfront Lots</option>
+										<option value="ALL" selected>Both</option>
+									</select>
+								</td>	
+							</tr>
+							<tr>
+								<th>
+									Market Value ($)
+								</th>	
+								<td>
+									<input id="mrktvalfrom" class="medium" placeholder="Min" />
+									<span class="pad">-</span>										
+									<input id="mrktvalto" class="medium" placeholder="Max" />
+								</td>	
+							</tr>
+							<tr>
+								<th>
+									Sale Price ($)
+								</th>	
+								<td>
+									<input id="salepricefrom" class="medium" placeholder="Min" />
+									<span class="pad">-</span>										
+									<input id="salepriceto" class="medium" placeholder="Max" />
+								</td>	
+							</tr>
+							<tr>
+								<th>
+									Sale Date Range
+								</th>	
+								<td>
+									<input id="saledatefrom" />
+									<span class="pad">-</span>										
+									<input id="saledateto" />
+								</td>	
+							</tr>
+							<tr>
+								<th>
+									Year Built
+								</th>	
+								<td>
+									<input id="yearbuiltfrom" class="small" placeholder="Min" />
+									<span class="pad">-</span>										
+									<input id="yearbuiltto" class="small" placeholder="Max" />
+								</td>	
+							</tr>
+							<tr>
+								<th>
+									Square Feet
+								</th>	
+								<td>
+									<input id="sqftfrom" class="medium" placeholder="Min" />
+									<span class="pad">-</span>										
+									<input id="sqftto" class="medium" placeholder="Max" />
+								</td>	
+							</tr>
+							<tr>
+								<th>
+									Bedrooms
+								</th>	
+								<td>
+									<select id="bedrooms" class="max">
+										<option value="" selected>Any</option>
+										<option value="1">1 Bedroom</option>
+										<option value="2">2 Bedrooms</option>
+										<option value="3">3 Bedrooms</option>	
+										<option value="4">4 Bedrooms</option>
+										<option value="5">5 or More</option>
+									</select>
+								</td>	
+							</tr>
+							<tr>
+								<th>
+									Full Baths
+								</th>	
+								<td>
+									<select id="bathrooms" class="max">
+										<option value="" selected>Any</option>
+										<option value="1">1 Full Bath</option>
+										<option value="2">2 Full Baths</option>
+										<option value="3">3 Full Baths</option>	
+										<option value="4">4 Full Baths</option>
+										<option value="5">5 or More</option>
+									</select>
+								</td>	
+							</tr>
+							<tr>
+								<th>
+									Exterior Frame
+								</th>	
+								<td>
+									<select id="exteriorframe" class="max">
+										<option value="" selected>Any</option>
+										<option value="ALUM,VINYL">Alum,Vinyl</option>
+										<option value="BLOCK">Block</option>
+										<option value="BRICK">Brick</option>
+										<option value="GLASS">Glass</option>
+										<option value="LOG">Log</option>
+										<option value="METAL">Metal</option>
+										<option value="SIDING">Siding</option>
+										<option value="STONE">Stone</option>
+										<option value="STUCCO">Stucco</option>
+										<option value="WOOD">Wood</option>
+									</select>	
+								</td>	
+							</tr>
+							<tr>
+								<th>
+									Story Type
+								</th>	
+								<td>
+									<select id="storytype" class="max">
+										<option value="" selected>Any</option>
+										<option value="01">1 Story</option>
+										<option value="02">1.5 Story</option>
+										<option value="03">2 Story</option>
+										<option value="04">&gt;= 2.5 Story</option>
+										<option value="05">Ranch W/BSMT</option>
+										<option value="06">A-Frame</option>
+										<option value="07">Split Level</option>
+										<option value="08">BI-Level</option>
+										<option value="09">Cape Cod</option>
+									</select>
+								</td>	
+							</tr>
+							<tr>
+								<th>
+									Sort By
+								</th>	
+								<td>
+									<select id="sortby" class="max">
+										<option value="market_value|desc" selected>Descending Market Value</option>
+										<option value="sale_date_price|desc">Descending Sale Date/Sale Price</option>
+										<option value="sale_price|desc">Descending Sale Price</option>
+										<option value="market_value|asc">Ascending Market Value</option>
+										<option value="sale_date_price|asc">Ascending Sale Date/Sale Price</option>
+										<option value="market_value|asc">Ascending Sale Price</option>
+										<option value="addr|asc">Address</option>
+									</select>	
+								</td>	
+							</tr>
+						</table>	
 						
-		<!-- Configure Dojo -->
-		<script type="text/javascript">
-			var package_path = window.location.pathname.substring ( 0, window.location.pathname.lastIndexOf ( "/" ) ),
-				dojoConfig = {
-					async: true,
-					packages: [
-						{
-							name: "mojo",
-							location: package_path + "/js/vendor/mojo"
-						}, {
-							name: "cbtree",
-							location: package_path + "/js/vendor/cbtree"
-						}
-					],
-					cacheBust: true
-				};
-		</script>
+						<div class="textright">
 							
-		<!-- Library scripts -->
-		<script src="//js.arcgis.com/3.32compact/"></script>
-
-		<!-- app specific scripts -->
-		<script src="js/search.js"></script><script src="js/config_gissdedev1v.js"></script><script src="js/cachedmap.js"></script><script src="js/map.js"></script><script src="js/main.js"></script><script src="js/usng.js"></script><script src="js/utility.js"></script>
+							<div id="mrktanlyserror" class="searcherror"></div>
+							<div>
+								<img id="mrktanlysprogress" class="spin hidden" src="image/spin.gif" />
+								<input type="button" id="mrktanlysclear" value="Clear">&nbsp;
+								<input type="button" id="mrktanlysbtn" value="Analyze">
+							</div>
+						</div>
 						
-        <!-- Google Analytics usage statistics -->
-		<script type="text/javascript">
-			var _gaq = _gaq || [];
-			_gaq.push(['_setAccount', 'UA-33761957-1']);
-			_gaq.push(['_trackPageview']);
+					</div>
+					
+				</div>
+										
+			</div>
+				
+			<!-- Property Information -->
+			<div id="propdetails" class="hidden">
+				<div class="fancycont first">
+					<h4>Property Key</h4>
+					<div id="identity" class="cont"></div>
+					<div id="address" class="cont"></div>
+					<div id="ownership" class="cont"></div>
+					<div id="supplementary" class="cont hidden"></div>
+					<div id="changemailaddr" class="cont"></div>
+					<div id="photo" class="textcenter"></div>
+					<div id="idlinks" class="cont"></div>
+					<div id="unselectprop" class="cont textright"></div>
+				</div>
+				
+				<div class="fancycont">
+				
+					<h4>Associated Information</h4>
+					
+					<div id="characteristics" class="cont">
+					</div>
+																		
+				</div>
+				
+				<div class="fancycont">
+					<h4>Tax Information</h4>
+					<div id="taxlinks" class="cont"></div>
+				</div>
+				
+				<div class="fancycont">
+				
+					<h4>Deed Reference(s) and Sales Price</h4>
+					
+					<div id="deed" class="cont">
+					</div>
+					
+					<div id="deedlinks" class="cont">
+					</div>
+																			
+				</div>
+								
+				<div class="fancycont">
+				
+					<h4>Location Information</h4>
+												
+					<div id="locinfo" class="cont">
+					</div>
+					
+					<div id="situsaddress" class="cont">
+					</div>
+					
+					<div id="loctoggles" class="cont">
+					</div>
+					
+					<div id="loclinks" class="cont">
+					</div>
+																			
+				</div>
+				
+				<div class="fancycont">
+				
+					<h4>Environmental Information</h4>
+					
+					<div id="envinfo" class="cont">
+					</div>
+					
+					<div id="envtoggles" class="cont">
+					</div>
+												
+					<div id="envlinks" class="cont">
+					</div>
+																										
+				</div>
+										
+			</div>	
+								
+		</div>
+	</div>	
+	<!-- The following content is not displayed at run time -->
+	<!-- JavaScript at the bottom for fast page loading -->
+					
+	<!-- Configure Dojo -->
+	<script type="text/javascript">
+		var package_path = window.location.pathname.substring ( 0, window.location.pathname.lastIndexOf ( "/" ) ),
+			dojoConfig = {
+				async: true,
+				packages: [
+					{
+						name: "mojo",
+						location: package_path + "/js/vendor/mojo"
+					}, {
+						name: "cbtree",
+						location: package_path + "/js/vendor/cbtree"
+					}
+				],
+				cacheBust: true
+			};
+	</script>
+						
+	<!-- Library scripts -->
+	<script src="//js.arcgis.com/3.32compact/"></script>
 
-			(function() {
-				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-			})();
-		</script>
-	</body>
+	<!-- app specific scripts -->
+	<script src="js/search.js"></script><script src="js/config_gissdedev1v.js"></script><script src="js/cachedmap.js"></script><script src="js/map.js"></script><script src="js/main.js"></script><script src="js/usng.js"></script><script src="js/utility.js"></script>
+					
+	<!-- Google Analytics usage statistics -->
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-33761957-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+</body>
 </html>

@@ -445,7 +445,7 @@ define( [
 					lang.mixin( param, { map: map, template: template } ),
 					lang.hitch( this, function( result ){
 						var currbasemap,
-							htmlstr = "<span class='mojoCont'><a href='" + result.url.replace ( "gisags1v", "mapserver.mecklenburgcountync.gov" ) + "?" + Math.floor( Math.random( ) * 1000000001 ) + 
+							htmlstr = "<span class='mojoCont'><a href='" + result.url.replace ( "localhost", this.printServerName ) + "?" + Math.floor( Math.random( ) * 1000000001 ) + 
 							"' target='_blank'>" + ( this._maplayout.value === "MAP_ONLY" ? "Screenshot" : "Print Map" ) + "</a></span>";
 													
 						if( this._maplayout.value !== "MAP_ONLY" && printLegend ){

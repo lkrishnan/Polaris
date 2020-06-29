@@ -685,10 +685,17 @@ Utils = {
           }
 		};
 		xobj.send( null );  
-	}, getDomElements: function( selection ){
+	}, 
+	
+	getDomElements: function( selection ){
 		return [ ].slice.call( selection );
 
+	},
+
+	jsonToURL: function( obj ){
+		return Object.keys( obj ).map( function( i ){ i + '=' + encodeURIComponent( obj[ i ] ); } ).join( '&' );
 	}
+
 },
 
 Validate = {
