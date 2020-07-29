@@ -8,37 +8,37 @@ var config = {
 	}, 
 	min_scale: 425000,
 	basemap_services: {
-		basemap: "http://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/basemap/MapServer",
-		basemap_aerial: "http://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/basemap_aerial/MapServer",
-		topo: "http://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/topohillshade/MapServer"
+		basemap: "https://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/basemap/MapServer",
+		basemap_aerial: "https://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/basemap_aerial/MapServer",
+		topo: "https://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/topohillshade/MapServer"
 	}, aerial_services: [
-		{ layer: "2020", url: "http://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/aerial2020/MapServer" },
-		{ layer: "2019", url: "http://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/TESTaerial2019/MapServer" },
-		{ layer: "2018", url: "http://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/aerial2018/MapServer" },
+		{ layer: "2020", url: "https://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/aerial2020/MapServer" },
+		{ layer: "2019", url: "https://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/TESTaerial2019/MapServer" },
+		{ layer: "2018", url: "https://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/aerial2018/MapServer" },
 		{ layer: "2017", url: "https://maps.mecklenburgcountync.gov/agsadaptor/rest/services/aerial2017/MapServer" },
 		{ layer: "2016", url: "https://maps.mecklenburgcountync.gov/agsadaptor/rest/services/aerial2016/MapServer" },
 		{ layer: "2015", url: "https://maps.mecklenburgcountync.gov/agsadaptor/rest/services/aerial2015/MapServer" },
 		{ layer: "2014", url: "https://maps.mecklenburgcountync.gov/agsadaptor/rest/services/aerial2014/MapServer" }
 	], overlay_services: {
 		overlays_trans: { 
-			url: "http://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/layers_failover/MapServer",			
+			url: "https://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/layers_failover/MapServer",			
 			opacity: 0.5, 
 			visible: true,
 			visiblelyrs: [ -1 ]
 		}, overlays_labels: { 
-			url: "http://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/labels_failover/MapServer", 
+			url: "https://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/labels_failover/MapServer", 
 			opacity: 1.0, 			
 			visible: true,
 			visiblelyrs: [ -1 ]
 		}, overlays_streets: { 
-			url: "http://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/layers_failover/MapServer",		
+			url: "https://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/layers_failover/MapServer",		
 			opacity: 1.0, 			
 			visible: true,
 			visiblelyrs: [ -1 ]
 		}
-	}, geometry_service: "http://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/Utilities/Geometry/GeometryServer",
-	print_task: "http://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/Print/ExportWebMap/GPServer/Export%20Web%20Map",
+	}, geometry_service: "https://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/Utilities/Geometry/GeometryServer",
+	print_task: "https://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/Print/ExportWebMap/GPServer/Export%20Web%20Map",
 	print_server_name: "polaris3g.mecklenburgcountync.gov",
-	ws: "http://polaris3g.mecklenburgcountync.gov/ws/php_failover/",
+	ws: "https://polaris3g.mecklenburgcountync.gov/ws/php_failover/",
 	local_json: "data/"
 };		
