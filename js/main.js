@@ -241,7 +241,9 @@ function setIdentity( data ){
 				"&ycoord=" + ( selectedAddress.y ? selectedAddress.y : "" ) +
 				"&pid=" + ( selectedAddress.taxpid ? selectedAddress.taxpid : "" ) + 
 				"&gisid=" + ( selectedAddress.groundpid ? selectedAddress.groundpid : "" ) );
-											
+			/*document.getElementById( "clickpropreport" ).setAttribute( "href", config.api.pdf + "v1/property_details/" + 
+				( selectedAddress.taxpid ? selectedAddress.taxpid : "" ) + "/" + ( selectedAddress.groundpid ? selectedAddress.groundpid : "" ) + "/" +
+				( selectedAddress.x ? selectedAddress.x : "" ) + "," + ( selectedAddress.y ? selectedAddress.y : "" ) + ",2264" );*/
 			//set links
 			document.getElementById( "idlinks" ).innerHTML = Format.objectAsTable( [
 				{
