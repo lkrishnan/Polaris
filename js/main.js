@@ -599,12 +599,12 @@ function setEnvInfo( data ){
 				headers: { "X-Requested-With": "" },
 				query: {
 					from_table: "parcels_py",
-					to_table: "water_quality_buffers_py",  
+					to_table: "waterquality_buffers_py",  
 					from_geometryfield: "shape",
 					to_geometryfield: "shape",
 					fields: "t.objectid",
 					parameters: "f.pid='" + data.groundpid + "'",
-					source: "tax"
+					source: "gis"
 				}
 			} ),
 			//check if parcel intersects fema floodplain
@@ -618,7 +618,7 @@ function setEnvInfo( data ){
 					to_geometryfield: "shape",
 					fields: "t.objectid",
 					parameters: "f.pid='" + data.groundpid + "'",
-					source: "tax"
+					source: "gis"
 				}
 			} ),
 			//check if parcel intersects community floodplain	
@@ -632,7 +632,7 @@ function setEnvInfo( data ){
 					to_geometryfield: "shape",
 					fields: "t.objectid",
 					parameters: "f.pid='" + data.groundpid + "'",
-					source: "tax"
+					source: "gis"
 				}
 			} ),
 			//find fema panel index
