@@ -12,7 +12,7 @@ var config = {
 		basemap_aerial: "https://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/basemap_aerial/MapServer",
 		topo: "https://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/topohillshade/MapServer"
 	}, aerial_services: [
-		{ layer: "2020", url: "https://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/aerial2020/MapServer" },
+		{ layer: "2020", url: "https://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/ProdAerial2020/MapServer" },
 		{ layer: "2019", url: "https://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/TESTaerial2019/MapServer" },
 		{ layer: "2018", url: "https://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/aerial2018/MapServer" },
 		{ layer: "2017", url: "https://maps.mecklenburgcountync.gov/agsadaptor/rest/services/aerial2017/MapServer" },
