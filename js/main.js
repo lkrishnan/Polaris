@@ -197,7 +197,7 @@ function setIdentity( data ){
 			document.getElementById( "changeownerinfo" ).innerHTML = "<span class='note'>Is ownership or parcel boundary wrong?</span>&nbsp;<a href='https://mecklenburgcountync-563955.workflowcloud.com/forms/d024bf6c-b9b0-4cf5-a7d9-7ac376f0370c' target='_blank' class='greenlink' >Request Change</a>";
 			
 			//add mail address change
-			document.getElementById( "changemailaddr" ).innerHTML = "<span class='note'>Is the mailing address wrong?</span>&nbsp;<a href='https://www.mecknc.gov/LUESA/CodeEnforcement/Documents/Address%20Change%20Authorization.pdf' target='_blank' class='greenlink' >Request Change</a>";
+			document.getElementById( "changemailaddr" ).innerHTML = "<span class='note'>Is the mailing address wrong?</span>&nbsp;<a href='https://mecklenburgcountync-563955.workflowcloud.com/forms/0314aa67-0083-4905-9b29-a571be01717e' target='_blank' class='greenlink' >Request Change</a>";
 			
 			//add unselct button
 			document.getElementById( "unselectprop" ).innerHTML = "<a href='javascript:void(0);' onclick='unselectProp();' class='btnlink' style='font-size: 1.0em;'>Unselect Property</a>";
