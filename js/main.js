@@ -701,10 +701,11 @@ function setEnvInfo( data ){
 			
 			//set FEMA Panel and Date
 			if( results[ 3 ].length > 0 ){
+				console.log(results[3]);
 				var effdate = results[ 3 ][ 0 ].feature.attributes.EFF_DATE.split( "/" ),
-					filename = results[ 3 ][ 0 ].feature.attributes.FIRM_PAN + ( effdate[ 2 ] + Format.leftPad ( effdate[ 0 ], 2 ) + Format.leftPad ( effdate[ 1 ], 2 ) );
+					filename = results[ 3 ][ 0 ].feature.attributes.panel_id + ( effdate[ 2 ] + Format.leftPad ( effdate[ 0 ], 2 ) + Format.leftPad ( effdate[ 1 ], 2 ) );
 				
-				info[ "FEMA Panel No" ] = "<a href='https://mecklenburgcounty.exavault.com/p/stormwater/Floodplain%20Mapping/Effective%20Data/FIRM%20Panels/" + filename + ".pdf' target='_blank'>" + results[ 3 ][ 0 ].feature.attributes.FIRM_PAN + "</a>";
+				info[ "FEMA Panel No" ] = "<a href='https://mecklenburgcounty.exavault.com/p/stormwater/Floodplain%20Mapping/Effective%20Data/FIRM%20Panels/" + filename + ".pdf' target='_blank'>" + results[ 3 ][ 0 ].feature.attributes.panel_id + "</a>";
 				info[ "FEMA Panel Date" ] = Format.leftPad( effdate[ 0 ], 2 ) + "/" + Format.leftPad( effdate[ 1 ], 2 ) + "/" + effdate[ 2 ];
 			}else{
 				info[ "FEMA Panel No" ] = "NA";
