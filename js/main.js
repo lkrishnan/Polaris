@@ -747,7 +747,7 @@ function setEnvInfo( data ){
 		} ).then( function( ipdata ){
 			links.push( { 
 				"Link To": "<a href='http" + ( Utils.isPrivateIP ( ipdata.ip ) ? "" : "s" ) + "://webpermit.mecklenburgcountync.gov/Default.aspx?PossePresentation=SearchParcelNumber&ParcelNumber=" + data.taxpid.substr ( 0, 8 ) + "'" +
-					" target='_blank' );>Check for Address Permit Holds</a>"
+					" target='_blank' );>Check for Address Holds, Occupancy Holds and Expired Permits</a>"
 			} );
 			
 			if( data.hasOwnProperty( "lat" ) && data.hasOwnProperty( "lon" ) ){
