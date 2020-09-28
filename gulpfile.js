@@ -202,13 +202,13 @@ gulp.task( "develop", gulp.series( "lesstocss", "watch" ) );
 gulp.task( "default", gulp.series( "lesstocss", "jstobuild", "agsjstobuild", "sdejstobuild", "ags_sdejstobuild", "devjstobuild", "mojojstobuild", "images", "mojoimagetobuild", "csstobuild", "datatobuild", "rootfilestobuild", "htmltobuild", "cbtreetobuild" ) );
 
 //publish tasks
-gulp.task( "publishpub", function( ){
+gulp.task( "publish_prod", function( ){
 	return gulp.src( "build/**/*.*" )
 		.pipe( gulp.dest ( "//gispolaris1v/c$/inetpub/wwwroot" ) );
 } );
-gulp.task( "publishdev", function( ){
+gulp.task( "publish_dev", function( ){
 	return gulp.src( "build/**/*.*" )
 		.pipe( gulp.dest ( "//gispolarisdev1v/d$/www" ) );
 } );
-gulp.task( "publish", gulp.series( "publishpub", "publishdev" ) );
+gulp.task( "publish", gulp.series( "publish_prod", "publish_dev" ) );
 
