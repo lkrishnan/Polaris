@@ -499,7 +499,7 @@ function setLocInfo( data ){
 			
 			//add zoning designation list
 			links.push( {
-				"Link To": "<a href='http://polaris3g.mecklenburgcountync.gov/data/ZoningDesignations.pdf' target='_blank' );>Zoning Designations PDF</a>"
+				"Link To": "<a href='https://polaris3g.mecklenburgcountync.gov/data/ZoningDesignations.pdf' target='_blank' );>Zoning Designations PDF</a>"
 			} );
 			
 			//add toggle, info and links overlays
