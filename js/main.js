@@ -701,7 +701,6 @@ function setEnvInfo( data ){
 			
 			//set FEMA Panel and Date
 			if( results[ 3 ].length > 0 ){
-				console.log(results[3]);
 				var effdate = results[ 3 ][ 0 ].feature.attributes.EFF_DATE.split( "/" ),
 					filename = results[ 3 ][ 0 ].feature.attributes.panel_id + ( effdate[ 2 ] + Format.leftPad ( effdate[ 0 ], 2 ) + Format.leftPad ( effdate[ 1 ], 2 ) );
 				

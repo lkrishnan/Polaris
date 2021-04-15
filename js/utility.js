@@ -64,7 +64,7 @@ var Format = {
 							zeroPad( parseInt( deedbook ), 4 ) + zeroPad( parseInt( deedpage ), 4 ) + "&Close=True' target='_blank'>" + 
 							deedbook + "-" + deedpage + "</a>";
 					}else if( parseFloat( msDateA ) > parseFloat( msDateB ) ){
-						deed = "<a href='http://meckrod.manatron.com/RealEstate/SearchDetail.aspx?bk=" + deedbook.replace( /^0+/, '' ) + "&pg=" + deedpage.replace( /^0+/, '' ) + 
+						deed = "<a href='https://meckrod.manatron.com/RealEstate/SearchDetail.aspx?bk=" + deedbook.replace( /^0+/, '' ) + "&pg=" + deedpage.replace( /^0+/, '' ) + 
 							"&type=BkPg' target='_blank'>" + deedbook + "-" + deedpage + "</a>";
 					}
 				}
@@ -205,7 +205,7 @@ var Format = {
 					if( ( bk < 23 ) || ( bk === 23 && pg < 645 ) || ( bk === 230 ) || ( bk === 332 ) || ( bk === 1166 ) ){
 						desc = "<a href='http://meckrodhistorical.com/DocumentView.asp?DocumentType=Maps&Instrument=" + Format.leftPad( bk, 4 ) + Format.leftPad( pg, 4 ) + "&Close=True' target='_blank'>" + desc + "</a>"	
 					}else{
-						desc = "<a href='http://meckrod.manatron.com/RealEstate/SearchDetail.aspx?bk=" + bk + "&pg=" + pg + "&type=BkPg' target='_blank'>" + desc + "</a>";
+						desc = "<a href='https://meckrod.manatron.com/RealEstate/SearchDetail.aspx?bk=" + bk + "&pg=" + pg + "&type=BkPg' target='_blank'>" + desc + "</a>";
 					}	
 				}
 			}
@@ -224,7 +224,7 @@ var Format = {
 				if( bk > 0 && bk < 471 ){
 					desc = "<a href='http://meckrodhistorical.com/DocumentView.asp?DocumentType=Maps&Instrument=" + Format.leftPad( bk, 4 ) + Format.leftPad( pg, 4 ) + "&Close=True' target='_blank'>" + desc + "</a>"	
 				}else{
-					desc = "<a href='http://meckrod.manatron.com/RealEstate/SearchDetail.aspx?bk=" + bk + "&pg=" + pg + "&type=BkPg&act=CONDO' target='_blank'>" + desc + "</a>";
+					desc = "<a href='https://meckrod.manatron.com/RealEstate/SearchDetail.aspx?bk=" + bk + "&pg=" + pg + "&type=BkPg&act=CONDO' target='_blank'>" + desc + "</a>";
 				}	
 			}
 		}*/
