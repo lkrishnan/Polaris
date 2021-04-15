@@ -198,7 +198,7 @@
 			"otrans": [ 59 ]
 		}, { 
 			"id": "propcomp", 
-			"name": "Property Comparables", 
+			"name": "Sales", 
 			"type": "group",
 			"show": true,			
 			"otrans": [ 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 62, 64 ],
