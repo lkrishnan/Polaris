@@ -564,7 +564,7 @@ function setEnvInfo( data ){
 					"Link To": "<a href='http://charmeck.org/stormwater/regulations/Pages/Post-ConstructionStormWaterOrdinances.aspx'" +
 						" target='_blank' );>Post-Construction Storm Water Ordinances</a>"
 				},	{ 
-					"Link To": "<a href='http://charmeck.org/mecklenburg/county/LUESA/WaterandLandResources/Conservation/Documents/IndextoMapUnits.pdf'" +
+					"Link To": "<a href='https://www.mecknc.gov/LUESA/WaterandLandResources/Conservation/documents/indextomapunits.pdf'" +
 						" target='_blank' );>Soil Type Descriptions</a>"
 				}
 			],
