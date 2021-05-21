@@ -457,6 +457,9 @@ function finder( data, container ){
 					data.groundpid = camadata[ 0 ].common_parcel_id;
 					data.taxpid = camadata[ 0 ].parcel_id;					
 					finder( data, container );
+				}else{ //if parcel isn't mapped and no CAMA data exists but the address point exists
+					badSearch( );
+					
 				}
 				//else is not handled because its impossible to have no ground pid for a corresponding tax pid
 			} );
