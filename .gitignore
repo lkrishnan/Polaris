@@ -1,0 +1,4 @@
+node_modules
+build
+image
+package-lock.json
