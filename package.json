@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Lak Krishnan",
   "license": "ISC",
   "devDependencies": {
     "del": "^3.0.0",
@@ -19,5 +19,13 @@
     "gulp-uglify": "^3.0.1"
   },
   "dependencies": {},
-  "description": ""
+  "description": "[Polaris](http://polaris3g.mecklenburgcountync.gov) is a *property ownership and land records* app.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lkrishnan/Polaris.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lkrishnan/Polaris/issues"
+  },
+  "homepage": "https://github.com/lkrishnan/Polaris#readme"
 }
