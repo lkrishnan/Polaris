@@ -21,17 +21,17 @@ var config = {
 		{ layer: "2015", url: "https://maps.mecklenburgcountync.gov/agsadaptor/rest/services/aerial2015/MapServer" }
 	], overlay_services: {
 		overlays_trans: { 
-			url: "https://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/layers/MapServer",			
+			url: "https://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/layers1/MapServer",			
 			opacity: 0.5, 
 			visible: true,
 			visiblelyrs: [ -1 ]
 		}, overlays_labels: { 
-			url: "https://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/labels/MapServer", 
+			url: "https://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/labels1/MapServer", 
 			opacity: 1.0, 			
 			visible: true,
 			visiblelyrs: [ -1 ]
 		}, overlays_streets: { 
-			url: "https://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/layers/MapServer",		
+			url: "https://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/layers1/MapServer",		
 			opacity: 1.0, 			
 			visible: true,
 			visiblelyrs: [ -1 ]
