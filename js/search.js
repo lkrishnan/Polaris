@@ -1,7 +1,7 @@
 function searchInit( ){
 	require( [ "esri/tasks/GeometryService", "esri/tasks/BufferParameters", "dojox/data/QueryReadStore",
 		"dijit/form/ComboBox", "dijit/form/DateTextBox", "dijit/registry", "dojo/_base/connect",
-		"dojo/data/ItemFileWriteStore" ], function( GeometryService, BufferParameters, QueryReadStore, ComboBox, DateTextBox, registry, connect, ItemFileWriteStore ){
+		"dojo/data/ItemFileWriteStore", "dojo/request" ], function( GeometryService, BufferParameters, QueryReadStore, ComboBox, DateTextBox, registry, connect, ItemFileWriteStore, request ){
 		//local variables
 		var mainSearch,
 			situsStSrch,
@@ -178,7 +178,7 @@ function searchInit( ){
 		///////////////////////////////////////////////////
 		
 		//Initialize the Preliminary Plan Search combobox
-		Utils.loadJSON( function( response ){
+		/*Utils.loadJSON( function( response ){
 			// Parse JSON string into object
 			var prelimplans = JSON.parse( response );
 			
@@ -191,14 +191,39 @@ function searchInit( ){
 				
 				document.getElementById( "prelimplansearch" ).innerHTML += htmlstr;
 			}		
-		}, config.local_json + "prelimplans.json" );
+		}, config.local_json + "prelimplans.json" );*/
+		
+		request.get( config.ws + "v1/ws_attributequery.php", {
+			handleAs: "json",
+			headers: { "X-Requested-With": "" },
+			query: { 
+				table: "preliminary_plans_ln", 
+				fields: "projname",
+				parameters: "projname IS NOT NULL",
+				group: "projname",
+				order: "projname",
+				source: "gis"
+			}
+		} ).then( function( prelimplans ){
+			if( prelimplans.length > 0 ){
+				var htmlstr = "";
+				
+				prelimplans.forEach( function( item, i ){						
+					htmlstr += "<option value='" + item.projname + "'" + ( i === 0 ? " selected" : "" ) + ">" + item.projname + "</option>";
+				} );
+				
+				document.getElementById( "prelimplansearch" ).innerHTML += htmlstr;
+			
+			}
+			
+		} );
 		
 		//Preliminary Plan Search go button click event
 		document.getElementById( "prelimplansearchbtn" ).addEventListener( "click", function( event ){
 			prelimPlanSearch( document.getElementById( "prelimplansearch" ).value );
 			lastSearch = "adv";
 		} );
-		
+				
 		///////////////////////////////////////////////////
 		// 6. Initialize Engineering Grid Search control //
 		///////////////////////////////////////////////////
