@@ -675,7 +675,7 @@ function setEnvInfo( data ){
 				handleAs: "json",
 				headers: { "X-Requested-With": "" },
 				query: { 
-					table: "buaparcels", 
+					table: "tb_buaparcels", 
 					fields: "allowable_bua",
 					parameters: "commonpid='" + data.groundpid + "'",					
 					source: "tax"
