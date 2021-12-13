@@ -404,9 +404,9 @@ function setLocInfo( data ){
 					x: data.x,
 					y: data.y,
 					srid: "2264",
-					table: "neighborhoods_py",
+					table: "qol_npa_py",
 					geometryfield: "shape",
-					fields: "id as code",
+					fields: "id::int as code",
 					source: "gis"
 				}
 			} ),
