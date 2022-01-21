@@ -55,7 +55,6 @@ var web_dir = ".",
 			web_dir + "/js/utility.js"
 		], scripts_dev: [
 			web_dir + "/js/cachedmap.js",
-			web_dir + "/js/config_dev.js",
 			web_dir + "/js/main.js",
 			web_dir + "/js/map.js",
 			web_dir + "/js/search.js",
@@ -66,7 +65,6 @@ var web_dir = ".",
 			web_dir + "/failover_ags.html",
 			web_dir + "/failover_sde.html",
 			web_dir + "/failover_ags_sde.html",
-			web_dir + "/dev.html",
 			web_dir + "/error.html",
 			web_dir + "/maplayers_dictionary.html"
 		], cbtreejs: [
@@ -184,7 +182,6 @@ gulp.task( "htmltobuild", function( ){
 		.pipe( replace( /<script src="js\/search.js"><\/script><script src="js\/config_gisags2v.js"><\/script><script src="js\/cachedmap.js"><\/script><script src="js\/map.js"><\/script><script src="js\/main.js"><\/script><script src="js\/usng.js"><\/script><script src="js\/utility.js"><\/script>/g, "<script src=\"js/p3g_ags.js?foo=99999\"></script>" ) )
 		.pipe( replace( /<script src="js\/search.js"><\/script><script src="js\/config_gissdedev1v.js"><\/script><script src="js\/cachedmap.js"><\/script><script src="js\/map.js"><\/script><script src="js\/main.js"><\/script><script src="js\/usng.js"><\/script><script src="js\/utility.js"><\/script>/g, "<script src=\"js/p3g_sde.js?foo=99999\"></script>" ) )
 		.pipe( replace( /<script src="js\/search.js"><\/script><script src="js\/config_gisags2v_gissdedev1v.js"><\/script><script src="js\/cachedmap.js"><\/script><script src="js\/map.js"><\/script><script src="js\/main.js"><\/script><script src="js\/usng.js"><\/script><script src="js\/utility.js"><\/script>/g, "<script src=\"js/p3g_ags_sde.js?foo=99999\"></script>" ) )
-		.pipe( replace( /<script src="js\/search.js"><\/script><script src="js\/config_dev.js"><\/script><script src="js\/cachedmap.js"><\/script><script src="js\/map.js"><\/script><script src="js\/main.js"><\/script><script src="js\/usng.js"><\/script><script src="js\/utility.js"><\/script>/g, "<script src=\"js/p3g_dev.js?foo=99999\"></script>" ) )
 		.pipe( replace( /foo=[0-9]*/g, "foo=" + Math.floor( ( Math.random( ) * 100000 ) + 1 ) ) )
 		.pipe( gulp.dest( dest + "/" ) );
 } );
