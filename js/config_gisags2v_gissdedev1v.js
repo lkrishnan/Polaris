@@ -12,13 +12,13 @@ var config = {
 		basemap_aerial: "https://maps.mecklenburgcountync.gov/agsadaptor/rest/services/basemap_aerial/MapServer",
 		topo: "https://maps.mecklenburgcountync.gov/agsadaptor/rest/services/topohillshade/MapServer"
 	}, aerial_services: [
+		{ layer: "2022", url: "https://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/aerial2022/MapServer" },
 		{ layer: "2021", url: "https://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/aerial2021/MapServer" },
 		{ layer: "2020", url: "https://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/ProdAerial2020/MapServer" },
-		{ layer: "2019", url: "https://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/TESTaerial2019/MapServer" },
-		{ layer: "2018", url: "https://polaris3g.mecklenburgcountync.gov/polarisv/rest/services/aerial2018/MapServer" },
+		{ layer: "2019", url: "https://maps.mecklenburgcountync.gov/agsadaptor/rest/services/aerial2019/MapServer" },
+		{ layer: "2018", url: "https://maps.mecklenburgcountync.gov/agsadaptor/rest/services/aerial2018/MapServer" },
 		{ layer: "2017", url: "https://maps.mecklenburgcountync.gov/agsadaptor/rest/services/aerial2017/MapServer" },
 		{ layer: "2016", url: "https://maps.mecklenburgcountync.gov/agsadaptor/rest/services/aerial2016/MapServer" },
-		{ layer: "2015", url: "https://maps.mecklenburgcountync.gov/agsadaptor/rest/services/aerial2015/MapServer" }
 	], overlay_services: {
 		overlays_trans: { 
 			url: "https://maps.mecklenburgcountync.gov/agsadaptor/rest/services/polaris3g/layers_failover/MapServer",			

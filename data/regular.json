@@ -201,8 +201,9 @@
 			"name": "Sales", 
 			"type": "group",
 			"show": true,			
-			"otrans": [ 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 62, 64 ],
+			"otrans": [ 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 62, 64, 66 ],
 			"children": [
+				{ "_reference": "sales2022" },
 				{ "_reference": "sales2021" },
 				{ "_reference": "sales2020" },
 				{ "_reference": "sales2019" },
@@ -216,6 +217,10 @@
 				{ "_reference": "sales2011" },
 				{ "_reference": "sales2010" }
 			]
+		}, { 
+			"id": "sales2022", 
+			"name": "2022 Sales", 
+			"otrans": [ 66 ]
 		}, { 
 			"id": "sales2021", 
 			"name": "2021 Sales", 

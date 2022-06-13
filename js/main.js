@@ -224,13 +224,19 @@ function setIdentity( data ){
 					if( item.photo_url.trim( ).length > 0 ){
 						//if the property photo exisits at the location add it
 						var imgdate = item.photo_date;
-								
-						propPhotoGallery.addPhoto( { 
-							url: item.photo_url.trim( ), 
-							photo_date: item.photo_date,
-							title: "Photo Date: " + imgdate.substring( 4, 6 ) + "/" + imgdate.substring( 6, 8 ) + "/" + imgdate.substring( 0, 4 )
-							//title: "Photo Date: " + imgdate.substring( 4, 6 ) + "/" + imgdate.substring( 6, 8 ) + "/" + imgdate.substring( 0, 4 ) + "  Source: " + item.source + " (" + item.attribution + ")" 
+						
+						Validate.imageExists( item.photo_url.trim( ), function( success ){ 
+							if( success ){
+								propPhotoGallery.addPhoto( { 
+									url: item.photo_url.trim( ), 
+									photo_date: item.photo_date,
+									title: "Photo Date: " + imgdate.substring( 4, 6 ) + "/" + imgdate.substring( 6, 8 ) + "/" + imgdate.substring( 0, 4 )
+									//title: "Photo Date: " + imgdate.substring( 4, 6 ) + "/" + imgdate.substring( 6, 8 ) + "/" + imgdate.substring( 0, 4 ) + "  Source: " + item.source + " (" + item.attribution + ")" 
+								} );	
+							}
+							
 						} );
+						
 					}
 				}
 			} );
@@ -671,7 +677,7 @@ function setEnvInfo( data ){
 				}
 			} ),
 			//check if parcel x,y intersects drinking water watershed
-			request.get( config.ws + "v1/ws_attributequery.php", {
+			/*request.get( config.ws + "v1/ws_attributequery.php", {
 				handleAs: "json",
 				headers: { "X-Requested-With": "" },
 				query: { 
@@ -680,7 +686,7 @@ function setEnvInfo( data ){
 					parameters: "commonpid='" + data.groundpid + "'",					
 					source: "tax"
 				}
-			} ),
+			} ),*/
 			//check if parcel x,y intersects jurisdiction
 			request.get( config.ws + "v1/ws_attributequery.php", {
 				handleAs: "json",
@@ -719,22 +725,45 @@ function setEnvInfo( data ){
 			if( results[ 6 ].length > 0 ){
 				info[ "Regulated Drinking Watershed Name" ] = Format.ucwords( results[ 6 ][ 0 ].name.toLowerCase() );
 				info[ "Regulated Drinking Watershed Class" ] = results[ 6 ][ 0 ].subarea;
-				info[ "Has limit on amount of Built-Upon Area" ] = "<a href='http://charlottenc.gov/StormWater/Regulations/Documents/DeterminingBUA1114.pdf' target='_blank'>Yes</a>";
+				//info[ "Has limit on amount of Built-Upon Area" ] = "<a href='http://charlottenc.gov/StormWater/Regulations/Documents/DeterminingBUA1114.pdf' target='_blank'>Yes</a>";
 			}
 			
 			//set built upon area amount
-			if( results[ 7 ].length > 0 ){
+			/*if( results[ 7 ].length > 0 ){
 				if( results[ 7 ][ 0 ].allowable_bua ){
 					info[ "Allowed Built-Upon Area" ] = Format.number( results[ 7 ][ 0 ].allowable_bua, 2 ) + " sq ft";
 				}	
-			}
+			}*/
 
-			//set coal tar sealant ban
-			if( results[ 8 ].length > 0  ){
-				info[ "Coal Tar Sealant Ban" ] = ( results[ 8 ][ 0 ].nme_juris == "MATT" ? "<a href='data/Matthews - Surface Water Pollution Control.pdf' target='_blank'>Yes</a>" : "No" );
+			//set pavement product restriction
+			if( results[ 7 ].length > 0  ){
+				switch( results[ 7 ][ 0 ].nme_juris ){
+					case "CHAR":
+						info[ "Pavement Product Restriction" ] = "<a href='https://charlottenc.gov/StormWater/Regulations/Documents/1Charlotte%20-%20Stormwater%20Pollution%20Control%20Ordinance%20-%20FINAL%20(adopted%2005-26-2020).pdf' target='_blank'>Yes</a>";
+						break;
+						
+					case "MATT":
+						info[ "Pavement Product Restriction" ] = "<a href='https://charlottenc.gov/StormWater/Regulations/Documents/Matthews%20Regulations/Chapter%2052A%20Surface%20Water%20Pollution%20Control.pdf' target='_blank'>Yes</a>";
+						break;
+					
+					case "CORN": case "HUNT": case "MINT": case "PINE": case "MECK":
+						info[ "Pavement Product Restriction" ] = "<a href='https://charlottenc.gov/StormWater/Regulations/Documents/Meck%20Co%20SWPCO%20FINAL%20Sealed%20Version.pdf' target='_blank'>Yes</a>";
+						break;
+						
+					case "DAVI":
+						info[ "Pavement Product Restriction" ] = "<a href='https://library.municode.com/nc/davidson/codes/code_of_ordinances?nodeId=COOR_CH30EN_ARTVISUWAPOCO' target='_blank'>Yes</a>";
+						break;
+						
+					default:
+						info[ "Pavement Product Restriction" ] = "No";
+						break;
+						
+				}
+				
 			}
 							
 			document.getElementById( "envinfo" ).innerHTML = Format.objectAsTable( info, "proptbl", true );
+			
 		} );
 
 		//add toggle overlays
@@ -757,8 +786,10 @@ function setEnvInfo( data ){
 			} 
 			
 			document.getElementById( "envlinks" ).innerHTML = Format.objectAsTable( links , "proptbl", false );
-		} );	
-	} );			
+		} );
+		
+	} );
+	
 }
 
 function unselectProp( ){

@@ -6,7 +6,7 @@ function basemapInit( ){
 		config.aerial_services.forEach( function( layer ){
 			aerial_layers.push( new BasemapLayer( { url: layer.url } ) );	
 		} );
-		var basemapSwitch = new BasemapSwitch ( { 	
+		var basemapSwitch = new BasemapSwitch( { 	
 			selectedBasemap: "streets", 
 			basemaps: 
 				[

@@ -201,7 +201,7 @@ gulp.task( "default", gulp.series( "lesstocss", "jstobuild", "agsjstobuild", "sd
 //publish tasks
 gulp.task( "publish_prod", function( ){
 	return gulp.src( "build/**/*.*" )
-		.pipe( gulp.dest ( "//gispolaris1v/c$/inetpub/wwwroot" ) );
+		.pipe( gulp.dest( "//gispolaris1v/c$/inetpub/wwwroot" ) );
 } );
 gulp.task( "publish_dev", function( ){
 	return gulp.src( "build/**/*.*" )
