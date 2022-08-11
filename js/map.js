@@ -133,12 +133,26 @@ function delGeoLocationGraphic( ){
 	}
 }	
 
-function delParcelGraphic( ){
+/*function delParcelGraphic( ){
 	if( parcelGraphic ){
 		var selectionLayer = agsServices[ serviceNames.indexOf ( "selection" ) ];
 		selectionLayer.remove( parcelGraphic );
 		parcelGraphic = null;	
 	}
+}*/
+function delParcelGraphics( ){
+	if( parcelGraphics.length > 0 ){
+		var selectionLayer = agsServices[ serviceNames.indexOf ( "selection" ) ];
+		
+		for( var i = 0; i < parcelGraphics.length; i++ ){
+			selectionLayer.remove( parcelGraphics[ i ] );
+			
+		}
+		
+		parcelGraphics.length = 0;	
+		
+	}
+	
 }
 
 function delHelperGraphics( removegraphics ){
@@ -167,7 +181,7 @@ function addGraphics( data ){
 		if( data.removegraphics.length > 0 ){ 
 			delHelperGraphics( data.removegraphics );
 		}	
-			
+		
 		switch( data.graphictype ){
 			case "parcelpoly":
 				//get parcel gemoetry from gissde02 and add to map
@@ -182,25 +196,31 @@ function addGraphics( data ){
 					}
 				} ).then( function( parceldata ){
 					//remove parcel graphic
-					delParcelGraphic( );
+					delParcelGraphics( );
 				
 					if( parceldata.length > 0 ){
+						var tempGraphic = null
+						
 						//add parcel feature to map
-						parcelGraphic = new Graphic( 
-							TextToGeom.polygon( parceldata[ 0 ].parcelgeom, 2264 ), 
-							new SimpleFillSymbol( 
-								SimpleFillSymbol.STYLE_SOLID, 
-								new SimpleLineSymbol( SimpleLineSymbol.STYLE_SOLID, new Color( [ 0, 255, 102 ] ), 3 ), 
-								new Color( [ 0, 255, 102, 0 ] ) ), 
-								{ "title" : "<h5>Selected Property</h5>", "content": "Parcel ID: " + data.taxpid + "<br/>" + data.address } ) ;
-						selectionLayer.add( parcelGraphic );
+						for( var i = 0; i < parceldata.length; i++ ){
+							tempGraphic = new Graphic( 
+								TextToGeom.polygon( parceldata[ i ].parcelgeom, 2264 ), 
+								new SimpleFillSymbol( 
+									SimpleFillSymbol.STYLE_SOLID, 
+									new SimpleLineSymbol( SimpleLineSymbol.STYLE_SOLID, new Color( [ 0, 255, 102 ] ), 3 ), 
+									new Color( [ 0, 255, 102, 0 ] ) ), 
+									{ "title" : "<h5>Selected Property</h5>", "content": "Parcel ID: " + data.taxpid + "<br/>" + data.address } ) ;
+							selectionLayer.add( tempGraphic );	
+							parcelGraphics.push( tempGraphic );
+							
+						}	
 											
 						if( data.zoom ){
-							var extent  = Utils.getGraphicsExtent( [ parcelGraphic ] );
+							var extent  = Utils.getGraphicsExtent( parcelGraphics );
 
 							if( extent.xmax !== extent.xmax || extent.xmin !== extent.xmin || extent.ymax !== extent.ymax || extent.ymin !== extent.ymin ){
 								extent = new Extent( parseFloat( data.x ) - 1, parseFloat( data.y ) - 1, 
-									parseFloat( data.x ) + 1, parseFloat( data.y ) + 1, parcelGraphic.geometry.spatialReference );
+									parseFloat( data.x ) + 1, parseFloat( data.y ) + 1, parcelGraphics[ 0 ].geometry.spatialReference );
 							} 	
 							
 							zoom.toExtent( extent );
@@ -413,6 +433,7 @@ var zoom = {
 	},
 	
 	toSelectedParcel: function( ){
-		this.toExtent( Utils.getGraphicsExtent( [ parcelGraphic ] ) );
+		//this.toExtent( Utils.getGraphicsExtent( [ parcelGraphic ] ) );
+		this.toExtent( Utils.getGraphicsExtent( parcelGraphics ) );
 	}
 };

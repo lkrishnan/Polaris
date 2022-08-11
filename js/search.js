@@ -149,7 +149,8 @@ function searchInit( ){
 				var buffersize = parseInt( document.getElementById( "buffersize" ).value );
 				
 				if( !isNaN( buffersize ) && ( buffersize > -1 && buffersize < 5281 ) ){
-					if( selectedAddress.hasOwnProperty( "groundpid" ) && parcelGraphic ){
+					//if( selectedAddress.hasOwnProperty( "groundpid" ) && parcelGraphic ){
+					if( selectedAddress.hasOwnProperty( "groundpid" ) && parcelGraphics.length > 0 ){
 						bufferSearch( buffersize ); 
 		
 						lastSearch = "buffer";
@@ -361,7 +362,15 @@ function searchInit( ){
 					if( buffersize > 0 ){ //add buffer graphic if the buffer size is atleast 1 feet
 						//add buffer graphic to map
 						//simplfy parcel polygon
-						geometryService.simplify( [ parcelGraphic.geometry ], function( geometries ){
+						var geom_arr = [ ]
+						
+						for( var i = 0;i < parcelGraphics.length; i++ ){
+							geom_arr.push( parcelGraphics[ i ].geometry )
+							
+						}							
+						
+						//geometryService.simplify( [ parcelGraphic.geometry ], function( geometries ){
+						geometryService.simplify( geom_arr, function( geometries ){
 							Utils.mixin( bufferParams, { distances: [ buffersize ], geometries: geometries } );
 															
 							//buffer parcel polygon
@@ -375,7 +384,9 @@ function searchInit( ){
 								} );		
 							} );	
 						} );
+						
 					}
+					
 				}	
 				
 				analyzeTheMarket( params, 1 );
@@ -923,10 +934,17 @@ function bufferSearch( buffersize ){
 	require( [ "mojo/SearchResultBoxLite", "esri/tasks/GeometryService", "esri/tasks/BufferParameters", 
 	"dojo/_base/connect", "dojo/request" ], function( SearchResultBoxLite, GeometryService, BufferParameters, connect, request ){
 		if( buffersize > 0 ){ //add buffer graphic only if buffer is atleast 1 feet
-			var geometryService = new GeometryService( config.geometry_service );
+			var geometryService = new GeometryService( config.geometry_service ),
+				geom_arr = [ ]
+						
+			for( var i = 0;i < parcelGraphics.length; i++ ){
+				geom_arr.push( parcelGraphics[ i ].geometry )
+				
+			}							
 			
 			//simplfy parcel polygon
-			geometryService.simplify( [ parcelGraphic.geometry ], function( geometries ){
+			//geometryService.simplify( [ parcelGraphic.geometry ], function( geometries ){
+			geometryService.simplify( geom_arr, function( geometries ){
 				//get buffer shape and add to map
 				var bufferParams = new BufferParameters( );
 				bufferParams.geometries = geometries;
@@ -940,8 +958,10 @@ function bufferSearch( buffersize ){
 						removegraphics: [ "buffer", "road", "parcelpt" ], 
 						zoom: true
 					} );		
-				} );	
+				} );
+				
 			} );	
+			
 		}	
 			
 		//get deed information parcels from cama for parcels with buffer 	

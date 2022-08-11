@@ -11,7 +11,8 @@ var map,                    // the map
 	layerListTree,          // overlay layer tree checkbox control        
 	legend,                 // legend control 
 	selectedAddress = { },   // holder for the selected location
-	parcelGraphic = null,   // graphic of the selected parcel
+	//parcelGraphic = null,   // graphic of the selected parcel
+	parcelGraphics = [ ],   // graphics of the selected parcel 
 	locationGraphic = null,	// graphic of a selected location
 	geolocGraphic = null,	// graphic of a geo location
 	helperGraphics = [ ],    // search result locations used in market analysis
@@ -799,7 +800,8 @@ function unselectProp( ){
 		//remove location graphic
 		delLocationGraphic( );
 		//remove parcel graphic
-		delParcelGraphic( );
+		//delParcelGraphic( );
+		delParcelGraphics( );
 		
 		//empty selected address object
 		selectedAddress = { };
@@ -867,7 +869,8 @@ function showDiv( cont ){
 	toggleNav( "navlayers", ( cont !== "layers" ? true : false ) );
 	toggleNav( "navdictionary", ( cont === "layers" ? true : false ) );
 	toggleNav( "navlegend", ( cont === "layers" ? true : false ) );
-	toggleNav( "navzoomprop", ( cont === "propdetails" && parcelGraphic ? true : false ) );
+	//toggleNav( "navzoomprop", ( cont === "propdetails" && parcelGraphic ? true : false ) );
+	toggleNav( "navzoomprop", ( cont === "propdetails" && parcelGraphics.length > 0 ? true : false ) );
 			
 	//hide progress animated gif
 	if( cont === "idlayers" || cont === "poi" || cont === "propdetails" || cont === "searchresults" ){
