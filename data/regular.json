@@ -302,11 +302,13 @@
 			"name": "Transportation", 
 			"type": "group", 
 			"show": true,
-			"ostreets": [ 8, 9, 21, 35, 47, 48 ],
+			"ostreets": [ 8, 9, 21, 35, 47, 48, 67, 68 ],
 			"children": [
 				{ "_reference": "cats" }, 
 				{ "_reference": "trafficcnts" }, 
+				{ "_reference": "towncityroads" },
 				{ "_reference": "ncroads" },
+				{ "_reference": "pvtroads" },
 				{ "_reference": "bikelanes" }
 			]
 		}, { 
@@ -318,9 +320,17 @@
 			"name": "NC DOT Traffic Counts", 
 			"ostreets": [ 21 ]
 		}, { 
+			"id": "towncityroads", 
+			"name": "Town and City Maintained Roads", 
+			"ostreets": [ 67 ]
+		}, { 
 			"id": "ncroads", 
 			"name": "NC State Maintained Roads", 
 			"ostreets": [ 35 ]
+		}, { 
+			"id": "pvtroads", 
+			"name": "Privately Maintained Roads", 
+			"ostreets": [ 68 ]
 		}, { 
 			"id": "bikelanes", 
 			"name": "Charlotte Bike Lanes", 
