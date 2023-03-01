@@ -437,7 +437,6 @@ function processSearch( ){
 }
 
 function finder( data, container ){
-	console.log( data )
 	require( [ "dijit/registry", "dojo/_base/connect", "dojo/request" ] , function( registry, connect, request ){
 		//1. Ready to publish 
 		if( data.matid && data.taxpid && data.groundpid && data.x && data.y ){
@@ -1346,8 +1345,6 @@ function idLayers( data ){
 								}		
 						};
 						
-						console.log( "ST_DWithin( " + lyrprop[ data.lyridx ].geomcol + ", ST_GeomFromText( 'POINT(" + data.x + " " + data.y +")', 2264), " + ( data.lyridx === "1" ? "50" : "100" ) + " )" + lyrprop[ data.lyridx ].where )
-												
 						request.get( config.ws + "v1/ws_attributequery.php", {
 							handleAs: "json",
 							headers: { "X-Requested-With": "" },
