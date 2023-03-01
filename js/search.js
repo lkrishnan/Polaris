@@ -1311,33 +1311,42 @@ function idLayers( data ){
 						var lyrprop = { 
 							"1": {
 									where: "",
-									displayfield: "address"
+									displayfield: "address",
+									geomcol: "shape",
 								},	
 							"20": {
 									where: " AND issuedate >= ( CURRENT_DATE - 365 ) AND compldate IS NULL AND occupancy NOT LIKE 'R2%' AND occupancy NOT LIKE 'R3%'",
-									displayfield: "projname"
+									displayfield: "projname",
+									geomcol: "geom",
 								},
 							"21": {
 									where: " AND compldate >= ( CURRENT_DATE - 365 ) AND occupancy NOT LIKE 'R2%' AND occupancy NOT LIKE '%R3%'",
-									displayfield: "projname"
+									displayfield: "projname",
+									geomcol: "geom",
 								},
 							"22": {
 									where: " AND issuedate >= ( CURRENT_DATE - 365 ) AND compldate IS NULL AND occupancy LIKE '%R3%'",
-									displayfield: "projname"
+									displayfield: "projname",
+									geomcol: "geom",
 								},	
 							"23": {
 									where: " AND compldate >= ( CURRENT_DATE - 365 ) AND occupancy LIKE '%R3%'",
-									displayfield: "projname"
+									displayfield: "projname",
+									geomcol: "geom",
 								},	
 							"24": {
 									where: " AND issuedate >= ( CURRENT_DATE - 365 ) AND compldate IS NULL AND occupancy LIKE '%R2%'",
-									displayfield: "projname"
+									displayfield: "projname",
+									geomcol: "geom",
 								},
 							"25": {
 									where: " AND compldate >= ( CURRENT_DATE - 365 ) AND occupancy LIKE '%R2%'",
-									displayfield: "projname"
+									displayfield: "projname",
+									geomcol: "geom",
 								}		
 						};
+						
+						console.log( "ST_DWithin( " + lyrprop[ data.lyridx ].geomcol + ", ST_GeomFromText( 'POINT(" + data.x + " " + data.y +")', 2264), " + ( data.lyridx === "1" ? "50" : "100" ) + " )" + lyrprop[ data.lyridx ].where )
 												
 						request.get( config.ws + "v1/ws_attributequery.php", {
 							handleAs: "json",
@@ -1345,7 +1354,7 @@ function idLayers( data ){
 							query: { 
 								table: ptTables[ data.lyridx ], 
 								fields: "*",
-								parameters: "ST_DWithin( shape, ST_GeomFromText( 'POINT(" + data.x + " " + data.y +")', 2264), " + ( data.lyridx === "1" ? "50" : "100" ) + " )" + lyrprop[ data.lyridx ].where,	
+								parameters: "ST_DWithin(" + lyrprop[ data.lyridx ].geomcol + ", ST_GeomFromText('POINT(" + data.x + " " + data.y +")', 2264)," + ( data.lyridx === "1" ? "50" : "100" ) + ")" + lyrprop[ data.lyridx ].where,	
 								source: "gis"
 							}
 						} ).then( function( gisdata ){
