@@ -28,7 +28,7 @@ function basemapInit( ){
 			},
 			onBaseMapChange: function( basemaplyrs ){
 				if( basemaplyrs.indexOf( "topohillshade" ) > -1 ){
-					document.getElementById( "basemaplegend" ).innerHTML = "<img src='image/legend/topolegend104.png' />";
+					document.getElementById( "basemaplegend" ).innerHTML = "<img src='image/legend/topolegend105.png' />";
 					printLegend = "topo";
 					//_gaq.push( [ '_trackEvent', 'CATEGORY LABEL', 'Action Label' ] );
 				}else if( basemaplyrs.indexOf( "basemap_aerial" ) > -1 ){

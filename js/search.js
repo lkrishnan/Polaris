@@ -437,6 +437,7 @@ function processSearch( ){
 }
 
 function finder( data, container ){
+	console.log( data )
 	require( [ "dijit/registry", "dojo/_base/connect", "dojo/request" ] , function( registry, connect, request ){
 		//1. Ready to publish 
 		if( data.matid && data.taxpid && data.groundpid && data.x && data.y ){
