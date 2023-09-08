@@ -223,7 +223,8 @@
 			<ol>
 				<li>Mailing Address is wrong -> <a href='https://mecklenburgcountync-563955.workflowcloud.com/forms/0314aa67-0083-4905-9b29-a571be01717e' target='_blank' class='greenlink' >Request Change</a></li>
 				<li>Property Info or Map is wrong -> <a href="https://mecklenburgcountync-563955.workflowcloud.com/forms/d024bf6c-b9b0-4cf5-a7d9-7ac376f0370c" target="_blank" class="greenlink">Request Change</a></li>
-				<li>Download Map Layers that you see -> <a href="http://maps.co.mecklenburg.nc.us/openmapping" target="_blank" class="greenlink">Get it here</a></li>
+				<li>Addresses or Roads have issues -> <a href="https://meckgov.maps.arcgis.com/apps/webappviewer/index.html?id=0068439ff27f430abe04082770d2bfea" target="_blank" class="greenlink">Log Issue</a></li>
+				<li>Download Layers on Map -> <a href="http://maps.co.mecklenburg.nc.us/openmapping" target="_blank" class="greenlink">Get it here</a></li>
 				<li>Polaris not working? Try clearing your browser cache. 
 					<ol>
 						<li><a href="https://support.google.com/accounts/answer/32050?hl=en&co=GENIE.Platform%3DDesktop" target="_blank" class="greenlink">Chrome</a></li>
@@ -1675,16 +1676,14 @@
 	<script src="js/search.js"></script><script src="js/config.js"></script><script src="js/cachedmap.js"></script><script src="js/map.js"></script><script src="js/main.js"></script><script src="js/usng.js"></script><script src="js/utility.js"></script>
 					
 	<!-- Google Analytics usage statistics -->
-	<script type="text/javascript">
-		var _gaq = _gaq || [];
-		_gaq.push(['_setAccount', 'UA-33761957-1']);
-		_gaq.push(['_trackPageview']);
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-V5LRM4TFDQ"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
 
-		(function() {
-			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		})();
+	  gtag('config', 'G-V5LRM4TFDQ');
 	</script>
 </body>	
 </html>

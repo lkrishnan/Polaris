@@ -490,7 +490,7 @@ function finder( data, container ){
 				}
 			} ).then( function( camadata ){
 				if( camadata.length > 0 ){ //kick it back to Main Search
-					data.groundpid = camadata[ 0 ].common_parcel_id;
+					data.groundpid = camadata[ 0 ].common_parcel_id.trim();
 					data.taxpid = camadata[ 0 ].parcel_id;					
 					finder( data, container );
 				}else{ //if parcel isn't mapped and no CAMA data exists but the address point exists
@@ -1251,10 +1251,10 @@ function idLayers( data ){
 						"12": "Watershed_Stormwater_py",
 						"13": "Watershed_DrinkingWater_py",
 						"14": "WaterQuality_Buffers_py",
-						"15": "Census_Tracts_2010_py", 
+						"15": "Census_Tracts_2020_py", 
 						"16": "EngGrid_py",
 						"18": 34,
-						"19": "Census_Blocks_2010_py",
+						"19": "Census_Blocks_2020_py",
 						"26": 60,
 						"27": 61
 					}, ptTables = {
@@ -1396,10 +1396,10 @@ function idLayers( data ){
 								handleAs: "json",
 								headers: { "X-Requested-With": "" },
 								query: { 
-									table: "zoning_towns_py", 
+									table: "County_Towns_Zoning_py", 
 									fields: "*", 
 										parameters: "ST_Within(ST_GeomFromText( 'POINT(" + data.x + " " + data.y + ")', 2264 ) , shape)",
-									source: "gis"
+									source: "tax"
 								}
 							} )
 						] ).then( function( results ){

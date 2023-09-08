@@ -85,7 +85,7 @@
 			"type": "group", 
 			"show": true,
 			"ostreets": [ 6, 24, 30, 36, 63, 64 ],
-			"otrans": [ 38, 39, 40, 41, 42, 43, 60, 61 ],			
+			"otrans": [ 38, 39, 40, 41, 42, 43, 60, 61, 70 ],			
 			"children": [
 				{ "_reference": "fldp" }, 
 				{ "_reference": "postconstdist" }, 
@@ -95,7 +95,8 @@
 				{ "_reference": "soils" },
 				{ "_reference": "wtrqulbuff" }, 
 				{ "_reference": "mplcntmn" },
-				{ "_reference": "brwnflds" }
+				{ "_reference": "brwnflds" },
+				{ "_reference": "cnsrveasements" }
 			]
 		}, { 
 			"id": "fldp", 
@@ -141,6 +142,11 @@
 			"id": "brwnflds", 
 			"name": "NCDEQ Brownfields", 
 			"otrans": [ 61 ],
+			"clone": true 		
+		}, 	{ 
+			"id": "cnsrveasements", 
+			"name": "Storm Water Conservation Easements", 
+			"otrans": [ 70 ],
 			"clone": true 		
 		}, { 
 			"id": "lnddvlpmnt", 

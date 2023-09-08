@@ -231,7 +231,8 @@ function setIdentity( data ){
 								propPhotoGallery.addPhoto( { 
 									url: item.photo_url.trim( ), 
 									photo_date: item.photo_date,
-									title: "Photo Date: " + imgdate.substring( 4, 6 ) + "/" + imgdate.substring( 6, 8 ) + "/" + imgdate.substring( 0, 4 )
+									title: "Photo Date: " + imgdate.substring( 4, 6 ) + "/" + imgdate.substring( 6, 8 ) + "/" + imgdate.substring( 0, 4 ) + 
+										"<div><a href='https://polaris3g.mecklenburgcountync.gov/data/buildingphotomoreinfo.pdf' target='_blank' class='redlink'>Click Here: Past-Dated Photos cannot be changed at this time.</a></div>"
 									//title: "Photo Date: " + imgdate.substring( 4, 6 ) + "/" + imgdate.substring( 6, 8 ) + "/" + imgdate.substring( 0, 4 ) + "  Source: " + item.source + " (" + item.attribution + ")" 
 								} );	
 							}
@@ -254,7 +255,7 @@ function setIdentity( data ){
 			//set links
 			document.getElementById( "idlinks" ).innerHTML = Format.objectAsTable( [
 				{
-					"Link To": "<a href='https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=" + data.lat + "," + data.lon + "' target='_blank' );>Google Street View</a>"
+					"Link To": "<a href='https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=" + data.lat + "," + data.lon + "' target='_blank' );>Google Street View (Use for recent building photos)</a>"
 				}, { 
 					"Link To": "<a href='http://maps.co.mecklenburg.nc.us/meckscope/?lat=" + data.lat + "&lon=" + data.lon + "' target='_blank' );>Birdseye View maintained by Mecklenburg County</a>"
 				}
@@ -286,7 +287,7 @@ function setCharacteristicsAndTaxInfo( data ){
 					{ 
 						"Link To": "<a href='http://taxbill.co.mecklenburg.nc.us/publicwebaccess/BillSearchResults.aspx?ParcelNum=" + data.taxpid + "' target='_blank'>Tax Bill Information</a>"
 					}, { 
-						"Link To": "<a href='https://www.mecknc.gov/TaxCollections/Pages/Tax-Foreclosure-Properties.aspx' target='_blank'>Tax Foreclosure Properties</a>"
+						"Link To": "<a href='https://tax.mecknc.gov/services/tax-foreclosure-properties' target='_blank'>Tax Foreclosure Properties</a>"
 					}
 				],
 				fillCharacteristics = function( info, links ){
@@ -444,8 +445,8 @@ function setLocInfo( data ){
 				handleAs: "json",
 				headers: { "X-Requested-With": "" },
 				query: { 
-					table: "census_tracts_2010_py", 
-					fields: "name10",
+					table: "census_tracts_2020_py", 
+					fields: "name20",
 					parameters: "ST_Within(ST_GeomFromText( 'POINT(" + data.x + " " + data.y + ")', 2264 ) , shape)",		
 					source: "gis"
 				}
@@ -470,7 +471,7 @@ function setLocInfo( data ){
 			//add historic district info
 			info[ "Charlotte Historic District" ] = ( results[ 2 ].length > 0 ? "Yes" : "No" );
 			//add census tract info
-			info[ "Census Tract No" ] = ( results[ 3 ].length > 0 ? results[ 3 ][ 0 ].name10 : "NA" );
+			info[ "Census Tract No" ] = ( results[ 3 ].length > 0 ? results[ 3 ][ 0 ].name20 : "NA" );
 			//add census tract info
 			info[ "Inside BIP Opportunity Area" ] = ( results[ 4 ].length > 0 ? "Yes" : "No" );
 
@@ -565,10 +566,10 @@ function setEnvInfo( data ){
 					"Link To": "<a href='http://meckmap.mecklenburgcountync.gov/3dfz/#taxpid=" + data.taxpid + 
 						"' target='_blank' );>Flood Zone Information</a>"
 				}, { 
-					"Link To": "<a href='http://charmeck.org/stormwater/regulations/Pages/SWIMOrdinances.aspx'" +
+					"Link To": "<a href='https://www.charlottenc.gov/Services/Stormwater/Stormwater-Regulations'" +
 						" target='_blank' );>Surface Water Improvement and Management (SWIM) Ordinances</a>"
 				}, { 
-					"Link To": "<a href='http://charmeck.org/stormwater/regulations/Pages/Post-ConstructionStormWaterOrdinances.aspx'" +
+					"Link To": "<a href='https://www.charlottenc.gov/Services/Stormwater/Stormwater-Regulations'" +
 						" target='_blank' );>Post-Construction Storm Water Ordinances</a>"
 				},	{ 
 					"Link To": "<a href='https://www.mecknc.gov/LUESA/WaterandLandResources/Conservation/documents/indextomapunits.pdf'" +
@@ -740,15 +741,15 @@ function setEnvInfo( data ){
 			if( results[ 7 ].length > 0  ){
 				switch( results[ 7 ][ 0 ].nme_juris ){
 					case "CHAR":
-						info[ "Pavement Product Restriction" ] = "<a href='https://charlottenc.gov/StormWater/Regulations/Documents/1Charlotte%20-%20Stormwater%20Pollution%20Control%20Ordinance%20-%20FINAL%20(adopted%2005-26-2020).pdf' target='_blank'>Yes</a>";
+						info[ "Pavement Product Restriction" ] = "<a href='https://www.charlottenc.gov/files/sharedassets/city/services/stormwater/documents/regulations/1charlotte-stormwater-pollution-control-ordinance-final-adopted-05-26-2020.pdf' target='_blank'>Yes</a>";
 						break;
 						
 					case "MATT":
-						info[ "Pavement Product Restriction" ] = "<a href='https://charlottenc.gov/StormWater/Regulations/Documents/Matthews%20Regulations/Chapter%2052A%20Surface%20Water%20Pollution%20Control.pdf' target='_blank'>Yes</a>";
+						info[ "Pavement Product Restriction" ] = "<a href='https://www.charlottenc.gov/files/sharedassets/city/services/stormwater/documents/regulations/chapter-52a-surface-water-pollution-control.pdf' target='_blank'>Yes</a>";
 						break;
 					
 					case "CORN": case "HUNT": case "MINT": case "PINE": case "MECK":
-						info[ "Pavement Product Restriction" ] = "<a href='https://charlottenc.gov/StormWater/Regulations/Documents/Meck%20Co%20SWPCO%20FINAL%20Sealed%20Version.pdf' target='_blank'>Yes</a>";
+						info[ "Pavement Product Restriction" ] = "<a href='https://www.charlottenc.gov/files/sharedassets/city/services/stormwater/documents/regulations/meck-co-swpco-final-sealed-version.pdf' target='_blank'>Yes</a>";
 						break;
 						
 					case "DAVI":
